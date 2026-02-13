@@ -2,7 +2,7 @@
   "providers": {
     "coze": {
       "baseUrl": "https://integration.coze.cn/api/v3",
-      "apiKey": "bzVQMFk4RVRJYW5FalRrT3ljYTBsbXRaNjBpbzhVRWo6ZkdIdHE5blJBN2xwbXg0czRNQWZTRkFTM3E2TXJSQzd3aVl4cFhXdG0wMU1hVHRQSFZoNmNReHppSDhybUJacQ==",
+      "apiKey": "cUFJZU9NMkw4Q1pGQnR4WDJ6WFJSUXBYOWlmMDRBWWY6QnlWVHJybTZsUmlmRTMxTWdOc0o4U201VjhPWGFGVmh0bHhjdnY5Y0tranF5ZENrcjJjRlpXQndrenlldFZ5eA==",
       "api": "openai-completions",
       "models": [
         {

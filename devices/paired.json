@@ -86,5 +86,36 @@
     },
     "createdAtMs": 1770802505970,
     "approvedAtMs": 1770802505970
+  },
+  "f4e148c2b945be09cfb984ecf946acf78ecd048a1b4aeb037f63536fa633ce46": {
+    "deviceId": "f4e148c2b945be09cfb984ecf946acf78ecd048a1b4aeb037f63536fa633ce46",
+    "publicKey": "vpuLBbPvHjcPAqG4N_QXz6ixYBQJsy5cFv0qQwKNdak",
+    "platform": "linux",
+    "clientId": "cli",
+    "clientMode": "cli",
+    "role": "operator",
+    "roles": [
+      "operator"
+    ],
+    "scopes": [
+      "operator.admin",
+      "operator.approvals",
+      "operator.pairing"
+    ],
+    "tokens": {
+      "operator": {
+        "token": "e10609a45f7b4501a77f015bf4e84840",
+        "role": "operator",
+        "scopes": [
+          "operator.admin",
+          "operator.approvals",
+          "operator.pairing"
+        ],
+        "createdAtMs": 1770944945767,
+        "lastUsedAtMs": 1770946211084
+      }
+    },
+    "createdAtMs": 1770944945767,
+    "approvedAtMs": 1770944945767
   }
 }
