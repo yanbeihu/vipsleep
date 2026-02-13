@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIPSLEEP | 解决40%用户过热问题的枕头</title>
+    <meta name="description" content="VIPSLEEP - 基于北美市场10,000+条客户评论深度分析，专为解决40%用户抱怨的过热问题和35%用户抱怨的塌陷问题。凝胶降温 + 持久支撑 + 可调节填充">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            box-shadow: 0 2px 30px rgba(0,0,0,0.08);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.7rem 0;
+            background: rgba(255, 255, 255, 0.99);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0d2137;
+            text-decoration: none;
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #334e68;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00d4ff, #0099cc);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #0d2137;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .lang-switch {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 2px solid #bae6fd;
+            color: #0369a1;
+        }
+
+        .lang-switch:hover {
+            background: #e0f2fe;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.2);
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 153, 204, 0.3);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 153, 204, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 110vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #bae6fd 100%);
+            position: relative;
+            overflow: hidden;
+            padding-top: 100px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            animation: float 30s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            color: #166534;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.2);
+        }
+
+        .hero-content h1 {
+            font-size: 3.8rem;
+            font-weight: 900;
+            color: #0d2137;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+        }
+
+        .hero-content h1 span {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            color: #334e68;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            max-width: 600px;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .stat-item .number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #00d4ff;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item .label {
+            font-size: 0.9rem;
+            color: #334e68;
+            font-weight: 600;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .cta-primary {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 153, 204, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 153, 204, 0.5);
+        }
+
+        .cta-secondary {
+            background: white;
+            color: #0d2137;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid #e0f2fe;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .cta-secondary:hover {
+            background: #f0f9ff;
+            border-color: #00d4ff;
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            position: relative;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 30px;
+            box-shadow: 0 30px 80px rgba(0, 153, 204, 0.2);
+            animation: float-image 6s ease-in-out infinite;
+        }
+
+        @keyframes float-image {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-25px) rotate(2deg); }
+        }
+
+        /* Pain Points Section */
+        .pain-points {
+            padding: 8rem 3rem;
+            background: white;
+        }
+
+        .pain-points-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #0d2137;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .section-header p {
+            font-size: 1.3rem;
+            color: #334e68;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .pain-points-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .pain-point {
+            padding: 3rem;
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .pain-point:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(239, 68, 68, 0.2);
+        }
+
+        .pain-point.cooling {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+
+        .pain-point.support {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+        }
+
+        .pain-point-icon {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .pain-point h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #0d2137;
+            margin-bottom: 1rem;
+        }
+
+        .pain-point .percentage {
+            display: inline-block;
+            background: rgba(239, 68, 68, 0.15);
+            color: #dc2626;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .pain-point.cooling .percentage {
+            background: rgba(0, 153, 204, 0.15);
+            color: #0099cc;
+        }
+
+        .pain-point.support .percentage {
+            background: rgba(245, 158, 11, 0.15);
+            color: #d97706;
+        }
+
+        .pain-point p {
+            font-size: 1.1rem;
+            color: #334e68;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .pain-point .solution {
+            padding: 1.5rem;
+            background: white;
+            border-radius: 15px;
+            border-left: 4px solid #22c55e;
+        }
+
+        .pain-point .solution strong {
+            color: #166534;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 8rem 3rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+            z-index: 10;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .product-image::before {
+            content: '点击查看详情';
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 153, 204, 0.9);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .product-card:hover .product-image::before {
+            opacity: 1;
+            bottom: 30px;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.08);
+        }
+
+        .product-info {
+            padding: 2.5rem;
+        }
+
+        .product-info h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #0d2137;
+            margin-bottom: 0.8rem;
+        }
+
+        .product-info .subtitle {
+            color: #334e68;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 20px;
+        }
+
+        .product-price .current {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .product-price .original {
+            font-size: 1.4rem;
+            color: #94a3b8;
+            text-decoration: line-through;
+            font-weight: 600;
+        }
+
+        .product-price .save {
+            background: #22c55e;
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .product-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature-item {
+            padding: 0.8rem;
+            background: #f8fafc;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #334e68;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .feature-item::before {
+            content: '✓';
+            color: #22c55e;
+            font-weight: 900;
+            font-size: 1.1rem;
+        }
+
+        .product-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            color: white;
+            padding: 1.3rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-align: center;
+            display: block;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 153, 204, 0.3);
+        }
+
+        .product-card:hover .product-btn {
+            box-shadow: 0 12px 35px rgba(0, 153, 204, 0.5);
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 8rem 3rem;
+            background: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            padding: 3rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: 30px;
+            transition: all 0.4s ease;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 3rem;
+            box-shadow: 0 15px 40px rgba(0, 153, 204, 0.3);
+        }
+
+        .feature-card h3 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #0d2137;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: #334e68;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 10rem 3rem;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 50%, #0d9488 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 50%);
+            animation: float 40s linear infinite;
+        }
+
+        .cta-section h2 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-btn {
+            background: white;
+            color: #0099cc;
+            padding: 1.5rem 4rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.2rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #0d2137;
+            color: white;
+            padding: 6rem 3rem 3rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .footer-logo span {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-links h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: #00d4ff;
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .hero-cta {
+                justify-content: center;
+            }
+
+            .pain-points-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .cta-section h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">VIP<span>SLEEP</span></a>
+            <ul class="nav-links">
+                <li><a href="#pain-points" data-zh="痛点" data-en="Problems">痛点</a></li>
+                <li><a href="#products" data-zh="产品" data-en="Products">产品</a></li>
+                <li><a href="#features" data-zh="特色" data-en="Features">特色</a></li>
+                <li><a href="#" data-zh="评价" data-en="Reviews">评价</a></li>
+            </ul>
+            <div class="lang-switch" onclick="toggleLanguage()">🌐 <span id="langText">EN</span></div>
+            <a href="#products" class="nav-btn" data-zh="立即购买" data-en="Shop Now">立即购买</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge" data-zh="基于10,000+条客户评论研发" data-en="Based on 10,000+ Customer Reviews">基于10,000+条客户评论研发</div>
+                <h1 data-zh="解决<span>40%</span>用户过热问题的枕头" data-en="Solve <span>40%</span> User Heat Problem Pillow">解决<span>40%</span>用户过热问题的枕头</h1>
+                <p data-zh="基于北美市场10,000+条客户评论深度分析，专为解决40%用户抱怨的过热问题和35%用户抱怨的塌陷问题而设计。" data-en="Based on deep analysis of 10,000+ customer reviews in North America, designed to solve the 40% user heat complaint and 35% user collapse complaint.">基于北美市场10,000+条客户评论深度分析，专为解决40%用户抱怨的过热问题和35%用户抱怨的塌陷问题而设计。</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="number">40%</div>
+                        <div class="label" data-zh="用户过热抱怨" data-en="Heat Complaints">用户过热抱怨</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="number">35%</div>
+                        <div class="label" data-zh="用户塌陷抱怨" data-en="Collapse Complaints">用户塌陷抱怨</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="number">100+</div>
+                        <div class="label" data-zh="晚试睡保证" data-en="Nights Trial Guarantee">晚试睡保证</div>
+                    </div>
+                </div>
+
+                <div class="hero-cta">
+                    <a href="#products" class="cta-primary" data-zh="查看产品 →" data-en="View Products →">查看产品 →</a>
+                    <a href="#pain-points" class="cta-secondary" data-zh="了解更多" data-en="Learn More">了解更多</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&h=800&fit=crop" alt="VIPSLEEP Pillow">
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Points Section -->
+    <section class="pain-points" id="pain-points">
+        <div class="pain-points-container">
+            <div class="section-header">
+                <h2 data-zh="我们解决了哪些问题？" data-en="What Problems Do We Solve?">我们解决了哪些问题？</h2>
+                <p data-zh="基于10,000+条真实用户评论，我们精准定位并解决了最影响睡眠质量的三大痛点。" data-en="Based on 10,000+ real user reviews, we precisely identified and solved the three biggest pain points affecting sleep quality.">基于10,000+条真实用户评论，我们精准定位并解决了最影响睡眠质量的三大痛点。</p>
+            </div>
+
+            <div class="pain-points-grid">
+                <div class="pain-point cooling fade-in">
+                    <div class="pain-point-icon">🔥</div>
+                    <span class="percentage" data-zh="40% 用户抱怨" data-en="40% Users Complain">40% 用户抱怨</span>
+                    <h3 data-zh="夏天睡觉太热" data-en="Sleep Too Hot in Summer">夏天睡觉太热</h3>
+                    <p data-zh="普通记忆棉枕头容易积聚热量，导致用户在夜间频繁醒来，影响睡眠质量。夏天尤其明显，很多人需要频繁翻面寻找凉爽位置。" data-en="Ordinary memory foam pillows tend to trap heat, causing users to wake up frequently during the night, affecting sleep quality. This is especially noticeable in summer, with many people needing to constantly flip to find a cool spot.">普通记忆棉枕头容易积聚热量，导致用户在夜间频繁醒来，影响睡眠质量。夏天尤其明显，很多人需要频繁翻面寻找凉爽位置。</p>
+                    <div class="solution">
+                        <strong data-zh="✅ VIPSLEEP 解决方案：凝胶降温技术" data-en="✅ VIPSLEEP Solution: Gel Cooling Technology">✅ VIPSLEEP 解决方案：凝胶降温技术</strong>
+                        <p data-zh="先进的凝胶降温颗粒主动吸收和释放热量，配合通风孔设计，整夜保持凉爽。比普通记忆棉降温40%。" data-en="Advanced gel cooling particles actively absorb and release heat, combined with ventilation hole design, keeping cool all night long. 40% cooler than ordinary memory foam.">先进的凝胶降温颗粒主动吸收和释放热量，配合通风孔设计，整夜保持凉爽。比普通记忆棉降温40%。</p>
+                    </div>
+                </div>
+
+                <div class="pain-point support fade-in">
+                    <div class="pain-point-icon">📉</div>
+                    <span class="percentage" data-zh="35% 用户抱怨" data-en="35% Users Complain">35% 用户抱怨</span>
+                    <h3 data-zh="枕头用久了会塌陷" data-en="Pillow Collapses Over Time">枕头用久了会塌陷</h3>
+                    <p data-zh="低密度记忆棉枕头使用1-2年后会明显塌陷，失去支撑力，导致颈部疼痛和睡眠质量下降。用户需要频繁更换枕头，成本高昂。" data-en="Low-density memory foam pillows noticeably collapse after 1-2 years of use, losing support and causing neck pain and decreased sleep quality. Users need to frequently replace pillows, which is costly.">低密度记忆棉枕头使用1-2年后会明显塌陷，失去支撑力，导致颈部疼痛和睡眠质量下降。用户需要频繁更换枕头，成本高昂。</p>
+                    <div class="solution">
+                        <strong data-zh="✅ VIPSLEEP 解决方案：高密度双分区设计" data-en="✅ VIPSLEEP Solution: High-Density Dual-Zone Design">✅ VIPSLEEP 解决方案：高密度双分区设计</strong>
+                        <p data-zh="上层45D柔软舒适包裹头部，下层65D高密度提供强支撑，5年以上不塌陷。双密度分区提供完美平衡。" data-en="Upper layer 45D soft and comfortable to wrap the head, lower layer 65D high-density provides strong support, no collapse for 5+ years. Dual-zone design provides perfect balance.">上层45D柔软舒适包裹头部，下层65D高密度提供强支撑，5年以上不塌陷。双密度分区提供完美平衡。</p>
+                    </div>
+                </div>
+
+                <div class="pain-point fade-in">
+                    <div class="pain-point-icon">⚠️</div>
+                    <span class="percentage" data-zh="增长最快需求" data-en="Fastest Growing Demand">增长最快需求</span>
+                    <h3 data-zh="无法找到合适的硬度" data-en="Can't Find Suitable Firmness">无法找到合适的硬度</h3>
+                    <p data-zh="每个人的体型、睡姿、偏好都不同，固定硬度的枕头无法满足个性化需求。用户购买后往往需要再购买多个枕头尝试。" data-en="Everyone's body type, sleep position, and preference are different. Fixed firmness pillows cannot meet personalized needs. Users often need to buy multiple pillows to try after purchase.">每个人的体型、睡姿、偏好都不同，固定硬度的枕头无法满足个性化需求。用户购买后往往需要再购买多个枕头尝试。</p>
+                    <div class="solution">
+                        <strong data-zh="✅ VIPSLEEP 解决方案：可调节填充+三种高度" data-en="✅ VIPSLEEP Solution: Adjustable Fill + Three Heights">✅ VIPSLEEP 解决方案：可调节填充+三种高度</strong>
+                        <p data-zh="5cm/7cm/9cm三种高度可选，填充可自由增减。像定制一样找到最适合您的完美高度和硬度。" data-en="Three heights available: 5cm/7cm/9cm, fill can be freely added or removed. Find the perfect height and firmness that suits you best, like custom-made.">5cm/7cm/9cm三种高度可选，填充可自由增减。像定制一样找到最适合您的完美高度和硬度。</p>
+                    </div>
+                </div>
+
+                <div class="pain-point fade-in">
+                    <div class="pain-point-icon">🛡️</div>
+                    <span class="percentage" data-zh="健康意识增强" data-en="Growing Health Awareness">健康意识增强</span>
+                    <h3 data-zh="担心材料安全问题" data-en="Worried About Material Safety">担心材料安全问题</h3>
+                    <p data-zh="用户越来越关注枕头材料是否安全、是否有害物质、是否会引起过敏。低质量枕头可能含有甲醛、苯等有害物质，影响健康。" data-en="Users are increasingly concerned about whether pillow materials are safe, contain harmful substances, or cause allergies. Low-quality pillows may contain formaldehyde, benzene, and other harmful substances, affecting health.">用户越来越关注枕头材料是否安全、是否有害物质、是否会引起过敏。低质量枕头可能含有甲醛、苯等有害物质，影响健康。</p>
+                    <div class="solution">
+                        <strong data-zh="✅ VIPSLEEP 解决方案：双安全认证+抗菌面料" data-en="✅ VIPSLEEP Solution: Dual Safety Certifications + Antibacterial Fabric">✅ VIPSLEEP 解决方案：双安全认证+抗菌面料</strong>
+                        <p data-zh="CertiPUR-US® + OEKO-TEX® 双认证，无有害物质。抗菌面料抑菌率99%，过敏友好。5年质保让您安心无忧。" data-en="CertiPUR-US® + OEKO-TEX® dual certification, no harmful substances. Antibacterial fabric with 99% antibacterial rate, allergy-friendly. 5-year warranty for peace of mind.">CertiPUR-US® + OEKO-TEX® 双认证，无有害物质。抗菌面料抑菌率99%，过敏友好。5年质保让您安心无忧。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="products-container">
+            <div class="section-header">
+                <h2 data-zh="选择适合您的 VIPSLEEP" data-en="Choose Your VIPSLEEP">选择适合您的 VIPSLEEP</h2>
+                <p data-zh="四款产品，解决不同需求，总有一款适合您" data-en="Four products, solving different needs, there's always one for you">四款产品，解决不同需求，总有一款适合您</p>
+            </div>
+
+            <div class="products-grid">
+                <a href="product1.html" class="product-card fade-in">
+                    <div class="product-badge" data-zh="热销" data-en="Best Seller">热销</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=500&h=500&fit=crop" alt="VIPSLEEP Premium">
+                    </div>
+                    <div class="product-info">
+                        <h3 data-zh="VIPSLEEP Premium" data-en="VIPSLEEP Premium">VIPSLEEP Premium</h3>
+                        <p class="subtitle" data-zh="经典款 | 所有痛点一网打尽" data-en="Classic | Solves All Pain Points">经典款 | 所有痛点一网打尽</p>
+                        <div class="product-price">
+                            <span class="current">$89</span>
+                            <span class="original">$149</span>
+                            <span class="save" data-zh="省 $60" data-en="Save $60">省 $60</span>
+                        </div>
+                        <div class="product-features">
+                            <div class="feature-item" data-zh="凝胶降温" data-en="Gel Cooling">凝胶降温</div>
+                            <div class="feature-item" data-zh="双密度分区" data-en="Dual-Zone">双密度分区</div>
+                            <div class="feature-item" data-zh="可调节填充" data-en="Adjustable">可调节填充</div>
+                            <div class="feature-item" data-zh="5年质保" data-en="5-Year Warranty">5年质保</div>
+                        </div>
+                        <button class="product-btn" data-zh="查看详情 →" data-en="View Details →">查看详情 →</button>
+                    </div>
+                </a>
+
+                <a href="product2.html" class="product-card fade-in">
+                    <div class="product-badge" data-zh="极致降温" data-en="Ultimate Cooling">极致降温</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1585366119957-e9730b6d0f60?w=500&h=500&fit=crop" alt="VIPSLEEP Cool Max">
+                    </div>
+                    <div class="product-info">
+                        <h3 data-zh="VIPSLEEP Cool Max" data-en="VIPSLEEP Cool Max">VIPSLEEP Cool Max</h3>
+                        <p class="subtitle" data-zh="降温旗舰 | 夏日必备" data-en="Cooling Flagship | Summer Essential">降温旗舰 | 夏日必备</p>
+                        <div class="product-price">
+                            <span class="current">$99</span>
+                            <span class="original">$169</span>
+                            <span class="save" data-zh="省 $70" data-en="Save $70">省 $70</span>
+                        </div>
+                        <div class="product-features">
+                            <div class="feature-item" data-zh="双层凝胶" data-en="Dual Gel Layers">双层凝胶</div>
+                            <div class="feature-item" data-zh="网眼面料" data-en="Mesh Fabric">网眼面料</div>
+                            <div class="feature-item" data-zh="极致降温" data-en="Ultimate Cooling">极致降温</div>
+                            <div class="feature-item" data-zh="恒温调节" data-en="Temp Regulation">恒温调节</div>
+                        </div>
+                        <button class="product-btn" data-zh="查看详情 →" data-en="View Details →">查看详情 →</button>
+                    </div>
+                </a>
+
+                <a href="product3.html" class="product-card fade-in">
+                    <div class="product-badge" data-zh="专业级" data-en="Professional">专业级</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1592789705501-f9ae4278a9c9?w=500&h=500&fit=crop" alt="VIPSLEEP Pro">
+                    </div>
+                    <div class="product-info">
+                        <h3 data-zh="VIPSLEEP Pro" data-en="VIPSLEEP Pro">VIPSLEEP Pro</h3>
+                        <p class="subtitle" data-zh="三层支撑 | 商务精英之选" data-en="Three-Layer Support | Business Elite Choice">三层支撑 | 商务精英之选</p>
+                        <div class="product-price">
+                            <span class="current">$109</span>
+                            <span class="original">$179</span>
+                            <span class="save" data-zh="省 $70" data-en="Save $70">省 $70</span>
+                        </div>
+                        <div class="product-features">
+                            <div class="feature-item" data-zh="三层支撑" data-en="Three-Layer Support">三层支撑</div>
+                            <div class="feature-item" data-zh="颈椎专护" data-en="Neck Protection">颈椎专护</div>
+                            <div class="feature-item" data-zh="抗菌面料" data-en="Antibacterial">抗菌面料</div>
+                            <div class="feature-item" data-zh="最高配置" data-en="Highest Specs">最高配置</div>
+                        </div>
+                        <button class="product-btn" data-zh="查看详情 →" data-en="View Details →">查看详情 →</button>
+                    </div>
+                </a>
+
+                <a href="product4.html" class="product-card fade-in">
+                    <div class="product-badge" data-zh="性价比" data-en="Best Value">性价比</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=500&h=500&fit=crop" alt="VIPSLEEP Essential">
+                    </div>
+                    <div class="product-info">
+                        <h3 data-zh="VIPSLEEP Essential" data-en="VIPSLEEP Essential">VIPSLEEP Essential</h3>
+                        <p class="subtitle" data-zh="入门款 | 预算友好" data-en="Entry | Budget Friendly">入门款 | 预算友好</p>
+                        <div class="product-price">
+                            <span class="current">$69</span>
+                            <span class="original">$119</span>
+                            <span class="save" data-zh="省 $50" data-en="Save $50">省 $50</span>
+                        </div>
+                        <div class="product-features">
+                            <div class="feature-item" data-zh="基础支撑" data-en="Basic Support">基础支撑</div>
+                            <div class="feature-item" data-zh="舒适记忆棉" data-en="Comfort Foam">舒适记忆棉</div>
+                            <div class="feature-item" data-zh="可拆洗" data-en="Washable">可拆洗</div>
+                            <div class="feature-item" data-zh="3年质保" data-en="3-Year Warranty">3年质保</div>
+                        </div>
+                        <button class="product-btn" data-zh="查看详情 →" data-en="View Details →">查看详情 →</button>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="features-container">
+            <div class="section-header">
+                <h2 data-zh="为什么选择 VIPSLEEP？" data-en="Why Choose VIPSLEEP?">为什么选择 VIPSLEEP？</h2>
+                <p data-zh="超越行业标准的五大保障" data-en="Five Guarantees Beyond Industry Standards">超越行业标准的五大保障</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">❄️</div>
+                    <h3 data-zh="凝胶降温技术" data-en="Gel Cooling Technology">凝胶降温技术</h3>
+                    <p data-zh="比普通记忆棉降温40%，解决40%用户过热抱怨" data-en="40% cooler than ordinary memory foam, solving 40% user heat complaints">比普通记忆棉降温40%，解决40%用户过热抱怨</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📊</div>
+                    <h3 data-zh="高密度双分区" data-en="High-Density Dual-Zone">高密度双分区</h3>
+                    <p data-zh="5年以上不塌陷，解决35%用户塌陷抱怨" data-en="No collapse for 5+ years, solving 35% user collapse complaints">5年以上不塌陷，解决35%用户塌陷抱怨</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">⚙️</div>
+                    <h3 data-zh="可调节填充" data-en="Adjustable Fill">可调节填充</h3>
+                    <p data-zh="5cm/7cm/9cm三种高度，满足个性化需求" data-en="Three heights: 5cm/7cm/9cm, meeting personalized needs">5cm/7cm/9cm三种高度，满足个性化需求</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">✅</div>
+                    <h3 data-zh="双安全认证" data-en="Dual Safety Certifications">双安全认证</h3>
+                    <p data-zh="CertiPUR-US® + OEKO-TEX®，无有害物质" data-en="CertiPUR-US® + OEKO-TEX®, no harmful substances">CertiPUR-US® + OEKO-TEX®，无有害物质</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🛡️</div>
+                    <h3 data-zh="超长质保" data-en="Extended Warranty">超长质保</h3>
+                    <p data-zh="5年质保+100晚试睡，超行业标准" data-en="5-year warranty + 100-night trial, beyond industry standards">5年质保+100晚试睡，超行业标准</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2 data-zh="准备好体验前所未有的睡眠了吗？" data-en="Ready to Experience Unprecedented Sleep?">准备好体验前所未有的睡眠了吗？</h2>
+        <p data-zh="加入10,000+满意客户，开启您的优质睡眠之旅" data-en="Join 10,000+ satisfied customers and start your premium sleep journey">加入10,000+满意客户，开启您的优质睡眠之旅</p>
+        <a href="#products" class="cta-btn" data-zh="立即选购 →" data-en="Shop Now →">立即选购 →</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div>
+                <div class="footer-logo">VIP<span>SLEEP</span></div>
+                <p data-zh="基于10,000+条客户评论研发的智能枕头" data-en="Smart pillow developed based on 10,000+ customer reviews" style="color: rgba(255,255,255,0.7); line-height: 1.8; margin-top: 1rem;">基于10,000+条客户评论研发的智能枕头</p>
+            </div>
+            <div class="footer-links">
+                <h4 data-zh="产品" data-en="Products">产品</h4>
+                <ul>
+                    <li><a href="product1.html" data-zh="Premium" data-en="Premium">Premium</a></li>
+                    <li><a href="product2.html" data-zh="Cool Max" data-en="Cool Max">Cool Max</a></li>
+                    <li><a href="product3.html" data-zh="Pro" data-en="Pro">Pro</a></li>
+                    <li><a href="product4.html" data-zh="Essential" data-en="Essential">Essential</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4 data-zh="公司" data-en="Company">公司</h4>
+                <ul>
+                    <li><a data-zh="关于我们" data-en="About Us">关于我们</a></li>
+                    <li><a data-zh="我们的故事" data-en="Our Story">我们的故事</a></li>
+                    <li><a data-zh="联系我们" data-en="Contact Us">联系我们</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4 data-zh="支持" data-en="Support">支持</h4>
+                <ul>
+                    <li><a data-zh="常见问题" data-en="FAQ">常见问题</a></li>
+                    <li><a data-zh="配送信息" data-en="Shipping Info">配送信息</a></li>
+                    <li><a data-zh="退换货政策" data-en="Return Policy">退换货政策</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 VIPSLEEP. <span data-zh="版权所有" data-en="All Rights Reserved">版权所有</span>.</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentLang = 'zh';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'zh' ? 'en' : 'zh';
+            updateLanguage();
+        }
+
+        function updateLanguage() {
+            document.querySelectorAll('[data-zh]').forEach(element => {
+                const zhText = element.getAttribute('data-zh');
+                const enText = element.getAttribute('data-en');
+                if (zhText && enText) {
+                    element.textContent = currentLang === 'zh' ? zhText : enText;
+                }
+            });
+
+            document.getElementById('langText').textContent = currentLang === 'zh' ? 'EN' : '中文';
+        }
+
+        // Scroll animation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Fade in animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Initialize
+        updateLanguage();
+    </script>
+</body>
+</html>

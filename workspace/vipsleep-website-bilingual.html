@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIPSLEEP | Premium Pillows for Better Sleep</title>
+    <meta name="description" content="VIPSLEEP premium pillows with gel cooling technology, adjustable fill, and ergonomic support. The perfect pillow for better sleep.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            padding: 0.8rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e3a5f;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .logo span {
+            color: #f59e0b;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #4a5568;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: #1e3a5f;
+        }
+
+        .lang-switch {
+            background: #f0f4f8;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .lang-switch:hover {
+            background: #e2e8f0;
+            transform: translateY(-2px);
+        }
+
+        .nav-btn {
+            background: #1e3a5f;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .nav-btn:hover {
+            background: #2c5282;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(30, 58, 95, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></svg>') repeat;
+            background-size: 200px;
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-200px) rotate(360deg); }
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-primary {
+            background: #f59e0b;
+            color: #1e3a5f;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .cta-primary:hover {
+            background: #fbbf24;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(245, 158, 11, 0.4);
+        }
+
+        .cta-secondary {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255,255,255,0.3);
+            cursor: pointer;
+        }
+
+        .cta-secondary:hover {
+            background: rgba(255,255,255,0.25);
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            animation: float-image 6s ease-in-out infinite;
+        }
+
+        @keyframes float-image {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 6rem 2rem;
+            background: #f8fafc;
+        }
+
+        .products-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1e3a5f;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #f59e0b;
+            color: #1e3a5f;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 2rem;
+        }
+
+        .product-info h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3a5f;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-info .subtitle {
+            color: #64748b;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-price .current {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #f59e0b;
+        }
+
+        .product-price .original {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            text-decoration: line-through;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-features li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #4a5568;
+            font-size: 0.95rem;
+        }
+
+        .product-features li::before {
+            content: '✓';
+            color: #10b981;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .product-btn {
+            width: 100%;
+            background: #1e3a5f;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            display: block;
+        }
+
+        .product-btn:hover {
+            background: #2c5282;
+            transform: translateY(-2px);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: #f8fafc;
+            padding: 2.5rem;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .feature-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3a5f;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: #64748b;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+            color: white;
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .testimonial-rating {
+            color: #f59e0b;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            background: #f59e0b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1e3a5f;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-info h4 {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .testimonial-info p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* FAQ */
+        .faq {
+            padding: 6rem 2rem;
+            background: #f8fafc;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1e3a5f;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            color: #64748b;
+            line-height: 1.8;
+            display: none;
+            padding-top: 1rem;
+            margin-top: 1rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e3a5f;
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo span {
+            color: #f59e0b;
+        }
+
+        .footer-links h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-cta {
+                justify-content: center;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" onclick="scrollToSection('hero')" class="logo">VIPSLEEP<span>.</span></a>
+            <ul class="nav-links">
+                <li><a onclick="scrollToSection('hero')" data-zh="首页" data-en="Home">首页</a></li>
+                <li><a onclick="scrollToSection('products')" data-zh="产品" data-en="Products">产品</a></li>
+                <li><a onclick="scrollToSection('features')" data-zh="特色" data-en="Features">特色</a></li>
+                <li><a onclick="scrollToSection('testimonials')" data-zh="评价" data-en="Reviews">评价</a></li>
+                <li><a onclick="scrollToSection('faq')" data-zh="常见问题" data-en="FAQ">常见问题</a></li>
+                <li><div class="lang-switch" onclick="toggleLanguage()">🌐 <span id="langText">EN</span></div></li>
+            </ul>
+            <a onclick="scrollToSection('products')" class="nav-btn" data-zh="立即购买" data-en="Shop Now">立即购买</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 data-zh="体验前所未有的优质睡眠" data-en="Experience the Best Sleep of Your Life">体验前所未有的优质睡眠</h1>
+                <p data-zh="我们的高端枕头采用凝胶降温技术、可调节填充和人体工学支撑，为您带来每晚完美睡眠。" data-en="Our premium pillow combines gel cooling technology, adjustable fill, and ergonomic support to give you the perfect night's sleep, every single night.">我们的高端枕头采用凝胶降温技术、可调节填充和人体工学支撑，为您带来每晚完美睡眠。</p>
+                <div class="hero-cta">
+                    <a onclick="scrollToSection('products')" class="cta-primary" data-zh="立即购买 →" data-en="Shop Now →">立即购买 →</a>
+                    <a onclick="scrollToSection('features')" class="cta-secondary" data-zh="了解更多" data-en="Learn More">了解更多</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600&h=600&fit=crop" alt="VIPSLEEP Pillow">
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="products-container">
+            <div class="section-title">
+                <h2 data-zh="我们的产品系列" data-en="Our Product Collection">我们的产品系列</h2>
+                <p data-zh="选择最适合您的枕头，开启优质睡眠之旅" data-en="Choose the perfect pillow that suits you best">选择最适合您的枕头，开启优质睡眠之旅</p>
+            </div>
+
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-badge" data-zh="热销" data-en="Best Seller">热销</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=400&h=400&fit=crop" alt="VIPSleep Premium Pillow">
+                    </div>
+                    <div class="product-info">
+                        <h3 data-zh="VIPSleep 高端枕" data-en="VIPSleep Premium Pillow">VIPSleep 高端枕</h3>
+                        <p class="subtitle" data-zh="经典款 | 适合所有睡姿" data-en="Classic | All Sleep Positions">经典款 | 适合所有睡姿</p>
+                        <div class="product-price">
+                            <span class="current">$49</span>
+                            <span class="original">$99</span>
+                        </div>
+                        <ul class="product-features">
+                            <li data-zh="凝胶降温技术" data-en="Gel cooling technology">凝胶降温技术</li>
+                            <li data-zh="可调节填充高度" data-en="Adjustable fill height">可调节填充高度</li>
+                            <li data-zh="人体工学设计" data-en="Ergonomic design">人体工学设计</li>
+                            <li data-zh="记忆棉内芯" data-en="Memory foam core">记忆棉内芯</li>
+                        </ul>
+                        <a href="#" class="product-btn" data-zh="加入购物车" data-en="Add to Cart">加入购物车</a>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-badge" data-zh="新品" data-en="New">新品</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1585366119957-e9730b6d0f60?w=400&h=400&fit=crop" alt="VIPSleep Cool Max">
+                    </div>
+                    <div class="product-info">
+                        <h3 data-zh="VIPSleep Cool Max" data-en="VIPSleep Cool Max">VIPSleep Cool Max</h3>
+                        <p class="subtitle" data-zh="极致降温 | 夏日首选" data-en="Ultra Cooling | Summer Essential">极致降温 | 夏日首选</p>
+                        <div class="product-price">
+                            <span class="current">$59</span>
+                            <span class="original">$119</span>
+                        </div>
+                        <ul class="product-features">
+                            <li data-zh="双层凝胶降温层" data-en="Dual gel cooling layers">双层凝胶降温层</li>
+                            <li data-zh="透气网眼面料" data-en="Breathable mesh fabric">透气网眼面料</li>
+                            <li data-zh="恒温调节" data-en="Temperature regulation">恒温调节</li>
+                            <li data-zh="快速散热" data-en="Fast heat dissipation">快速散热</li>
+                        </ul>
+                        <a href="#" class="product-btn" data-zh="加入购物车" data-en="Add to Cart">加入购物车</a>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-badge" data-zh="推荐" data-en="Recommended">推荐</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1592789705501-f9ae4278a9c9?w=400&h=400&fit=crop" alt="VIPSleep Pro">
+                    </div>
+                    <div class="product-info">
+                        <h3 data-zh="VIPSleep Pro" data-en="VIPSleep Pro">VIPSleep Pro</h3>
+                        <p class="subtitle" data-zh="专业级 | 商务精英" data-en="Professional | Business Elite">专业级 | 商务精英</p>
+                        <div class="product-price">
+                            <span class="current">$69</span>
+                            <span class="original">$139</span>
+                        </div>
+                        <ul class="product-features">
+                            <li data-zh="三层支撑系统" data-en="Three-layer support system">三层支撑系统</li>
+                            <li data-zh="颈椎专护设计" data-en="Neck-specific protection">颈椎专护设计</li>
+                            <li data-zh="抗菌面料" data-en="Antibacterial fabric">抗菌面料</li>
+                            <li data-zh="5年质保" data-en="5-year warranty">5年质保</li>
+                        </ul>
+                        <a href="#" class="product-btn" data-zh="加入购物车" data-en="Add to Cart">加入购物车</a>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-badge" data-zh="超值" data-en="Great Value">超值</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=400&h=400&fit=crop" alt="VIPSleep Essential">
+                    </div>
+                    <div class="product-info">
+                        <h3 data-zh="VIPSleep Essential" data-en="VIPSleep Essential">VIPSleep Essential</h3>
+                        <p class="subtitle" data-zh="入门款 | 性价比之选" data-en="Entry | Best Value">入门款 | 性价比之选</p>
+                        <div class="product-price">
+                            <span class="current">$39</span>
+                            <span class="original">$79</span>
+                        </div>
+                        <ul class="product-features">
+                            <li data-zh="基础支撑" data-en="Basic support">基础支撑</li>
+                            <li data-zh="舒适记忆棉" data-en="Comfortable memory foam">舒适记忆棉</li>
+                            <li data-zh="可拆洗枕套" data-en="Removable pillowcase">可拆洗枕套</li>
+                            <li data-zh="3年质保" data-en="3-year warranty">3年质保</li>
+                        </ul>
+                        <a href="#" class="product-btn" data-zh="加入购物车" data-en="Add to Cart">加入购物车</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="features-container">
+            <div class="section-title">
+                <h2 data-zh="为什么选择 VIPSleep？" data-en="Why Choose VIPSleep?">为什么选择 VIPSleep？</h2>
+                <p data-zh="每一个细节都为您的极致舒适而设计" data-en="Every detail is designed for your ultimate comfort">每一个细节都为您的极致舒适而设计</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    </div>
+                    <h3 data-zh="凝胶降温技术" data-en="Gel Cooling Technology">凝胶降温技术</h3>
+                    <p data-zh="先进的凝胶注入记忆棉整夜保持凉爽，消除过热，确保舒适睡眠。" data-en="Advanced gel-infused memory foam keeps you cool all night long, eliminating overheating and ensuring comfortable sleep.">先进的凝胶注入记忆棉整夜保持凉爽，消除过热，确保舒适睡眠。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                    </div>
+                    <h3 data-zh="可调节填充" data-en="Adjustable Fill">可调节填充</h3>
+                    <p data-zh="根据您的偏好定制枕头的高度和硬度。只需增减填充物，即可获得完美体验。" data-en="Customize your pillow's height and firmness to your exact preference. Simply remove or add filling for perfect alignment.">根据您的偏好定制枕头的高度和硬度。只需增减填充物，即可获得完美体验。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    </div>
+                    <h3 data-zh="人体工学支撑" data-en="Ergonomic Support">人体工学支撑</h3>
+                    <p data-zh="专为保持正确的颈部和脊柱对齐而设计，减少颈部疼痛并提高整体睡眠质量。" data-en="Designed to maintain proper neck and spine alignment, reducing neck pain and improving overall sleep quality.">专为保持正确的颈部和脊柱对齐而设计，减少颈部疼痛并提高整体睡眠质量。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                    </div>
+                    <h3 data-zh="100天试睡" data-en="100-Night Trial">100天试睡</h3>
+                    <p data-zh="在您自己的家中试睡100个晚上。如果您不完全满意，可以全额退款，无需解释。" data-en="Sleep on it for 100 nights. If you're not completely satisfied, return it for a full refund. No questions asked.">在您自己的家中试睡100个晚上。如果您不完全满意，可以全额退款，无需解释。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4z"/></svg>
+                    </div>
+                    <h3 data-zh="免费配送" data-en="Free Shipping">免费配送</h3>
+                    <p data-zh="所有订单享受免费配送。我们用心快速地将产品送到您的家门口。" data-en="Enjoy free shipping on all orders. We deliver right to your doorstep with care and speed.">所有订单享受免费配送。我们用心快速地将产品送到您的家门口。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
+                    </div>
+                    <h3 data-zh="优质材料" data-en="Premium Materials">优质材料</h3>
+                    <p data-zh="通过 Oeko-Tex® Standard 100 认证，我们的材料低敏、透气，对您和您的家人安全。" data-en="Certified Oeko-Tex® Standard 100, our materials are hypoallergenic, breathable, and safe for you and your family.">通过 Oeko-Tex® Standard 100 认证，我们的材料低敏、透气，对您和您的家人安全。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="testimonials-container">
+            <div class="section-title">
+                <h2 data-zh="客户评价" data-en="Customer Reviews" style="color: white;">客户评价</h2>
+                <p data-zh="加入数千名满意睡眠者的行列" data-en="Join thousands of happy sleepers" style="color: rgba(255,255,255,0.8);">加入数千名满意睡眠者的行列</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text" data-zh=""我试过无数款枕头，但 VIPSleep 独一无二。降温效果是真的，我醒来时没有任何颈部疼痛。这是我为睡眠做过的最好投资！"" data-en=""I've tried countless pillows, but VIPSleep is in a league of its own. The cooling effect is real, and I wake up without any neck pain. Best investment I've made for my sleep!"">"我试过无数款枕头，但 VIPSleep 独一无二。降温效果是真的，我醒来时没有任何颈部疼痛。这是我为睡眠做过的最好投资！"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JM</div>
+                        <div class="testimonial-info">
+                            <h4>James Mitchell</h4>
+                            <p data-zh="已验证购买" data-en="Verified Buyer">已验证购买</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text" data-zh=""终于找到了适合我的枕头！能够调节填充量让一切都不同了。我是侧睡者，这个枕头提供完美的支撑。"" data-en=""Finally found a pillow that works for me! Being able to adjust the fill makes all the difference. I'm a side sleeper and this pillow provides perfect support."">"终于找到了适合我的枕头！能够调节填充量让一切都不同了。我是侧睡者，这个枕头提供完美的支撑。"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SR</div>
+                        <div class="testimonial-info">
+                            <h4>Sarah Rodriguez</h4>
+                            <p data-zh="已验证购买" data-en="Verified Buyer">已验证购买</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text" data-zh=""我和我丈夫都喜欢这些枕头。我们已经用了3个月，它们仍然像第一天一样有支撑力。强烈推荐！"" data-en=""My husband and I both love these pillows. We've been using them for 3 months now and they still feel as supportive as day one. Highly recommend!"">"我和我丈夫都喜欢这些枕头。我们已经用了3个月，它们仍然像第一天一样有支撑力。强烈推荐！"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">EW</div>
+                        <div class="testimonial-info">
+                            <h4>Emily Watson</h4>
+                            <p data-zh="已验证购买" data-en="Verified Buyer">已验证购买</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <div class="faq-container">
+            <div class="section-title">
+                <h2 data-zh="常见问题" data-en="Frequently Asked Questions">常见问题</h2>
+                <p data-zh="您需要知道的一切" data-en="Everything you need to know">您需要知道的一切</p>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" data-zh="100天试睡如何运作？" data-en="How does the 100-night trial work?">100天试睡如何运作？</div>
+                <div class="faq-answer" data-zh="在您自己的家中试睡 VIPSleep 100个晚上。如果您不完全满意，可以退货并获得全额退款。我们甚至会提供预付运费标签。无需解释，无需麻烦。" data-en="Try VIPSLEEP for 100 nights in your own home. If you're not completely satisfied, return it for a full refund. We'll even provide a prepaid shipping label. No questions asked, no hassle.">在您自己的家中试睡 VIPSleep 100个晚上。如果您不完全满意，可以退货并获得全额退款。我们甚至会提供预付运费标签。无需解释，无需麻烦。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" data-zh="枕头套可以水洗吗？" data-en="Is the pillow cover washable?">枕头套可以水洗吗？</div>
+                <div class="faq-answer" data-zh="可以！可拆卸的枕套可以机洗。只需拉开拉链，取下，并用冷水洗涤。自然晾干或低温烘干以获得最佳效果。" data-en="Yes! The removable cover is machine washable. Simply unzip, remove, and wash in cold water. Air dry or tumble dry on low heat for best results.">可以！可拆卸的枕套可以机洗。只需拉开拉链，取下，并用冷水洗涤。自然晾干或低温烘干以获得最佳效果。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" data-zh="枕头尺寸是多少？" data-en="What are the pillow dimensions?">枕头尺寸是多少？</div>
+                <div class="faq-answer" data-zh="我们的标准尺寸为 26" x 17"（66cm x 43cm），完美适配标准枕套。加大尺寸为 30" x 20"（76cm x 51cm）。" data-en="Our standard size is 26" x 17" (66cm x 43cm), perfect for standard pillowcases. The queen size is 30" x 20" (76cm x 51cm).">我们的标准尺寸为 26" x 17"（66cm x 43cm），完美适配标准枕套。加大尺寸为 30" x 20"（76cm x 51cm）。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" data-zh="枕头能用多久？" data-en="How long will the pillow last?">枕头能用多久？</div>
+                <div class="faq-answer" data-zh="妥善保养下，您的 VIPSleep 枕头可以使用5-7年。我们提供5年质保，让您安心无忧。" data-en="With proper care, your VIPSLEEP pillow should last 5-7 years. We include a 5-year warranty to give you peace of mind.">妥善保养下，您的 VIPSleep 枕头可以使用5-7年。我们提供5年质保，让您安心无忧。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" data-zh="这个枕头适合所有睡姿吗？" data-en="Is this pillow suitable for all sleep positions?">这个枕头适合所有睡姿吗？</div>
+                <div class="faq-answer" data-zh="绝对适合！可调节填充让您能够根据自己偏好的睡姿（侧睡、仰睡或俯睡）定制枕头的高度和硬度。" data-en="Absolutely! The adjustable fill allows you to customize the height and firmness to your preferred sleep position – side, back, or stomach.">绝对适合！可调节填充让您能够根据自己偏好的睡姿（侧睡、仰睡或俯睡）定制枕头的高度和硬度。</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div>
+                <div class="footer-logo">VIPSLEEP<span>.</span></div>
+                <p data-zh="优质枕头，更好睡眠。设计于加州，深受全球喜爱。" data-en="Premium pillows for better sleep. Designed in California, loved worldwide.">优质枕头，更好睡眠。设计于加州，深受全球喜爱。</p>
+            </div>
+            <div class="footer-links">
+                <h4 data-zh="购物" data-en="Shop">购物</h4>
+                <ul>
+                    <li><a onclick="scrollToSection('products')" data-zh="枕头" data-en="Pillows">枕头</a></li>
+                    <li><a data-zh="配件" data-en="Accessories">配件</a></li>
+                    <li><a data-zh="套装" data-en="Bundles">套装</a></li>
+                    <li><a data-zh="礼品卡" data-en="Gift Cards">礼品卡</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4 data-zh="公司" data-en="Company">公司</h4>
+                <ul>
+                    <li><a data-zh="关于我们" data-en="About Us">关于我们</a></li>
+                    <li><a data-zh="我们的故事" data-en="Our Story">我们的故事</a></li>
+                    <li><a data-zh="加入我们" data-en="Careers">加入我们</a></li>
+                    <li><a data-zh="媒体报道" data-en="Press">媒体报道</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4 data-zh="支持" data-en="Support">支持</h4>
+                <ul>
+                    <li><a data-zh="联系我们" data-en="Contact Us">联系我们</a></li>
+                    <li><a onclick="scrollToSection('faq')" data-zh="常见问题" data-en="FAQ">常见问题</a></li>
+                    <li><a data-zh="配送" data-en="Shipping">配送</a></li>
+                    <li><a data-zh="退换货" data-en="Returns">退换货</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 VIPSLEEP. <span data-zh="版权所有" data-en="All rights reserved">版权所有</span>.</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentLang = 'zh';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'zh' ? 'en' : 'zh';
+            updateLanguage();
+        }
+
+        function updateLanguage() {
+            document.querySelectorAll('[data-zh]').forEach(element => {
+                const zhText = element.getAttribute('data-zh');
+                const enText = element.getAttribute('data-en');
+                if (zhText && enText) {
+                    element.textContent = currentLang === 'zh' ? zhText : enText;
+                }
+            });
+
+            document.getElementById('langText').textContent = currentLang === 'zh' ? 'EN' : '中文';
+        }
+
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                const offset = 80;
+                const elementPosition = section.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+
+        // Initialize language
+        updateLanguage();
+    </script>
+</body>
+</html>

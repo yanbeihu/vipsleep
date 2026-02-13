@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIPSLEEP - Premium Pillows for Better Sleep | 优质睡眠从好枕头开始</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* Language Switcher */
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: 2px solid #fbbf24;
+            background: white;
+            color: #1a365d;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active, .lang-btn:hover {
+            background: #fbbf24;
+            color: #1a365d;
+        }
+
+        /* Content visibility based on language */
+        body.lang-zh [data-lang="en"],
+        body.lang-en [data-lang="zh"] {
+            display: none;
+        }
+
+        body.lang-zh [data-lang="zh"],
+        body.lang-en [data-lang="en"] {
+            display: block;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            color: #fbbf24;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            color: #e2e8f0;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            gap: 4rem;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            color: #1a365d;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #fbbf24;
+            color: #1a365d;
+            text-decoration: none;
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: #f59e0b;
+        }
+
+        /* Problem Section */
+        .problems {
+            background: #fff3cd;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .problems h2 {
+            font-size: 2.5rem;
+            color: #1a365d;
+            margin-bottom: 3rem;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .problem-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .problem-card h3 {
+            color: #dc3545;
+            margin-bottom: 0.5rem;
+        }
+
+        .problem-card p {
+            color: #666;
+        }
+
+        /* Solution Section */
+        .solutions {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .solutions h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1a365d;
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .solution-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border-left: 5px solid #fbbf24;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .solution-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .solution-card h3 {
+            color: #1a365d;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .solution-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .solution-card .highlight {
+            color: #f59e0b;
+            font-weight: bold;
+        }
+
+        /* Features Section */
+        .features {
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            color: white;
+            padding: 4rem 2rem;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-card .emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .testimonials h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1a365d;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-card .stars {
+            color: #fbbf24;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-card .author {
+            color: #1a365d;
+            font-weight: bold;
+        }
+
+        /* Guarantee Section */
+        .guarantee {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: #1a365d;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .guarantee h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .guarantee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .guarantee-item {
+            background: rgba(255,255,255,0.2);
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .guarantee-item .number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a365d;
+            color: #e2e8f0;
+            text-align: center;
+            padding: 3rem 2rem;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .hero {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .problems h2,
+            .solutions h2,
+            .features h2,
+            .testimonials h2,
+            .guarantee h2 {
+                font-size: 2rem;
+            }
+
+            .lang-switch {
+                top: 10px;
+                right: 10px;
+            }
+
+            .lang-btn {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Certifications badges */
+        .certifications {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .cert-badge {
+            background: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            color: #1a365d;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="lang-zh">
+    <!-- Language Switcher -->
+    <div class="lang-switch">
+        <button class="lang-btn active" onclick="setLanguage('zh')">中文</button>
+        <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <h1>VIPSLEEP</h1>
+        <p data-lang="zh">优质睡眠，从好枕头开始</p>
+        <p data-lang="en">Premium Sleep Starts with the Right Pillow</p>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2 data-lang="zh">告别睡眠困扰，拥抱优质睡眠</h2>
+            <h2 data-lang="en">Say Goodbye to Sleep Problems, Embrace Quality Rest</h2>
+
+            <p data-lang="zh">
+                我们深入研究了北美市场，分析了数万条客户评论，发现您真正的痛点。
+                VIPSLEEP 专为解决这些问题而设计——<span class="highlight">温度调节 + 持久支撑 + 可调节填充</span>，
+                让您每一晚都享受深度舒适睡眠。
+            </p>
+            <p data-lang="en">
+                We analyzed tens of thousands of customer reviews in the North American market to understand your real pain points.
+                VIPSLEEP is designed to solve these problems with <span class="highlight">temperature regulation + lasting support + adjustable fill</span>,
+                giving you deep, restful sleep every night.
+            </p>
+
+            <button class="cta-button" data-lang="zh" onclick="alert('即将上线！敬请期待！')">立即体验</button>
+            <button class="cta-button" data-lang="en" onclick="alert('Coming Soon! Stay tuned!')">Shop Now</button>
+        </div>
+        <div class="hero-image">
+            <img src="https://coze-coding-project.tos.coze.site/coze_storage_7606079845159829523/image/generate_image_188b8fc1-433a-4587-bdee-372bba994881.jpeg?sign=1802481833-0bf139863d-0-711b4ce96f2d5da05ea86a96573ca7683832034b56caed20a2a17dc185756192" alt="VIPSLEEP Pillow">
+        </div>
+    </section>
+
+    <!-- Problems Section -->
+    <section class="problems">
+        <h2 data-lang="zh">您是否遇到这些问题？</h2>
+        <h2 data-lang="en">Are You Experiencing These Problems?</h2>
+
+        <div class="problem-grid">
+            <div class="problem-card">
+                <div class="icon">🥵</div>
+                <h3 data-lang="zh">太热闷汗</h3>
+                <h3 data-lang="en">Too Hot & Sweaty</h3>
+                <p data-lang="zh">40%用户抱怨记忆棉枕头夏天闷热</p>
+                <p data-lang="en">40% of users complain about memory foam pillows being too hot in summer</p>
+            </div>
+            <div class="problem-card">
+                <div class="icon">😫</div>
+                <h3 data-lang="zh">容易塌陷</h3>
+                <h3 data-lang="en">Loses Shape Easily</h3>
+                <p data-lang="zh">35%用户抱怨1-2年后支撑力明显下降</p>
+                <p data-lang="en">35% of users complain about significant support loss after 1-2 years</p>
+            </div>
+            <div class="problem-card">
+                <div class="icon">😣</div>
+                <h3 data-lang="zh">颈部疼痛</h3>
+                <h3 data-lang="en">Neck Pain</h3>
+                <p data-lang="zh">30%用户因枕头高度不合适导致颈椎问题</p>
+                <p data-lang="en">30% of users experience neck pain due to improper pillow height</p>
+            </div>
+            <div class="problem-card">
+                <div class="icon">😖</div>
+                <h3 data-lang="zh">化学异味</h3>
+                <h3 data-lang="en">Chemical Odor</h3>
+                <p data-lang="zh">25%用户抱怨新枕头有刺鼻异味</p>
+                <p data-lang="en">25% of users complain about strong chemical odors from new pillows</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="solutions">
+        <h2 data-lang="zh">VIPSLEEP 如何解决？</h2>
+        <h2 data-lang="en">How VIPSLEEP Solves These Problems?</h2>
+
+        <div class="solution-grid">
+            <div class="solution-card">
+                <div class="icon">❄️</div>
+                <h3 data-lang="zh">凝胶降温技术</h3>
+                <h3 data-lang="en">Gel Cooling Technology</h3>
+                <p data-lang="zh">
+                    内置凝胶降温颗粒，有效吸收多余热量，整夜保持舒适凉爽。
+                    配合通风孔设计，空气流通顺畅，<span class="highlight">告别闷汗</span>。
+                </p>
+                <p data-lang="en">
+                    Built-in gel cooling particles absorb excess heat, keeping you comfortably cool all night long.
+                    Combined with ventilation holes for better air circulation, <span class="highlight">say goodbye to sweaty nights</span>.
+                </p>
+            </div>
+            <div class="solution-card">
+                <div class="icon">💪</div>
+                <h3 data-lang="zh">双密度分区设计</h3>
+                <h3 data-lang="en">Dual-Density Design</h3>
+                <p data-lang="zh">
+                    上层柔软包裹头部，下层高支撑承托颈部。
+                    高密度记忆棉确保<span class="highlight">持久支撑</span>，使用多年依然饱满有型。
+                </p>
+                <p data-lang="en">
+                    Top layer softly cradles the head, bottom layer provides strong neck support.
+                    High-density memory foam ensures <span class="highlight">long-lasting support</span>, staying plump for years.
+                </p>
+            </div>
+            <div class="solution-card">
+                <div class="icon">⚖️</div>
+                <h3 data-lang="zh">可调节填充</h3>
+                <h3 data-lang="en">Adjustable Fill</h3>
+                <p data-lang="zh">
+                    可根据个人喜好增减填充，找到最适合您的高度。
+                    满足不同体型和睡姿，<span class="highlight">真正个性化舒适</span>。
+                </p>
+                <p data-lang="en">
+                    Add or remove fill to find your perfect height.
+                    Suits different body types and sleep positions, <span class="highlight">truly personalized comfort</span>.
+                </p>
+            </div>
+            <div class="solution-card">
+                <div class="icon">🌿</div>
+                <h3 data-lang="zh">透气竹纤维面料</h3>
+                <h3 data-lang="en">Breathable Bamboo Fabric</h3>
+                <p data-lang="zh">
+                    40%竹纤维 + 60%聚酯面料，天然透气、抗菌抑菌。
+                    可拆洗设计，保持枕头<span class="highlight">洁净清新</span>。
+                </p>
+                <p data-lang="en">
+                    40% bamboo fiber + 60% polyester fabric, naturally breathable and antibacterial.
+                    Removable cover design, keeping your pillow <span class="highlight">fresh and clean</span>.
+                </p>
+            </div>
+        </div>
+
+        <div class="certifications">
+            <div class="cert-badge">✅ CertiPUR-US® Certified</div>
+            <div class="cert-badge">✅ OEKO-TEX® Certified</div>
+            <div class="cert-badge">✅ 5-Year Warranty</div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2 data-lang="zh">为什么选择 VIPSLEEP？</h2>
+        <h2 data-lang="en">Why Choose VIPSLEEP?</h2>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="emoji">🌡️</div>
+                <h3 data-lang="zh">恒温调节</h3>
+                <h3 data-lang="en">Temperature Regulation</h3>
+                <p data-lang="zh">凝胶降温 + 通风孔，四季恒温舒适</p>
+                <p data-lang="en">Gel cooling + ventilation holes, comfortable in all seasons</p>
+            </div>
+            <div class="feature-card">
+                <div class="emoji">🧠</div>
+                <h3 data-lang="zh">人体工学</h3>
+                <h3 data-lang="en">Ergonomic Design</h3>
+                <p data-lang="zh">双密度分区，完美贴合头颈曲线</p>
+                <p data-lang="en">Dual-density zones, perfectly conforms to head and neck curves</p>
+            </div>
+            <div class="feature-card">
+                <div class="emoji">🛡️</div>
+                <h3 data-lang="zh">安全认证</h3>
+                <h3 data-lang="en">Safety Certified</h3>
+                <p data-lang="zh">CertiPUR-US & OEKO-TEX 无害物质检测</p>
+                <p data-lang="en">CertiPUR-US & OEKO-TEX certified for harmful substances</p>
+            </div>
+            <div class="feature-card">
+                <div class="emoji">📏</div>
+                <h3 data-lang="zh">可调节高度</h3>
+                <h3 data-lang="en">Adjustable Height</h3>
+                <p data-lang="zh">三种高度可选（5/7/9cm），满足不同需求</p>
+                <p data-lang="en">Three heights available (5/7/9cm), meets different needs</p>
+            </div>
+            <div class="feature-card">
+                <div class="emoji">💤</div>
+                <h3 data-lang="zh">100晚试睡</h3>
+                <h3 data-lang="en">100-Night Trial</h3>
+                <p data-lang="zh">不满意可免费退货，零风险尝试</p>
+                <p data-lang="en">Free return if not satisfied, risk-free trial</p>
+            </div>
+            <div class="feature-card">
+                <div class="emoji">🔒</div>
+                <h3 data-lang="zh">5年质保</h3>
+                <h3 data-lang="en">5-Year Warranty</h3>
+                <p data-lang="zh">超长质保，安心使用多年</p>
+                <p data-lang="en">Extended warranty, use with peace of mind for years</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h2 data-lang="zh">客户评价</h2>
+        <h2 data-lang="en">Customer Reviews</h2>
+
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐⭐</div>
+                <p data-lang="zh">"我用了好多枕头都太热，但 VIPSLEEP 真的很凉快！终于可以睡整晚了。"</p>
+                <p data-lang="en">"I've tried so many pillows that were too hot, but VIPSLEEP is really cool! I can finally sleep through the night."</p>
+                <div class="author" data-lang="zh">- Sarah M., 纽约</div>
+                <div class="author" data-lang="en">- Sarah M., New York</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐⭐</div>
+                <p data-lang="zh">"用了半年了，支撑力依然很好。调节功能太棒了，我丈夫和儿子都换了这个枕头。"</p>
+                <p data-lang="en">"Used it for six months, support is still great. The adjustable feature is amazing, both my husband and son switched to this pillow."</p>
+                <div class="author" data-lang="zh">- Jennifer L., 加州</div>
+                <div class="author" data-lang="en">- Jennifer L., California</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐⭐</div>
+                <p data-lang="zh">"颈部疼痛明显好转了。可调节填充让我找到完美的枕头高度，真的像定制一样！"</p>
+                <p data-lang="en">"My neck pain has significantly improved. The adjustable fill helped me find the perfect height, it's like custom-made!"</p>
+                <div class="author" data-lang="zh">- Michael R., 德克萨斯</div>
+                <div class="author" data-lang="en">- Michael R., Texas</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee Section -->
+    <section class="guarantee">
+        <h2 data-lang="zh">我们承诺</h2>
+        <h2 data-lang="en">Our Promise</h2>
+
+        <div class="guarantee-grid">
+            <div class="guarantee-item">
+                <div class="number">100</div>
+                <p data-lang="zh">晚试睡<br>免费退货</p>
+                <p data-lang="en">Night Trial<br>Free Returns</p>
+            </div>
+            <div class="guarantee-item">
+                <div class="number">5</div>
+                <p data-lang="zh">年质保<br>品质保证</p>
+                <p data-lang="en">Year Warranty<br>Quality Guaranteed</p>
+            </div>
+            <div class="guarantee-item">
+                <div class="number">✅</div>
+                <p data-lang="zh">安全认证<br>无害物质</p>
+                <p data-lang="en">Certified Safe<br>No Harmful Substances</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 VIPSLEEP. All rights reserved.</p>
+        <p data-lang="zh">优质睡眠，更好生活 | Premium Sleep, Better Life</p>
+        <p data-lang="zh">专为北美市场设计 | Designed for North America</p>
+        <p data-lang="en">Designed for North America Market</p>
+    </footer>
+
+    <script>
+        function setLanguage(lang) {
+            // Update body class
+            document.body.className = 'lang-' + lang;
+
+            // Update button states
+            const buttons = document.querySelectorAll('.lang-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent === (lang === 'zh' ? '中文' : 'EN')) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // Initialize with Chinese
+        setLanguage('zh');
+    </script>
+</body>
+</html>

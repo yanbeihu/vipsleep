@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIPSLEEP Cool Max - 为40%过热用户而生 | VIPSLEEP</title>
+    <meta name="description" content="VIPSLEEP Cool Max - 专为40%抱怨过热的用户设计。双层凝胶、网眼面料、极致降温60%，夏日必备。基于10,000+用户数据研发。">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            box-shadow: 0 2px 30px rgba(0,0,0,0.08);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0d2137;
+            text-decoration: none;
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #334e68;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #00d4ff;
+        }
+
+        .back-btn {
+            background: #f0f9ff;
+            color: #0369a1;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: #e0f2fe;
+            transform: translateX(-5px);
+        }
+
+        /* Hero Section - 强调降温 */
+        .product-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 50%, #80deea 100%);
+            padding-top: 100px;
+            padding-bottom: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, transparent 70%);
+            animation: float 30s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .product-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 188, 212, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #0d2137;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+        }
+
+        .hero-content h1 .highlight {
+            background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.35rem;
+            color: #334e68;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        .cooling-stat {
+            display: inline-block;
+            background: rgba(0, 188, 212, 0.15);
+            color: #0097a7;
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cooling-stat .number {
+            font-size: 2.5rem;
+            margin-right: 0.5rem;
+        }
+
+        .product-price-hero {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .product-price-hero .current {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+
+        .product-price-hero .original {
+            font-size: 1.5rem;
+            color: #94a3b8;
+            text-decoration: line-through;
+            font-weight: 600;
+        }
+
+        .product-price-hero .save {
+            background: #22c55e;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .cta-primary {
+            background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+            color: white;
+            padding: 1.5rem 3.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.15rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 188, 212, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 188, 212, 0.5);
+        }
+
+        .hero-image {
+            position: relative;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 550px;
+            border-radius: 30px;
+            box-shadow: 0 30px 80px rgba(0, 188, 212, 0.25);
+            animation: float-image 6s ease-in-out infinite;
+        }
+
+        @keyframes float-image {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(1deg); }
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 10rem 3rem;
+            background: white;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+
+        .section-header h2 {
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: #0d2137;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .section-header p {
+            font-size: 1.4rem;
+            color: #334e68;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .feature-card {
+            padding: 3rem;
+            background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
+            border-radius: 30px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #00bcd4, #0097a7);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+        }
+
+        .feature-card .icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            box-shadow: 0 15px 40px rgba(0, 188, 212, 0.3);
+        }
+
+        .feature-card h3 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #0d2137;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            font-size: 1.05rem;
+            color: #334e68;
+            line-height: 1.8;
+        }
+
+        /* Comparison Section */
+        .comparison-section {
+            padding: 10rem 3rem;
+            background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
+        }
+
+        .comparison-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .comparison-table {
+            background: white;
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+            overflow-x: auto;
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1.5rem;
+            text-align: left;
+            border-bottom: 2px solid #f1f5f9;
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+            color: white;
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        .comparison-table th:first-child {
+            border-radius: 20px 0 0 0;
+        }
+
+        .comparison-table th:last-child {
+            border-radius: 0 20px 0 0;
+        }
+
+        .comparison-table td:first-child {
+            font-weight: 700;
+            color: #0d2137;
+            font-size: 1.05rem;
+        }
+
+        .comparison-table .highlight {
+            color: #0097a7;
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        /* Specifications Section */
+        .specs-section {
+            padding: 10rem 3rem;
+            background: white;
+        }
+
+        .specs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .spec-card {
+            padding: 2.5rem;
+            background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
+            border-radius: 25px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .spec-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .spec-card .label {
+            color: #334e68;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .spec-card .value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #0d2137;
+            line-height: 1.3;
+        }
+
+        .spec-card .highlight {
+            background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 12rem 3rem;
+            background: linear-gradient(135deg, #00bcd4 0%, #0097a7 50%, #00695c 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 50%);
+            animation: float 40s linear infinite;
+        }
+
+        .cta-section h2 {
+            font-size: 3.8rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section p {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .cta-btn {
+            background: white;
+            color: #0097a7;
+            padding: 1.6rem 4.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.25rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #0d2137;
+            color: white;
+            padding: 6rem 3rem 3rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .footer-logo span {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-links h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: #00d4ff;
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .product-price-hero {
+                justify-content: center;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .cta-section h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index-new.html" class="logo">VIP<span>SLEEP</span></a>
+            <ul class="nav-links">
+                <li><a href="#features">特色功能</a></li>
+                <li><a href="#comparison">降温对比</a></li>
+                <li><a href="#specs">产品规格</a></li>
+            </ul>
+            <a href="index-new.html#products" class="back-btn">← 返回产品列表</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="product-hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="product-badge">🌡️ 极致降温</div>
+                <h1>VIPSLEEP Cool Max<br><span class="highlight">为40%过热用户而生</span></h1>
+                <p class="subtitle">专为夏天和容易出汗的您设计。基于40%用户抱怨过热的真实数据研发，让您整夜保持凉爽舒适。</p>
+
+                <div class="cooling-stat">
+                    <span class="number">-60%</span> 比普通记忆棉降温
+                </div>
+
+                <div class="product-price-hero">
+                    <span class="current">$99</span>
+                    <span class="original">$169</span>
+                    <span class="save">省 $70</span>
+                </div>
+
+                <div class="cta-buttons">
+                    <a href="#features" class="cta-primary">了解更多 ↓</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1585366119957-e9730b6d0f60?w=800&h=800&fit=crop" alt="VIPSLEEP Cool Max">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="features-container">
+            <div class="section-header">
+                <h2>极致降温技术</h2>
+                <p>双层凝胶+网眼面料的完美组合，让您整夜保持凉爽</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="icon">❄️</div>
+                    <h3>双层凝胶降温层</h3>
+                    <p>上下两层凝胶降温颗粒，形成360度降温系统。主动吸收和释放热量，降温效果比单层凝胶提升50%。</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="icon">🌬️</div>
+                    <h3>网眼透气面料</h3>
+                    <p>高密度网眼面料，透气性提升80%。空气自由流通，快速排汗，让头部始终保持干爽舒适。</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="icon">🔄</div>
+                    <h3>智能恒温调节</h3>
+                    <p>相变材料技术，根据温度自动调节。天热时吸热，天冷时放热，全年保持最佳睡眠温度。</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="icon">🧊</div>
+                    <h3>通风孔设计</h3>
+                    <p>多层通风孔设计，增强空气流通。与传统无通风孔枕头相比，降温效果提升25%。</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="icon">💨</div>
+                    <h3>速干技术</h3>
+                    <p>面料采用速干技术，出汗后快速干燥。避免湿气堆积，防止细菌滋生，让您整夜清爽。</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="icon">🌡️</div>
+                    <h3>持久降温</h3>
+                    <p>降温效果持续整夜，不会随使用时间衰减。凝胶材料稳定可靠，使用多年依然保持降温效果。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="comparison-section" id="comparison">
+        <div class="comparison-container">
+            <div class="section-header">
+                <h2>降温效果对比</h2>
+                <p>与其他产品相比，VIPSLEEP Cool Max 的降温优势</p>
+            </div>
+
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>功能</th>
+                            <th>普通记忆棉</th>
+                            <th>乳胶枕头</th>
+                            <th>VIPSLEEP Premium</th>
+                            <th>VIPSLEEP Cool Max</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>凝胶降温</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>✅ 单层</td>
+                            <td class="highlight">✅ 双层</td>
+                        </tr>
+                        <tr>
+                            <td>网眼面料</td>
+                            <td>❌</td>
+                            <td>部分</td>
+                            <td>❌</td>
+                            <td class="highlight">✅ 高密度</td>
+                        </tr>
+                        <tr>
+                            <td>通风孔</td>
+                            <td>部分</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td class="highlight">✅ 多层</td>
+                        </tr>
+                        <tr>
+                            <td>恒温调节</td>
+                            <td>❌</td>
+                            <td>部分</td>
+                            <td>❌</td>
+                            <td class="highlight">✅ 智能调节</td>
+                        </tr>
+                        <tr>
+                            <td>降温效果</td>
+                            <td>0%</td>
+                            <td>+20%</td>
+                            <td>+40%</td>
+                            <td class="highlight">+60%</td>
+                        </tr>
+                        <tr>
+                            <td>透气性</td>
+                            <td>⭐⭐</td>
+                            <td>⭐⭐⭐⭐</td>
+                            <td>⭐⭐⭐</td>
+                            <td class="highlight">⭐⭐⭐⭐⭐</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specifications Section -->
+    <section class="specs-section" id="specs">
+        <div class="specs-container">
+            <div class="section-header">
+                <h2>产品规格</h2>
+                <p>详细的产品参数，让您了解每一个细节</p>
+            </div>
+
+            <div class="specs-grid">
+                <div class="spec-card fade-in">
+                    <div class="label">降温技术</div>
+                    <div class="value"><span class="highlight">双层凝胶</span><br>360度降温</div>
+                </div>
+
+                <div class="spec-card fade-in">
+                    <div class="label">面料</div>
+                    <div class="value"><span class="highlight">高密度网眼</span><br>透气性+80%</div>
+                </div>
+
+                <div class="spec-card fade-in">
+                    <div class="label">降温效果</div>
+                    <div class="value"><span class="highlight">-60%</span><br>比普通记忆棉</div>
+                </div>
+
+                <div class="spec-card fade-in">
+                    <div class="label">材质</div>
+                    <div class="value">凝胶降温记忆棉<br><span class="highlight">CertiPUR-US®</span></div>
+                </div>
+
+                <div class="spec-card fade-in">
+                    <div class="label">尺寸</div>
+                    <div class="value">60 × 40 cm<br>标准尺寸</div>
+                </div>
+
+                <div class="spec-card fade-in">
+                    <div class="label">重量</div>
+                    <div class="value">1.6 kg<br>轻便易携</div>
+                </div>
+
+                <div class="spec-card fade-in">
+                    <div class="label">质保</div>
+                    <div class="value"><span class="highlight">5年</span><br>超长质保</div>
+                </div>
+
+                <div class="spec-card fade-in">
+                    <div class="label">试睡</div>
+                    <div class="value"><span class="highlight">100晚</span><br>免费试睡</div>
+                </div>
+
+                <div class="spec-card fade-in">
+                    <div class="label">恒温调节</div>
+                    <div class="value"><span class="highlight">✅</span><br>智能调节</div>
+                </div>
+
+                <div class="spec-card fade-in">
+                    <div class="label">通风设计</div>
+                    <div class="value"><span class="highlight">多层</span><br>空气流通</div>
+                </div>
+
+                <div class="spec-card fade-in">
+                    <div class="label">颜色</div>
+                    <div class="value">冰沁蓝 / 薄荷绿<br>清爽配色</div>
+                </div>
+
+                <div class="spec-card fade-in">
+                    <div class="label">适用场景</div>
+                    <div class="value"><span class="highlight">夏天</span><br>容易出汗者</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>夏日必备的降温枕头</h2>
+        <p>VIPSLEEP Cool Max - 双层凝胶+网眼面料，极致降温60%。100晚免费试睡，不满意全额退款。</p>
+        <a href="index-new.html#products" class="cta-btn">立即购买</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">VIP<span>SLEEP</span></div>
+            <div class="footer-links">
+                <h4>产品</h4>
+                <ul>
+                    <li><a href="product1-detail.html">VIPSLEEP Premium</a></li>
+                    <li><a href="product2-detail.html">VIPSLEEP Cool Max</a></li>
+                    <li><a href="product3-detail.html">VIPSLEEP Pro</a></li>
+                    <li><a href="product4-detail.html">VIPSLEEP Essential</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>支持</h4>
+                <ul>
+                    <li><a href="#">质保政策</a></li>
+                    <li><a href="#">试睡政策</a></li>
+                    <li><a href="#">退换货政策</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>关于</h4>
+                <ul>
+                    <li><a href="index-new.html#data-story">数据故事</a></li>
+                    <li><a href="index-new.html#why-different">为什么不同</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 VIPSLEEP. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
