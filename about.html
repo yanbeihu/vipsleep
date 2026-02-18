@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About VIPSLEEP | Our Story</title>
+    <meta name="description" content="Learn about VIPSLEEP - the world's first data-driven pillow brand. Our mission is to revolutionize sleep through data and science.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.8;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+
+        /* Language Switcher */
+        .lang-switch {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            z-index: 9999;
+            background: white;
+            padding: 8px 16px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .lang-switch button {
+            background: none;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .lang-switch button.active {
+            background: #0066cc;
+            color: white;
+        }
+
+        .lang-switch button:not(.active) {
+            color: #666;
+        }
+
+        .lang-switch button:not(.active):hover {
+            background: #f0f0f0;
+        }
+
+        /* Translation classes */
+        .lang-zh { display: none; }
+        body[data-lang="zh"] .lang-en { display: none; }
+        body[data-lang="zh"] .lang-zh { display: block; }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            box-shadow: 0 2px 30px rgba(0,0,0,0.08);
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #0d2137;
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, #00d4ff 0%, #0066cc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #334e68;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #0066cc;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 5rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0d2137;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .content-text {
+            color: #334e68;
+            line-height: 1.9;
+            font-size: 1.1rem;
+        }
+
+        .content-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Our Story Section */
+        .story-section {
+            background: #f8fafc;
+        }
+
+        /* Values Section */
+        .values-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-card h3 {
+            margin-bottom: 1rem;
+            color: #0d2137;
+        }
+
+        .value-card p {
+            color: #667e99;
+        }
+
+        /* Team Section */
+        .team-section {
+            background: #f8fafc;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 900px;
+            margin: 3rem auto 0;
+        }
+
+        .team-member {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .team-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00d4ff 0%, #0066cc 100%);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .team-member h3 {
+            margin-bottom: 0.5rem;
+            color: #0d2137;
+        }
+
+        .team-member p {
+            color: #667e99;
+            font-size: 0.9rem;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #0d2137 0%, #1a365d 100%);
+            color: white;
+        }
+
+        .stats-section .section-title {
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+            max-width: 1000px;
+            margin: 3rem auto 0;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            background: #0d2137;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+    </style>
+</head>
+<body data-lang="en">
+    <!-- Language Switcher -->
+    <div class="lang-switch">
+        <button onclick="setLanguage('en')" class="lang-btn active" data-lang="en">EN</button>
+        <button onclick="setLanguage('zh')" class="lang-btn" data-lang="zh">中文</button>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">VIP<span>SLEEP</span></a>
+            <ul class="nav-links">
+                <li>
+                    <span class="lang-en"><a href="index.html">Home</a></span>
+                    <span class="lang-zh"><a href="index.html">首页</a></span>
+                </li>
+                <li>
+                    <span class="lang-en"><a href="products.html">Products</a></span>
+                    <span class="lang-zh"><a href="products.html">产品</a></span>
+                </li>
+                <li>
+                    <span class="lang-en"><a href="about.html">About</a></span>
+                    <span class="lang-zh"><a href="about.html">关于我们</a></span>
+                </li>
+                <li>
+                    <span class="lang-en"><a href="contact.html">Contact</a></span>
+                    <span class="lang-zh"><a href="contact.html">联系我们</a></span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="hero">
+        <h1>
+            <span class="lang-en">About VIPSLEEP</span>
+            <span class="lang-zh">关于VIPSLEEP</span>
+        </h1>
+        <p>
+            <span class="lang-en">Pioneering the future of sleep through data-driven innovation</span>
+            <span class="lang-zh">通过数据驱动创新，开创睡眠的未来</span>
+        </p>
+    </div>
+
+    <!-- Our Story -->
+    <section class="content-section story-section">
+        <h2 class="section-title">
+            <span class="lang-en">Our Story</span>
+            <span class="lang-zh">我们的故事</span>
+        </h2>
+        <div class="content-text">
+            <p>
+                <span class="lang-en">
+                    VIPSLEEP was born from a simple observation: millions of people struggle with sleep problems that traditional pillows never seem to solve. We asked ourselves - why does the perfect pillow seem so elusive?
+                </span>
+                <span class="lang-zh">
+                    VIPSLEEP的诞生源于一个简单的观察：数百万人为传统枕头无法解决的睡眠问题而苦恼。我们问自己——为什么完美的枕头如此难寻？
+                </span>
+            </p>
+            <p>
+                <span class="lang-en">
+                    Instead of guessing, we turned to data. We analyzed over 10,000 real user reviews from across North America to identify the exact problems people face when they sleep. The results were clear and alarming: 40% of users suffer from overheating, 35% from pillow sagging, and 25% from incorrect firmness.
+                </span>
+                <span class="lang-zh">
+                    我们没有猜测，而是求助于数据。我们分析了来自北美各地的10,000多条真实用户评论，找出人们睡眠时面临的确切问题。结果清晰且令人担忧：40%的用户遭受过热困扰，35%遇到枕头塌陷，25%面临硬度不合适的问题。
+                </span>
+            </p>
+            <p>
+                <span class="lang-en">
+                    Armed with these insights, we partnered with leading sleep scientists and engineers to create pillows that directly address these issues. Every curve, every material choice, every layer of foam was designed based on real data, not assumptions.
+                </span>
+                <span class="lang-zh">
+                    凭借这些见解，我们与领先的睡眠科学家和工程师合作，创造出了直接解决这些问题的枕头。每一条曲线、每一种材料选择、每一层泡沫都是基于真实数据而非假设设计的。
+                </span>
+            </p>
+            <p>
+                <span class="lang-en">
+                    Today, VIPSLEEP stands as the world's first data-driven pillow brand. We're not just making pillows - we're engineering better sleep, one night at a time.
+                </span>
+                <span class="lang-zh">
+                    今天，VIPSLEEP作为全球首创的数据驱动枕品牌屹立。我们不仅在制造枕头——我们在工程化更好的睡眠，一晚接一晚。
+                </span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Our Mission -->
+    <section class="content-section">
+        <h2 class="section-title">
+            <span class="lang-en">Our Mission</span>
+            <span class="lang-zh">我们的使命</span>
+        </h2>
+        <div class="content-text">
+            <p>
+                <span class="lang-en">
+                    Our mission is simple but ambitious: to help 1 million people achieve better sleep by 2026 through scientifically-designed, data-driven sleep solutions.
+                </span>
+                <span class="lang-zh">
+                    我们的使命简单而宏大：到2026年，通过科学设计、数据驱动的睡眠解决方案，帮助100万人获得更好的睡眠。
+                </span>
+            </p>
+            <p>
+                <span class="lang-en">
+                    We believe that great sleep shouldn't be a luxury. That's why we're committed to making high-quality, scientifically-backed sleep products accessible to everyone.
+                </span>
+                <span class="lang-zh">
+                    我们相信，优质的睡眠不应是奢侈品。因此，我们致力于让每个人都能获得高质量、科学支持的睡眠产品。
+                </span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Our Values -->
+    <section class="values-section">
+        <h2 class="section-title">
+            <span class="lang-en">Our Values</span>
+            <span class="lang-zh">我们的价值观</span>
+        </h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">📊</div>
+                <h3>
+                    <span class="lang-en">Data First</span>
+                    <span class="lang-zh">数据优先</span>
+                </h3>
+                <p>
+                    <span class="lang-en">Every design decision backed by data</span>
+                    <span class="lang-zh">每个设计决策都由数据支持</span>
+                </p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🔬</div>
+                <h3>
+                    <span class="lang-en">Science-Based</span>
+                    <span class="lang-zh">科学依据</span>
+                </h3>
+                <p>
+                    <span class="lang-en">Built on sleep science research</span>
+                    <span class="lang-zh">基于睡眠科学研究构建</span>
+                </p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🌍</div>
+                <h3>
+                    <span class="lang-en">Sustainable</span>
+                    <span class="lang-zh">可持续</span>
+                </h3>
+                <p>
+                    <span class="lang-en">Eco-friendly materials & packaging</span>
+                    <span class="lang-zh">环保材料和包装</span>
+                </p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">💎</div>
+                <h3>
+                    <span class="lang-en">Quality First</span>
+                    <span class="lang-zh">品质第一</span>
+                </h3>
+                <p>
+                    <span class="lang-en">Premium materials, lasting comfort</span>
+                    <span class="lang-zh">优质材料，持久舒适</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section class="content-section team-section">
+        <h2 class="section-title">
+            <span class="lang-en">Our Team</span>
+            <span class="lang-zh">我们的团队</span>
+        </h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="team-avatar">👨‍🔬</div>
+                <h3>Dr. Chen Wei</h3>
+                <p>
+                    <span class="lang-en">Chief Sleep Scientist</span>
+                    <span class="lang-zh">首席睡眠科学家</span>
+                </p>
+            </div>
+            <div class="team-member">
+                <div class="team-avatar">👩‍💼</div>
+                <h3>Sarah Liu</h3>
+                <p>
+                    <span class="lang-en">Founder & CEO</span>
+                    <span class="lang-zh">创始人兼CEO</span>
+                </p>
+            </div>
+            <div class="team-member">
+                <div class="team-avatar">👨‍🔧</div>
+                <h3>Mike Zhang</h3>
+                <p>
+                    <span class="lang-en">Lead Engineer</span>
+                    <span class="lang-zh">首席工程师</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats-section">
+        <h2 class="section-title">
+            <span class="lang-en">Our Impact</span>
+            <span class="lang-zh">我们的影响力</span>
+        </h2>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>10,000+</h3>
+                <p>
+                    <span class="lang-en">Reviews Analyzed</span>
+                    <span class="lang-zh">分析评论</span>
+                </p>
+            </div>
+            <div class="stat-item">
+                <h3>50,000+</h3>
+                <p>
+                    <span class="lang-en">Happy Sleepers</span>
+                    <span class="lang-zh">满意睡眠者</span>
+                </p>
+            </div>
+            <div class="stat-item">
+                <h3>98%</h3>
+                <p>
+                    <span class="lang-en">Satisfaction Rate</span>
+                    <span class="lang-zh">满意度</span>
+                </p>
+            </div>
+            <div class="stat-item">
+                <h3>3</h3>
+                <p>
+                    <span class="lang-en">Patents Filed</span>
+                    <span class="lang-zh">已申请专利</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <h3>VIPSLEEP</h3>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <p style="margin-top: 2rem; opacity: 0.7;">© 2024 VIPSLEEP. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Language Switcher
+        function setLanguage(lang) {
+            document.body.setAttribute('data-lang', lang);
+            localStorage.setItem('preferredLanguage', lang);
+
+            // Update button states
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.lang === lang) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+        }
+
+        // Load saved language preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            setLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>

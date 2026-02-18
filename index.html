@@ -18,13 +18,57 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: #1a1a1a;
             background: #ffffff;
         }
 
-        /* Shopify-style Navigation */
+        /* Language Switcher */
+        .lang-switch {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            z-index: 9999;
+            background: white;
+            padding: 8px 16px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .lang-switch button {
+            background: none;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .lang-switch button.active {
+            background: #0066cc;
+            color: white;
+        }
+
+        .lang-switch button:not(.active) {
+            color: #666;
+        }
+
+        .lang-switch button:not(.active):hover {
+            background: #f0f0f0;
+        }
+
+        /* Translation classes */
+        .lang-zh { display: none; }
+        body[data-lang="zh"] .lang-en { display: none; }
+        body[data-lang="zh"] .lang-zh { display: block; }
+
+        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -54,7 +98,7 @@
         }
 
         .logo span {
-            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            background: linear-gradient(135deg, #00d4ff 0%, #0066cc 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -75,7 +119,7 @@
         }
 
         .nav-links a:hover {
-            color: #00d4ff;
+            color: #0066cc;
         }
 
         .btn {
@@ -91,14 +135,14 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            background: linear-gradient(135deg, #00d4ff 0%, #0066cc 100%);
             color: white;
             box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.4);
+            box-shadow: 0 6px 20px rgba(0, 102, 204, 0.4);
         }
 
         /* Hero Section */
@@ -113,6 +157,18 @@
             padding: 8rem 2rem 4rem;
             position: relative;
             overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://coze-coding-project.tos.coze.site/coze_storage_7606079845159829523/image/generate_image_d614fcdd-b6e3-4673-b8f4-c467ff7c526c.jpeg?sign=1802924210-7a6da955fc-0-eb1cc84277b7389df6c4a54cb1545bae7f269ac4825f05c3ea68a6119a021c79') center/cover;
+            opacity: 0.3;
+            z-index: 0;
         }
 
         .hero-content {
@@ -220,7 +276,7 @@
         .data-card .stat {
             font-size: 2.5rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            background: linear-gradient(135deg, #00d4ff 0%, #0066cc 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin: 1rem 0;
@@ -231,8 +287,8 @@
             font-size: 0.95rem;
         }
 
-        /* Products Section */
-        .products {
+        /* Products Preview Section */
+        .products-preview {
             padding: 6rem 2rem;
             background: white;
         }
@@ -266,6 +322,13 @@
             align-items: center;
             justify-content: center;
             font-size: 5rem;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .product-info {
@@ -275,7 +338,7 @@
         .product-tag {
             display: inline-block;
             padding: 0.3rem 0.8rem;
-            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            background: linear-gradient(135deg, #00d4ff 0%, #0066cc 100%);
             color: white;
             border-radius: 20px;
             font-size: 0.8rem;
@@ -320,7 +383,7 @@
 
         .product-features li::before {
             content: "✓";
-            color: #00d4ff;
+            color: #0066cc;
             font-weight: bold;
         }
 
@@ -336,10 +399,92 @@
             width: 100%;
         }
 
+        /* Features Section */
+        .features {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #0d2137 0%, #1a365d 100%);
+            color: white;
+        }
+
+        .features .section-title,
+        .features .section-subtitle {
+            color: white;
+        }
+
+        .features .section-subtitle {
+            opacity: 0.8;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 3rem;
+        }
+
+        .feature-item {
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-item p {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* Reviews Section */
+        .reviews {
+            padding: 6rem 2rem;
+            background: #f8fafc;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .stars {
+            color: #fbbf24;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-text {
+            color: #334e68;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .reviewer {
+            color: #667e99;
+            font-weight: 600;
+        }
+
         /* CTA Section */
         .cta-section {
             padding: 6rem 2rem;
-            background: linear-gradient(135deg, #0d2137 0%, #1a365d 100%);
+            background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
             color: white;
             text-align: center;
         }
@@ -355,6 +500,40 @@
             opacity: 0.9;
         }
 
+        .cta-section .btn {
+            background: white;
+            color: #0066cc;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 1.5rem 0;
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #0d2137;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+        }
+
+        .faq-answer {
+            color: #667e99;
+            line-height: 1.6;
+        }
+
         /* Footer */
         footer {
             background: #0d2137;
@@ -368,6 +547,7 @@
             justify-content: center;
             gap: 2rem;
             margin-top: 1rem;
+            flex-wrap: wrap;
         }
 
         .footer-links a {
@@ -393,208 +573,474 @@
             .nav-links {
                 display: none;
             }
+
+            .lang-switch {
+                top: 70px;
+                right: 10px;
+            }
         }
     </style>
 </head>
-<body>
+<body data-lang="en">
+    <!-- Language Switcher -->
+    <div class="lang-switch">
+        <button onclick="setLanguage('en')" class="lang-btn active" data-lang="en">EN</button>
+        <button onclick="setLanguage('zh')" class="lang-btn" data-lang="zh">中文</button>
+    </div>
+
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="#" class="logo">VIP<span>SLEEP</span></a>
+            <a href="index.html" class="logo">VIP<span>SLEEP</span></a>
             <ul class="nav-links">
-                <li><a href="#data-story">Our Research</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li>
+                    <span class="lang-en"><a href="#data-story">Our Research</a></span>
+                    <span class="lang-zh"><a href="#data-story">我们的研究</a></span>
+                </li>
+                <li>
+                    <span class="lang-en"><a href="products.html">Products</a></span>
+                    <span class="lang-zh"><a href="products.html">产品</a></span>
+                </li>
+                <li>
+                    <span class="lang-en"><a href="about.html">About</a></span>
+                    <span class="lang-zh"><a href="about.html">关于我们</a></span>
+                </li>
+                <li>
+                    <span class="lang-en"><a href="contact.html">Contact</a></span>
+                    <span class="lang-zh"><a href="contact.html">联系我们</a></span>
+                </li>
             </ul>
-            <a href="#products" class="btn btn-primary">Shop Now</a>
+            <a href="products.html" class="btn btn-primary">
+                <span class="lang-en">Shop Now</span>
+                <span class="lang-zh">立即选购</span>
+            </a>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>World's First Data-Driven Pillow Brand</h1>
-            <p>Developed from 10,000+ real user reviews. We identified and solved the 3 biggest sleep problems.</p>
+            <h1>
+                <span class="lang-en">World's First Data-Driven Pillow Brand</span>
+                <span class="lang-zh">全球首创数据驱动的枕品牌</span>
+            </h1>
+            <p>
+                <span class="lang-en">Developed from 10,000+ real user reviews. We identified and solved the 3 biggest sleep problems.</span>
+                <span class="lang-zh">基于超过10,000条真实用户评论开发。我们识别并解决了三大睡眠问题。</span>
+            </p>
 
             <!-- Audio Player -->
             <div class="audio-player">
-                <div class="audio-player-title">Brand Introduction (Click to Play ▶️)</div>
-                <audio controls>
-                    <source src="audio/brand-intro.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
+                <div class="audio-player-title">
+                    <span class="lang-en">Brand Introduction (Click to Play ▶️)</span>
+                    <span class="lang-zh">品牌介绍（点击播放▶️）</span>
+                </div>
+                <audio controls id="heroAudio">
+                    <source src="audio/brand-intro-en.mp3" type="audio/mpeg">
+                    <span class="lang-en">Your browser does not support the audio element.</span>
+                    <span class="lang-zh">您的浏览器不支持音频播放。</span>
                 </audio>
             </div>
 
-            <a href="#products" class="btn btn-primary">Explore Our Products</a>
+            <a href="products.html" class="btn btn-primary">
+                <span class="lang-en">Explore Our Products</span>
+                <span class="lang-zh">探索我们的产品</span>
+            </a>
         </div>
     </section>
 
     <!-- Data Story Section -->
     <section class="data-story" id="data-story">
-        <h2 class="section-title">Data-Driven Research</h2>
-        <p class="section-subtitle">We analyzed 10,000+ real user reviews to identify the 3 biggest sleep problems</p>
+        <h2 class="section-title">
+            <span class="lang-en">Data-Driven Research</span>
+            <span class="lang-zh">数据驱动研究</span>
+        </h2>
+        <p class="section-subtitle">
+            <span class="lang-en">We analyzed 10,000+ real user reviews to identify the 3 biggest sleep problems</span>
+            <span class="lang-zh">我们分析了10,000+条真实用户评论，发现了3大睡眠问题</span>
+        </p>
 
         <div class="data-grid">
             <div class="data-card">
                 <div class="data-icon">🔥</div>
-                <h3>Too Hot</h3>
+                <h3>
+                    <span class="lang-en">Too Hot</span>
+                    <span class="lang-zh">过热</span>
+                </h3>
                 <div class="stat">40%</div>
-                <p>of users complain about overheating during sleep</p>
+                <p>
+                    <span class="lang-en">of users complain about overheating during sleep</span>
+                    <span class="lang-zh">的用户抱怨睡眠时过热</span>
+                </p>
             </div>
             <div class="data-card">
                 <div class="data-icon">📉</div>
-                <h3>Sagging</h3>
+                <h3>
+                    <span class="lang-en">Sagging</span>
+                    <span class="lang-zh">塌陷</span>
+                </h3>
                 <div class="stat">35%</div>
-                <p>of users experience pillow collapse after use</p>
+                <p>
+                    <span class="lang-en">of users experience pillow collapse after use</span>
+                    <span class="lang-zh">的用户在使用后经历枕头塌陷</span>
+                </p>
             </div>
             <div class="data-card">
                 <div class="data-icon">⚙️</div>
-                <h3>Firmness</h3>
+                <h3>
+                    <span class="lang-en">Firmness</span>
+                    <span class="lang-zh">硬度不合适</span>
+                </h3>
                 <div class="stat">25%</div>
-                <p>of users struggle with finding right firmness</p>
+                <p>
+                    <span class="lang-en">of users struggle with finding right firmness</span>
+                    <span class="lang-zh">的用户难以找到合适的硬度</span>
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Products Section -->
-    <section class="products" id="products">
-        <h2 class="section-title">Our Products</h2>
-        <p class="section-subtitle">Choose the perfect pillow based on your needs</p>
+    <!-- Products Preview Section -->
+    <section class="products-preview">
+        <h2 class="section-title">
+            <span class="lang-en">Our Products</span>
+            <span class="lang-zh">我们的产品</span>
+        </h2>
+        <p class="section-subtitle">
+            <span class="lang-en">Choose the perfect pillow based on your needs</span>
+            <span class="lang-zh">根据您的需求选择完美的枕头</span>
+        </p>
 
         <div class="products-grid">
             <!-- Product 1: Premium -->
             <div class="product-card">
-                <div class="product-image" style="background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);">
-                    ⭐
+                <div class="product-image">
+                    <img src="https://coze-coding-project.tos.coze.site/coze_storage_7606079845159829523/image/generate_image_62d2a0af-a36a-443f-8b85-100f3de6b1df.jpeg?sign=1802924153-2fcda87522-0-00b00dd9b1a67bb0835cee6b0d49a9e779366b53e2803f067068162c0ab9e9b6" alt="Premium Pillow">
                 </div>
                 <div class="product-info">
                     <span class="product-tag">Best Seller</span>
                     <h3>Premium</h3>
                     <div class="product-price">$89 <span class="original">$149</span></div>
 
-                    <!-- Product Audio -->
-                    <div class="product-audio">
-                        <audio controls>
-                            <source src="audio/premium.mp3" type="audio/mpeg">
-                        </audio>
-                    </div>
-
                     <ul class="product-features">
-                        <li>Gel cooling technology (-40%)</li>
-                        <li>Dual-density zoning (45D+65D)</li>
-                        <li>Adjustable height (5/7/9cm)</li>
-                        <li>CertiPUR-US® + OEKO-TEX®</li>
-                        <li>99% antibacterial rate</li>
+                        <li>
+                            <span class="lang-en">Gel cooling technology (-40%)</span>
+                            <span class="lang-zh">凝胶降温技术 (-40%)</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">Dual-density zoning (45D+65D)</span>
+                            <span class="lang-zh">双重密度分区 (45D+65D)</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">Adjustable height (5/7/9cm)</span>
+                            <span class="lang-zh">可调高度 (5/7/9cm)</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">CertiPUR-US® + OEKO-TEX®</span>
+                            <span class="lang-zh">CertiPUR-US® + OEKO-TEX®认证</span>
+                        </li>
                     </ul>
-                    <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">Add to Cart</a>
+                    <a href="products.html#premium" class="btn btn-primary" style="width: 100%; text-align: center;">
+                        <span class="lang-en">View Details</span>
+                        <span class="lang-zh">查看详情</span>
+                    </a>
                 </div>
             </div>
 
             <!-- Product 2: Cool Max -->
             <div class="product-card">
-                <div class="product-image" style="background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);">
-                    ❄️
+                <div class="product-image">
+                    <img src="https://coze-coding-project.tos.coze.site/coze_storage_7606079845159829523/image/generate_image_14fd7773-7143-471a-ab11-15992e404a77.jpeg?sign=1802924167-fab5b246b2-0-c923f22a0e554e148b4e1f856690f9048764a1c42b9a4cf8de99f9f4fc867e5d" alt="Cool Max Pillow">
                 </div>
                 <div class="product-info">
                     <span class="product-tag">Ultimate Cooling</span>
                     <h3>Cool Max</h3>
                     <div class="product-price">$99 <span class="original">$169</span></div>
 
-                    <!-- Product Audio -->
-                    <div class="product-audio">
-                        <audio controls>
-                            <source src="audio/coolmax.mp3" type="audio/mpeg">
-                        </audio>
-                    </div>
-
                     <ul class="product-features">
-                        <li>Double gel layer (-60%)</li>
-                        <li>Mesh breathable fabric (+80%)</li>
-                        <li>Smart temperature control</li>
-                        <li>Ventilation holes</li>
-                        <li>Quick-dry technology</li>
+                        <li>
+                            <span class="lang-en">Double gel layer (-60%)</span>
+                            <span class="lang-zh">双层凝胶 (-60%降温)</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">Mesh breathable fabric (+80%)</span>
+                            <span class="lang-zh">网眼透气面料 (+80%)</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">Smart temperature control</span>
+                            <span class="lang-zh">智能温控</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">Quick-dry technology</span>
+                            <span class="lang-zh">快干技术</span>
+                        </li>
                     </ul>
-                    <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">Add to Cart</a>
+                    <a href="products.html#coolmax" class="btn btn-primary" style="width: 100%; text-align: center;">
+                        <span class="lang-en">View Details</span>
+                        <span class="lang-zh">查看详情</span>
+                    </a>
                 </div>
             </div>
 
             <!-- Product 3: Pro -->
             <div class="product-card">
-                <div class="product-image" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
-                    🏆
+                <div class="product-image">
+                    <img src="https://coze-coding-project.tos.coze.site/coze_storage_7606079845159829523/image/generate_image_6953a638-ba9e-4525-a8bf-c52dee595c18.jpeg?sign=1802924181-0887cb7794-0-b69aafb922e0a21f0200fead1c3dc1d1d0118f03cf7e24fc1800e983c566032e" alt="Pro Pillow">
                 </div>
                 <div class="product-info">
                     <span class="product-tag">Professional</span>
                     <h3>Pro</h3>
                     <div class="product-price">$109 <span class="original">$179</span></div>
 
-                    <!-- Product Audio -->
-                    <div class="product-audio">
-                        <audio controls>
-                            <source src="audio/pro.mp3" type="audio/mpeg">
-                        </audio>
-                    </div>
-
                     <ul class="product-features">
-                        <li>Three-layer support (40D+50D+70D)</li>
-                        <li>Cervical spine protection</li>
-                        <li>70D ultra-dense foam</li>
-                        <li>7-year warranty</li>
-                        <li>99.9% medical-grade antibacterial</li>
+                        <li>
+                            <span class="lang-en">Three-layer support (40D+50D+70D)</span>
+                            <span class="lang-zh">三层支撑 (40D+50D+70D)</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">Cervical spine protection</span>
+                            <span class="lang-zh">颈椎保护</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">70D ultra-dense foam</span>
+                            <span class="lang-zh">70D超密泡沫</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">7-year warranty</span>
+                            <span class="lang-zh">7年质保</span>
+                        </li>
                     </ul>
-                    <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">Add to Cart</a>
+                    <a href="products.html#pro" class="btn btn-primary" style="width: 100%; text-align: center;">
+                        <span class="lang-en">View Details</span>
+                        <span class="lang-zh">查看详情</span>
+                    </a>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Product 4: Essential -->
-            <div class="product-card">
-                <div class="product-image" style="background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);">
-                    💎
-                </div>
-                <div class="product-info">
-                    <span class="product-tag">Best Value</span>
-                    <h3>Essential</h3>
-                    <div class="product-price">$69 <span class="original">$119</span></div>
+    <!-- Features Section -->
+    <section class="features">
+        <h2 class="section-title">
+            <span class="lang-en">Why Choose VIPSLEEP?</span>
+            <span class="lang-zh">为什么选择VIPSLEEP？</span>
+        </h2>
+        <p class="section-subtitle">
+            <span class="lang-en">Experience the difference of data-driven design</span>
+            <span class="lang-zh">体验数据驱动设计的差异</span>
+        </p>
 
-                    <!-- Product Audio -->
-                    <div class="product-audio">
-                        <audio controls>
-                            <source src="audio/essential.mp3" type="audio/mpeg">
-                        </audio>
-                    </div>
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">📊</div>
+                <h3>
+                    <span class="lang-en">Data-Driven</span>
+                    <span class="lang-zh">数据驱动</span>
+                </h3>
+                <p>
+                    <span class="lang-en">Based on 10,000+ real user reviews</span>
+                    <span class="lang-zh">基于10,000+条真实用户评论</span>
+                </p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🌡️</div>
+                <h3>
+                    <span class="lang-en">Cooling Tech</span>
+                    <span class="lang-zh">降温技术</span>
+                </h3>
+                <p>
+                    <span class="lang-en">Advanced gel cooling system</span>
+                    <span class="lang-zh">先进的凝胶降温系统</span>
+                </p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🛡️</div>
+                <h3>
+                    <span class="lang-en">Certified Safe</span>
+                    <span class="lang-zh">安全认证</span>
+                </h3>
+                <p>
+                    <span class="lang-en">CertiPUR-US® & OEKO-TEX® certified</span>
+                    <span class="lang-zh">CertiPUR-US® & OEKO-TEX®认证</span>
+                </p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">💎</div>
+                <h3>
+                    <span class="lang-en">Premium Quality</span>
+                    <span class="lang-zh">优质品质</span>
+                </h3>
+                <p>
+                    <span class="lang-en">7-year warranty on Pro series</span>
+                    <span class="lang-zh">Pro系列7年质保</span>
+                </p>
+            </div>
+        </div>
+    </section>
 
-                    <ul class="product-features">
-                        <li>Comfortable memory foam</li>
-                        <li>Basic support design</li>
-                        <li>Ergonomic curve</li>
-                        <li>Removable and washable</li>
-                        <li>Certified safe materials</li>
-                    </ul>
-                    <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">Add to Cart</a>
-                </div>
+    <!-- Reviews Section -->
+    <section class="reviews">
+        <h2 class="section-title">
+            <span class="lang-en">What Our Customers Say</span>
+            <span class="lang-zh">客户评价</span>
+        </h2>
+        <p class="section-subtitle">
+            <span class="lang-en">Join thousands of happy sleepers</span>
+            <span class="lang-zh">加入数千名满意睡眠者的行列</span>
+        </p>
+
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">
+                    <span class="lang-en">"Best pillow I've ever used! No more waking up hot during the night."</span>
+                    <span class="lang-zh">"我用过最好的枕头！晚上再也不会因为热而醒来了。"</span>
+                </p>
+                <p class="reviewer">- Sarah M.</p>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">
+                    <span class="lang-en">"Finally found a pillow that doesn't flatten after a few months. Highly recommend!"</span>
+                    <span class="lang-zh">"终于找到了几个月后不会塌陷的枕头。强烈推荐！"</span>
+                </p>
+                <p class="reviewer">- Michael T.</p>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">
+                    <span class="lang-en">"The Pro pillow has completely eliminated my neck pain. Worth every penny!"</span>
+                    <span class="lang-zh">"Pro枕头完全消除了我的颈部疼痛。物超所值！"</span>
+                </p>
+                <p class="reviewer">- Emily R.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <h2 class="section-title">
+            <span class="lang-en">Frequently Asked Questions</span>
+            <span class="lang-zh">常见问题</span>
+        </h2>
+
+        <div class="faq-grid">
+            <div class="faq-item">
+                <h3 class="faq-question">
+                    <span class="lang-en">What makes VIPSLEEP different?</span>
+                    <span class="lang-zh">VIPSLEEP有什么不同？</span>
+                </h3>
+                <p class="faq-answer">
+                    <span class="lang-en">We're the world's first data-driven pillow brand. Every design decision is based on analyzing 10,000+ real user reviews to address actual sleep problems.</span>
+                    <span class="lang-zh">我们是全球首创的数据驱动枕品牌。每个设计决策都基于分析10,000+条真实用户评论，解决实际的睡眠问题。</span>
+                </p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">
+                    <span class="lang-en">How long does shipping take?</span>
+                    <span class="lang-zh">配送需要多长时间？</span>
+                </h3>
+                <p class="faq-answer">
+                    <span class="lang-en">Standard shipping takes 5-7 business days. Express shipping is available for 2-3 business day delivery.</span>
+                    <span class="lang-zh">标准配送需要5-7个工作日。快递配送提供2-3个工作日送达服务。</span>
+                </p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">
+                    <span class="lang-en">What is your return policy?</span>
+                    <span class="lang-zh">退货政策是什么？</span>
+                </h3>
+                <p class="faq-answer">
+                    <span class="lang-en">We offer a 100-night trial. If you're not satisfied, return it for a full refund. No questions asked.</span>
+                    <span class="lang-zh">我们提供100晚试用。如果您不满意，可以退货并获得全额退款。无需任何理由。</span>
+                </p>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
     <section class="cta-section">
-        <h2>Start Sleeping Better Tonight</h2>
-        <p>100-Night Trial • Free Shipping • 5-Year Warranty</p>
-        <a href="#products" class="btn btn-primary" style="background: white; color: #0d2137;">Shop Now</a>
+        <h2>
+            <span class="lang-en">Start Sleeping Better Tonight</span>
+            <span class="lang-zh">今晚开始睡得更好</span>
+        </h2>
+        <p>
+            <span class="lang-en">100-Night Trial • Free Shipping • 5-Year Warranty</span>
+            <span class="lang-zh">100晚试用 • 免费配送 • 5年质保</span>
+        </p>
+        <a href="products.html" class="btn btn-primary">
+            <span class="lang-en">Shop Now</span>
+            <span class="lang-zh">立即选购</span>
+        </a>
     </section>
 
     <!-- Footer -->
     <footer id="about">
         <h3>VIPSLEEP</h3>
-        <p>World's First Data-Driven Pillow Brand</p>
+        <p>
+            <span class="lang-en">World's First Data-Driven Pillow Brand</span>
+            <span class="lang-zh">全球首创数据驱动的枕品牌</span>
+        </p>
         <div class="footer-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="#">Shipping Info</a>
-            <a href="#" id="contact">Contact Us</a>
+            <a href="products.html">
+                <span class="lang-en">Products</span>
+                <span class="lang-zh">产品</span>
+            </a>
+            <a href="about.html">
+                <span class="lang-en">About Us</span>
+                <span class="lang-zh">关于我们</span>
+            </a>
+            <a href="contact.html">
+                <span class="lang-en">Contact</span>
+                <span class="lang-zh">联系我们</span>
+            </a>
+            <a href="#">
+                <span class="lang-en">Privacy Policy</span>
+                <span class="lang-zh">隐私政策</span>
+            </a>
+            <a href="#">
+                <span class="lang-en">Terms of Service</span>
+                <span class="lang-zh">服务条款</span>
+            </a>
         </div>
         <p style="margin-top: 2rem; opacity: 0.7;">© 2024 VIPSLEEP. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Language Switcher
+        function setLanguage(lang) {
+            document.body.setAttribute('data-lang', lang);
+            localStorage.setItem('preferredLanguage', lang);
+
+            // Update button states
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.lang === lang) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+
+            // Update audio source
+            const audio = document.getElementById('heroAudio');
+            if (audio) {
+                const source = audio.querySelector('source');
+                if (lang === 'zh') {
+                    source.src = 'audio/brand-intro-zh.mp3';
+                } else {
+                    source.src = 'audio/brand-intro-en.mp3';
+                }
+                audio.load();
+            }
+        }
+
+        // Load saved language preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            setLanguage(savedLang);
+        });
+    </script>
 </body>
 </html>

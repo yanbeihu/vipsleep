@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact VIPSLEEP | Get in Touch</title>
+    <meta name="description" content="Contact VIPSLEEP for support, questions, or just to say hello. We're here to help you sleep better.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+
+        /* Language Switcher */
+        .lang-switch {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            z-index: 9999;
+            background: white;
+            padding: 8px 16px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .lang-switch button {
+            background: none;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .lang-switch button.active {
+            background: #0066cc;
+            color: white;
+        }
+
+        .lang-switch button:not(.active) {
+            color: #666;
+        }
+
+        .lang-switch button:not(.active):hover {
+            background: #f0f0f0;
+        }
+
+        /* Translation classes */
+        .lang-zh { display: none; }
+        body[data-lang="zh"] .lang-en { display: none; }
+        body[data-lang="zh"] .lang-zh { display: block; }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            box-shadow: 0 2px 30px rgba(0,0,0,0.08);
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #0d2137;
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, #00d4ff 0%, #0066cc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #334e68;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #0066cc;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .contact-info h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #0d2137;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            min-width: 40px;
+        }
+
+        .contact-details h3 {
+            margin-bottom: 0.5rem;
+            color: #0d2137;
+        }
+
+        .contact-details p {
+            color: #667e99;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .contact-form h2 {
+            margin-bottom: 2rem;
+            color: #0d2137;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #334e68;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #0066cc;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #00d4ff 0%, #0066cc 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 102, 204, 0.4);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 5rem 2rem;
+            background: #f8fafc;
+        }
+
+        .faq-section .contact-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .faq-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: #0d2137;
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-answer {
+            color: #667e99;
+            line-height: 1.6;
+        }
+
+        /* Business Hours */
+        .hours-section {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #0d2137 0%, #1a365d 100%);
+            color: white;
+        }
+
+        .hours-section h2 {
+            margin-bottom: 1rem;
+        }
+
+        .hours-section p {
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: #0d2137;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+    </style>
+</head>
+<body data-lang="en">
+    <!-- Language Switcher -->
+    <div class="lang-switch">
+        <button onclick="setLanguage('en')" class="lang-btn active" data-lang="en">EN</button>
+        <button onclick="setLanguage('zh')" class="lang-btn" data-lang="zh">中文</button>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">VIP<span>SLEEP</span></a>
+            <ul class="nav-links">
+                <li>
+                    <span class="lang-en"><a href="index.html">Home</a></span>
+                    <span class="lang-zh"><a href="index.html">首页</a></span>
+                </li>
+                <li>
+                    <span class="lang-en"><a href="products.html">Products</a></span>
+                    <span class="lang-zh"><a href="products.html">产品</a></span>
+                </li>
+                <li>
+                    <span class="lang-en"><a href="about.html">About</a></span>
+                    <span class="lang-zh"><a href="about.html">关于我们</a></span>
+                </li>
+                <li>
+                    <span class="lang-en"><a href="contact.html">Contact</a></span>
+                    <span class="lang-zh"><a href="contact.html">联系我们</a></span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="hero">
+        <h1>
+            <span class="lang-en">Get in Touch</span>
+            <span class="lang-zh">联系我们</span>
+        </h1>
+        <p>
+            <span class="lang-en">We'd love to hear from you. How can we help you sleep better?</span>
+            <span class="lang-zh">我们期待您的来信。我们如何帮助您睡得更好？</span>
+        </p>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="contact-grid">
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <h2>
+                    <span class="lang-en">Contact Information</span>
+                    <span class="lang-zh">联系方式</span>
+                </h2>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div class="contact-details">
+                        <h3>
+                            <span class="lang-en">Email</span>
+                            <span class="lang-zh">邮箱</span>
+                        </h3>
+                        <p>support@vipsleep.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-details">
+                        <h3>
+                            <span class="lang-en">Phone</span>
+                            <span class="lang-zh">电话</span>
+                        </h3>
+                        <p>
+                            <span class="lang-en">+1 (888) VIP-SLEEP</span>
+                            <span class="lang-zh">+1 (888) VIP-SLEEP</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-details">
+                        <h3>
+                            <span class="lang-en">Address</span>
+                            <span class="lang-zh">地址</span>
+                        </h3>
+                        <p>
+                            <span class="lang-en">123 Sleep Avenue, Suite 456<br>San Francisco, CA 94102, USA</span>
+                            <span class="lang-zh">美国加利福尼亚州旧金山<br>Sleep Avenue 123号，456室<br>邮编：94102</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">⏰</div>
+                    <div class="contact-details">
+                        <h3>
+                            <span class="lang-en">Business Hours</span>
+                            <span class="lang-zh">营业时间</span>
+                        </h3>
+                        <p>
+                            <span class="lang-en">Monday - Friday: 9AM - 6PM PST<br>Saturday: 10AM - 4PM PST<br>Sunday: Closed</span>
+                            <span class="lang-zh">周一至周五：上午9点 - 下午6点（太平洋时间）<br>周六：上午10点 - 下午4点（太平洋时间）<br>周日：休息</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <h2>
+                    <span class="lang-en">Send us a Message</span>
+                    <span class="lang-zh">给我们留言</span>
+                </h2>
+                <form>
+                    <div class="form-group">
+                        <label for="name">
+                            <span class="lang-en">Your Name</span>
+                            <span class="lang-zh">您的姓名</span>
+                        </label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">
+                            <span class="lang-en">Your Email</span>
+                            <span class="lang-zh">您的邮箱</span>
+                        </label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">
+                            <span class="lang-en">Subject</span>
+                            <span class="lang-zh">主题</span>
+                        </label>
+                        <select id="subject" name="subject">
+                            <option value="general">
+                                <span class="lang-en">General Inquiry</span>
+                                <span class="lang-zh">一般咨询</span>
+                            </option>
+                            <option value="product">
+                                <span class="lang-en">Product Question</span>
+                                <span class="lang-zh">产品咨询</span>
+                            </option>
+                            <option value="order">
+                                <span class="lang-en">Order Support</span>
+                                <span class="lang-zh">订单支持</span>
+                            </option>
+                            <option value="return">
+                                <span class="lang-en">Return / Exchange</span>
+                                <span class="lang-zh">退换货</span>
+                            </option>
+                            <option value="wholesale">
+                                <span class="lang-en">Wholesale / B2B</span>
+                                <span class="lang-zh">批发/B2B</span>
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">
+                            <span class="lang-en">Your Message</span>
+                            <span class="lang-zh">您的留言</span>
+                        </label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <span class="lang-en">Send Message</span>
+                        <span class="lang-zh">发送留言</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <h2 class="section-title" style="text-align: center; margin-bottom: 2rem;">
+            <span class="lang-en">Frequently Asked Questions</span>
+            <span class="lang-zh">常见问题</span>
+        </h2>
+        <div class="contact-grid">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span class="lang-en">What is your return policy?</span>
+                    <span class="lang-zh">你们的退货政策是什么？</span>
+                </div>
+                <div class="faq-answer">
+                    <span class="lang-en">We offer a 100-night trial. If you're not satisfied, you can return your pillow for a full refund. No questions asked.</span>
+                    <span class="lang-zh">我们提供100晚试用。如果您不满意，可以将枕头退货并获得全额退款。无需任何理由。</span>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span class="lang-en">How long does shipping take?</span>
+                    <span class="lang-zh">配送需要多长时间？</span>
+                </div>
+                <div class="faq-answer">
+                    <span class="lang-en">Standard shipping takes 5-7 business days. Express shipping is available for 2-3 business day delivery at an additional cost.</span>
+                    <span class="lang-zh">标准配送需要5-7个工作日。快递配送提供2-3个工作日送达服务，需额外付费。</span>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span class="lang-en">Do you ship internationally?</span>
+                    <span class="lang-zh">你们提供国际配送吗？</span>
+                </div>
+                <div class="faq-answer">
+                    <span class="lang-en">Currently, we ship to the United States and Canada. We're working on expanding to other countries. Please contact us for more information.</span>
+                    <span class="lang-zh">目前我们配送美国和加拿大。我们正在努力扩展到其他国家。请联系我们获取更多信息。</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Hours Banner -->
+    <section class="hours-section">
+        <h2>
+            <span class="lang-en">Need Help Now?</span>
+            <span class="lang-zh">现在需要帮助？</span>
+        </h2>
+        <p>
+            <span class="lang-en">Call us at +1 (888) VIP-SLEEP during business hours</span>
+            <span class="lang-zh">营业时间致电 +1 (888) VIP-SLEEP</span>
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <h3>VIPSLEEP</h3>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="about.html">About</a>
+        </div>
+        <p style="margin-top: 2rem; opacity: 0.7;">© 2024 VIPSLEEP. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Language Switcher
+        function setLanguage(lang) {
+            document.body.setAttribute('data-lang', lang);
+            localStorage.setItem('preferredLanguage', lang);
+
+            // Update button states
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.lang === lang) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+        }
+
+        // Load saved language preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            setLanguage(savedLang);
+        });
+
+        // Form submission handler
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert(document.body.dataset.lang === 'zh' ? '感谢您的留言！我们会尽快与您联系。' : 'Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIPSLEEP Products | Data-Driven Pillows</title>
+    <meta name="description" content="VIPSLEEP product catalog - Premium, Cool Max, Pro, and Essential pillows designed for better sleep.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+
+        /* Language Switcher */
+        .lang-switch {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            z-index: 9999;
+            background: white;
+            padding: 8px 16px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .lang-switch button {
+            background: none;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .lang-switch button.active {
+            background: #0066cc;
+            color: white;
+        }
+
+        .lang-switch button:not(.active) {
+            color: #666;
+        }
+
+        .lang-switch button:not(.active):hover {
+            background: #f0f0f0;
+        }
+
+        /* Translation classes */
+        .lang-zh { display: none; }
+        body[data-lang="zh"] .lang-en { display: none; }
+        body[data-lang="zh"] .lang-zh { display: block; }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            box-shadow: 0 2px 30px rgba(0,0,0,0.08);
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #0d2137;
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, #00d4ff 0%, #0066cc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #334e68;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #0066cc;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 4rem 2rem;
+        }
+
+        .product-detail {
+            max-width: 1200px;
+            margin: 0 auto 6rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .product-detail {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .product-images {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .product-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #0d2137;
+        }
+
+        .product-tag {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: linear-gradient(135deg, #00d4ff 0%, #0066cc 100%);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #0066cc;
+            margin: 1rem 0;
+        }
+
+        .price .original {
+            font-size: 1.2rem;
+            color: #999;
+            text-decoration: line-through;
+            font-weight: 400;
+            margin-left: 1rem;
+        }
+
+        .description {
+            color: #667e99;
+            line-height: 1.8;
+            margin: 1.5rem 0;
+        }
+
+        .features-list {
+            margin: 2rem 0;
+            list-style: none;
+        }
+
+        .features-list li {
+            padding: 0.8rem 0;
+            color: #334e68;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .features-list li::before {
+            content: "✓";
+            color: #0066cc;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            background: #f8fafc;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border: 2px solid #e2e8f0;
+        }
+
+        .audio-player h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #0d2137;
+        }
+
+        audio {
+            width: 100%;
+            height: 45px;
+            border-radius: 25px;
+        }
+
+        /* Specifications */
+        .specs {
+            background: #f8fafc;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .specs h3 {
+            margin-bottom: 1.5rem;
+            color: #0d2137;
+        }
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .spec-label {
+            color: #667e99;
+        }
+
+        .spec-value {
+            font-weight: 600;
+            color: #0d2137;
+        }
+
+        /* Add to Cart */
+        .add-to-cart {
+            background: linear-gradient(135deg, #00d4ff 0%, #0066cc 100%);
+            color: white;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 2rem;
+            width: 100%;
+        }
+
+        .add-to-cart:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 102, 204, 0.4);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #0d2137 0%, #1a365d 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section .btn {
+            background: white;
+            color: #0066cc;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: #0d2137;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+    </style>
+</head>
+<body data-lang="en">
+    <!-- Language Switcher -->
+    <div class="lang-switch">
+        <button onclick="setLanguage('en')" class="lang-btn active" data-lang="en">EN</button>
+        <button onclick="setLanguage('zh')" class="lang-btn" data-lang="zh">中文</button>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">VIP<span>SLEEP</span></a>
+            <ul class="nav-links">
+                <li>
+                    <span class="lang-en"><a href="index.html">Home</a></span>
+                    <span class="lang-zh"><a href="index.html">首页</a></span>
+                </li>
+                <li>
+                    <span class="lang-en"><a href="#premium">Premium</a></span>
+                    <span class="lang-zh"><a href="#premium">Premium</a></span>
+                </li>
+                <li>
+                    <span class="lang-en"><a href="#coolmax">Cool Max</a></span>
+                    <span class="lang-zh"><a href="#coolmax">Cool Max</a></span>
+                </li>
+                <li>
+                    <span class="lang-en"><a href="#pro">Pro</a></span>
+                    <span class="lang-zh"><a href="#pro">Pro</a></span>
+                </li>
+                <li>
+                    <span class="lang-en"><a href="#essential">Essential</a></span>
+                    <span class="lang-zh"><a href="#essential">Essential</a></span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="hero">
+        <h1>
+            <span class="lang-en">Our Products</span>
+            <span class="lang-zh">我们的产品</span>
+        </h1>
+        <p>
+            <span class="lang-en">Find your perfect pillow</span>
+            <span class="lang-zh">找到您的完美枕头</span>
+        </p>
+    </div>
+
+    <!-- Premium Pillow -->
+    <section class="products-section" id="premium">
+        <div class="product-detail">
+            <div class="product-images">
+                <img src="https://coze-coding-project.tos.coze.site/coze_storage_7606079845159829523/image/generate_image_62d2a0af-a36a-443f-8b85-100f3de6b1df.jpeg?sign=1802924153-2fcda87522-0-00b00dd9b1a67bb0835cee6b0d49a9e779366b53e2803f067068162c0ab9e9b6" alt="VIPSLEEP Premium Pillow" class="main-image">
+            </div>
+            <div class="product-info">
+                <span class="product-tag">Best Seller</span>
+                <h2>Premium</h2>
+                <div class="price">$89 <span class="original">$149</span></div>
+
+                <div class="description">
+                    <span class="lang-en">
+                        Our flagship model, designed for perfect sleep. The Premium combines advanced cooling technology with ergonomic support to deliver unmatched comfort.
+                    </span>
+                    <span class="lang-zh">
+                        我们的旗舰型号，专为完美睡眠设计。Premium结合了先进的降温技术和人体工程学支撑，提供无与伦比的舒适感。
+                    </span>
+                </div>
+
+                <div class="audio-player">
+                    <h3>
+                        <span class="lang-en">🎙️ Product Introduction</span>
+                        <span class="lang-zh">🎙️ 产品介绍</span>
+                    </h3>
+                    <audio controls>
+                        <source src="audio/premium.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+
+                <ul class="features-list">
+                    <li>
+                        <span class="lang-en">Gel cooling technology (-40% temperature)</span>
+                        <span class="lang-zh">凝胶降温技术 (-40% 降温效果)</span>
+                    </li>
+                    <li>
+                        <span class="lang-en">Dual-density zoning (45D+65D) for optimal support</span>
+                        <span class="lang-zh">双重密度分区 (45D+65D) 最佳支撑</span>
+                    </li>
+                    <li>
+                        <span class="lang-en">Adjustable height (5/7/9cm) for all sleep positions</span>
+                        <span class="lang-zh">可调高度 (5/7/9cm) 适合所有睡姿</span>
+                    </li>
+                    <li>
+                        <span class="lang-en">CertiPUR-US® & OEKO-TEX® certified</span>
+                        <span class="lang-zh">CertiPUR-US® & OEKO-TEX® 认证</span>
+                    </li>
+                    <li>
+                        <span class="lang-en">99% antibacterial rate</span>
+                        <span class="lang-zh">99% 抗菌率</span>
+                    </li>
+                </ul>
+
+                <div class="specs">
+                    <h3>
+                        <span class="lang-en">Specifications</span>
+                        <span class="lang-zh">产品规格</span>
+                    </h3>
+                    <div class="spec-grid">
+                        <div class="spec-item">
+                            <span class="spec-label">
+                                <span class="lang-en">Material</span>
+                                <span class="lang-zh">材质</span>
+                            </span>
+                            <span class="spec-value">Memory Foam</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">
+                                <span class="lang-en">Density</span>
+                                <span class="lang-zh">密度</span>
+                            </span>
+                            <span class="spec-value">45D + 65D</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">
+                                <span class="lang-en">Size</span>
+                                <span class="lang-zh">尺寸</span>
+                            </span>
+                            <span class="spec-value">60x40 cm</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">
+                                <span class="lang-en">Warranty</span>
+                                <span class="lang-zh">质保</span>
+                            </span>
+                            <span class="spec-value">5 Years</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="add-to-cart">
+                    <span class="lang-en">Add to Cart - $89</span>
+                    <span class="lang-zh">加入购物车 - $89</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cool Max Pillow -->
+    <section class="products-section" id="coolmax">
+        <div class="product-detail">
+            <div class="product-images">
+                <img src="https://coze-coding-project.tos.coze.site/coze_storage_7606079845159829523/image/generate_image_14fd7773-7143-471a-ab11-15992e404a77.jpeg?sign=1802924167-fab5b246b2-0-c923f22a0e554e148b4e1f856690f9048764a1c42b9a4cf8de99f9f4fc867e5d" alt="VIPSLEEP Cool Max Pillow" class="main-image">
+            </div>
+            <div class="product-info">
+                <span class="product-tag">Ultimate Cooling</span>
+                <h2>Cool Max</h2>
+                <div class="price">$99 <span class="original">$169</span></div>
+
+                <div class="description">
+                    <span class="lang-en">
+                        Designed for hot sleepers. The Cool Max features double gel layers and breathable mesh fabric to keep you cool all night.
+                    </span>
+                    <span class="lang-zh">
+                        为怕热人群设计。Cool Max配备双层凝胶和透气网眼面料，让您整晚保持凉爽。
+                    </span>
+                </div>
+
+                <div class="audio-player">
+                    <h3>
+                        <span class="lang-en">🎙️ Product Introduction</span>
+                        <span class="lang-zh">🎙️ 产品介绍</span>
+                    </h3>
+                    <audio controls>
+                        <source src="audio/coolmax.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+
+                <ul class="features-list">
+                    <li>
+                        <span class="lang-en">Double gel layer (-60% temperature)</span>
+                        <span class="lang-zh">双层凝胶 (-60% 降温效果)</span>
+                    </li>
+                    <li>
+                        <span class="lang-en">Mesh breathable fabric (+80% airflow)</span>
+                        <span class="lang-zh">网眼透气面料 (+80% 空气流通)</span>
+                    </li>
+                    <li>
+                        <span class="lang-en">Smart temperature control technology</span>
+                        <span class="lang-zh">智能温控技术</span>
+                    </li>
+                    <li>
+                        <span class="lang-en">Ventilation holes for enhanced cooling</span>
+                        <span class="lang-zh">通风孔增强降温效果</span>
+                    </li>
+                    <li>
+                        <span class="lang-en">Quick-dry technology</span>
+                        <span class="lang-zh">快干技术</span>
+                    </li>
+                </ul>
+
+                <div class="specs">
+                    <h3>
+                        <span class="lang-en">Specifications</span>
+                        <span class="lang-zh">产品规格</span>
+                    </h3>
+                    <div class="spec-grid">
+                        <div class="spec-item">
+                            <span class="spec-label">
+                                <span class="lang-en">Material</span>
+                                <span class="lang-zh">材质</span>
+                            </span>
+                            <span class="spec-value">Gel + Mesh</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">
+                                <span class="lang-en">Density</span>
+                                <span class="lang-zh">密度</span>
+                            </span>
+                            <span class="spec-value">50D + 60D</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">
+                                <span class="lang-en">Size</span>
+                                <span class="lang-zh">尺寸</span>
+                            </span>
+                            <span class="spec-value">60x40 cm</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">
+                                <span class="lang-en">Warranty</span>
+                                <span class="lang-zh">质保</span>
+                            </span>
+                            <span class="spec-value">5 Years</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="add-to-cart">
+                    <span class="lang-en">Add to Cart - $99</span>
+                    <span class="lang-zh">加入购物车 - $99</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pro Pillow -->
+    <section class="products-section" id="pro">
+        <div class="product-detail">
+            <div class="product-images">
+                <img src="https://coze-coding-project.tos.coze.site/coze_storage_7606079845159829523/image/generate_image_6953a638-ba9e-4525-a8bf-c52dee595c18.jpeg?sign=1802924181-0887cb7794-0-b69aafb922e0a21f0200fead1c3dc1d1d0118f03cf7e24fc1800e983c566032e" alt="VIPSLEEP Pro Pillow" class="main-image">
+            </div>
+            <div class="product-info">
+                <span class="product-tag">Professional</span>
+                <h2>Pro</h2>
+                <div class="price">$109 <span class="original">$179</span></div>
+
+                <div class="description">
+                    <span class="lang-en">
+                        Professional-grade support for serious sleepers. The Pro features three-layer foam construction for maximum cervical spine protection.
+                    </span>
+                    <span class="lang-zh">
+                        专业级支撑，为追求品质睡眠者设计。Pro采用三层泡沫结构，提供最大程度的颈椎保护。
+                    </span>
+                </div>
+
+                <div class="audio-player">
+                    <h3>
+                        <span class="lang-en">🎙️ Product Introduction</span>
+                        <span class="lang-zh">🎙️ 产品介绍</span>
+                    </h3>
+                    <audio controls>
+                        <source src="audio/pro.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+
+                <ul class="features-list">
+                    <li>
+                        <span class="lang-en">Three-layer support (40D+50D+70D)</span>
+                        <span class="lang-zh">三层支撑 (40D+50D+70D)</span>
+                    </li>
+                    <li>
+                        <span class="lang-en">Cervical spine protection design</span>
+                        <span class="lang-zh">颈椎保护设计</span>
+                    </li>
+                    <li>
+                        <span class="lang-en">70D ultra-dense foam core</span>
+                        <span class="lang-zh">70D 超密泡沫核心</span>
+                    </li>
+                    <li>
+                        <span class="lang-en">7-year warranty</span>
+                        <span class="lang-zh">7年质保</span>
+                    </li>
+                    <li>
+                        <span class="lang-en">99.9% medical-grade antibacterial</span>
+                        <span class="lang-zh">99.9% 医疗级抗菌</span>
+                    </li>
+                </ul>
+
+                <div class="specs">
+                    <h3>
+                        <span class="lang-en">Specifications</span>
+                        <span class="lang-zh">产品规格</span>
+                    </h3>
+                    <div class="spec-grid">
+                        <div class="spec-item">
+                            <span class="spec-label">
+                                <span class="lang-en">Material</span>
+                                <span class="lang-zh">材质</span>
+                            </span>
+                            <span class="spec-value">Triple Foam</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">
+                                <span class="lang-en">Density</span>
+                                <span class="lang-zh">密度</span>
+                            </span>
+                            <span class="spec-value">40D+50D+70D</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">
+                                <span class="lang-en">Size</span>
+                                <span class="lang-zh">尺寸</span>
+                            </span>
+                            <span class="spec-value">60x40 cm</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">
+                                <span class="lang-en">Warranty</span>
+                                <span class="lang-zh">质保</span>
+                            </span>
+                            <span class="spec-value">7 Years</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="add-to-cart">
+                    <span class="lang-en">Add to Cart - $109</span>
+                    <span class="lang-zh">加入购物车 - $109</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Essential Pillow -->
+    <section class="products-section" id="essential">
+        <div class="product-detail">
+            <div class="product-images">
+                <img src="https://coze-coding-project.tos.coze.site/coze_storage_7606079845159829523/image/generate_image_ffbb8467-ba29-4999-a9f4-b3b1837f0154.jpeg?sign=1802924194-a7d30cad2d-0-65aab0def0314cffb2c99eb343ad075d4ae8d576c4f091ecd126985217bed17e" alt="VIPSLEEP Essential Pillow" class="main-image">
+            </div>
+            <div class="product-info">
+                <span class="product-tag">Best Value</span>
+                <h2>Essential</h2>
+                <div class="price">$69 <span class="original">$119</span></div>
+
+                <div class="description">
+                    <span class="lang-en">
+                        Essential comfort at an affordable price. Perfect for everyday use with premium materials at an unbeatable value.
+                    </span>
+                    <span class="lang-zh">
+                        日常舒适，实惠价格。采用优质材料，提供超值体验，适合日常使用。
+                    </span>
+                </div>
+
+                <div class="audio-player">
+                    <h3>
+                        <span class="lang-en">🎙️ Product Introduction</span>
+                        <span class="lang-zh">🎙️ 产品介绍</span>
+                    </h3>
+                    <audio controls>
+                        <source src="audio/essential.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+
+                <ul class="features-list">
+                    <li>
+                        <span class="lang-en">Comfortable memory foam</span>
+                        <span class="lang-zh">舒适记忆棉</span>
+                    </li>
+                    <li>
+                        <span class="lang-en">Basic support design</span>
+                        <span class="lang-zh">基础支撑设计</span>
+                    </li>
+                    <li>
+                        <span class="lang-en">Ergonomic curve for neck support</span>
+                        <span class="lang-zh">人体工学曲线支撑颈部</span>
+                    </li>
+                    <li>
+                        <span class="lang-en">Removable and washable cover</span>
+                        <span class="lang-zh">可拆卸清洗枕套</span>
+                    </li>
+                    <li>
+                        <span class="lang-en">Certified safe materials</span>
+                        <span class="lang-zh">安全认证材质</span>
+                    </li>
+                </ul>
+
+                <div class="specs">
+                    <h3>
+                        <span class="lang-en">Specifications</span>
+                        <span class="lang-zh">产品规格</span>
+                    </h3>
+                    <div class="spec-grid">
+                        <div class="spec-item">
+                            <span class="spec-label">
+                                <span class="lang-en">Material</span>
+                                <span class="lang-zh">材质</span>
+                            </span>
+                            <span class="spec-value">Memory Foam</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">
+                                <span class="lang-en">Density</span>
+                                <span class="lang-zh">密度</span>
+                            </span>
+                            <span class="spec-value">45D</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">
+                                <span class="lang-en">Size</span>
+                                <span class="lang-zh">尺寸</span>
+                            </span>
+                            <span class="spec-value">60x40 cm</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">
+                                <span class="lang-en">Warranty</span>
+                                <span class="lang-zh">质保</span>
+                            </span>
+                            <span class="spec-value">3 Years</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="add-to-cart">
+                    <span class="lang-en">Add to Cart - $69</span>
+                    <span class="lang-zh">加入购物车 - $69</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <h2>
+            <span class="lang-en">Not sure which to choose?</span>
+            <span class="lang-zh">不确定选择哪款？</span>
+        </h2>
+        <p>
+            <span class="lang-en">Take our sleep quiz to find your perfect match</span>
+            <span class="lang-zh">参加睡眠测试找到您的完美匹配</span>
+        </p>
+        <a href="contact.html" class="btn">
+            <span class="lang-en">Contact Us</span>
+            <span class="lang-zh">联系我们</span>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <h3>VIPSLEEP</h3>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <p style="margin-top: 2rem; opacity: 0.7;">© 2024 VIPSLEEP. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Language Switcher
+        function setLanguage(lang) {
+            document.body.setAttribute('data-lang', lang);
+            localStorage.setItem('preferredLanguage', lang);
+
+            // Update button states
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.lang === lang) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+        }
+
+        // Load saved language preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            setLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>
