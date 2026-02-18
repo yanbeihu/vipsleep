@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建故事 - 故事之声</title>
+    <meta name="description" content="输入小说文本，AI自动分析角色并生成专属语音故事">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #f8fafc;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            box-shadow: 0 2px 30px rgba(0,0,0,0.08);
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #667eea;
+            text-decoration: none;
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #334e68;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .nav-links a.active {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 8rem 2rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: #0d2137;
+        }
+
+        .page-subtitle {
+            color: #667e99;
+            margin-bottom: 2rem;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .progress-steps {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .progress-step {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #667e99;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .progress-step.active {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .progress-step.completed {
+            color: #10b981;
+        }
+
+        .step-number {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .progress-step.active .step-number {
+            background: #667eea;
+            color: white;
+        }
+
+        .progress-step.completed .step-number {
+            background: #10b981;
+            color: white;
+        }
+
+        .step-line {
+            width: 50px;
+            height: 2px;
+            background: #e2e8f0;
+        }
+
+        .progress-step.completed ~ .step-line {
+            background: #10b981;
+        }
+
+        /* Step Content */
+        .step-content {
+            display: none;
+        }
+
+        .step-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Step 1: Input Text */
+        .text-input-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #334e68;
+            font-weight: 500;
+        }
+
+        .input-group textarea,
+        .input-group input[type="text"] {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            font-family: inherit;
+        }
+
+        .input-group textarea {
+            min-height: 300px;
+            resize: vertical;
+        }
+
+        .input-group textarea:focus,
+        .input-group input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .text-info {
+            display: flex;
+            justify-content: space-between;
+            color: #667e99;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Step 2: Character Analysis */
+        .analysis-results {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        .analysis-loading {
+            text-align: center;
+            padding: 3rem;
+            color: #667e99;
+        }
+
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .character-card {
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .character-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.1);
+        }
+
+        .character-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #0d2137;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .character-info {
+            margin-bottom: 1rem;
+        }
+
+        .character-info p {
+            color: #667e99;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .character-info strong {
+            color: #334e68;
+            font-weight: 500;
+        }
+
+        /* Voice Selection */
+        .voice-selection {
+            margin-top: 1rem;
+        }
+
+        .voice-label {
+            color: #334e68;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .voice-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .voice-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .voice-option:hover {
+            border-color: #667eea;
+            background: #f8fafc;
+        }
+
+        .voice-option.selected {
+            border-color: #667eea;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+        }
+
+        .voice-option input[type="radio"] {
+            display: none;
+        }
+
+        .voice-name {
+            flex: 1;
+            font-weight: 500;
+            color: #334e68;
+        }
+
+        .voice-preview-btn {
+            padding: 0.4rem 0.8rem;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .voice-preview-btn:hover {
+            background: #5568d3;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 2rem;
+        }
+
+        /* Step 3: Generate */
+        .generate-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .generate-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .generate-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #0d2137;
+            margin-bottom: 1rem;
+        }
+
+        .generate-desc {
+            color: #667e99;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .settings-section {
+            text-align: left;
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1.5rem 0;
+        }
+
+        .settings-section h3 {
+            color: #0d2137;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+
+        .setting-item label {
+            flex: 1;
+            color: #334e68;
+        }
+
+        .setting-item select,
+        .setting-item input[type="range"] {
+            padding: 0.5rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 0.95rem;
+        }
+
+        .setting-item select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .progress-steps {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .step-line {
+                width: 20px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🎙️</span>
+                故事之声
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="create.html" class="active">创建故事</a></li>
+                <li><a href="my-stories.html">我的故事</a></li>
+                <li><a href="about.html">关于</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1 class="page-title">创建语音故事</h1>
+        <p class="page-subtitle">输入小说文本，AI将自动分析角色并生成专属语音</p>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+            <div class="progress-steps">
+                <div class="progress-step active" id="step1-indicator">
+                    <span class="step-number">1</span>
+                    输入文本
+                </div>
+                <div class="step-line"></div>
+                <div class="progress-step" id="step2-indicator">
+                    <span class="step-number">2</span>
+                    角色分析
+                </div>
+                <div class="step-line"></div>
+                <div class="progress-step" id="step3-indicator">
+                    <span class="step-number">3</span>
+                    生成音频
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 1: Input Text -->
+        <div class="step-content active" id="step1">
+            <div class="text-input-section">
+                <div class="input-group">
+                    <label for="story-title">故事标题</label>
+                    <input type="text" id="story-title" placeholder="为你的故事起个名字...">
+                </div>
+
+                <div class="input-group">
+                    <label for="story-text">故事内容</label>
+                    <textarea id="story-text" placeholder="粘贴或输入你的小说文本...&#10;&#10;例如：&#10;&#10;小明是一个快乐的男孩，他住在一个美丽的小村庄里。每天早上，他都会去山坡上放羊。&#10;&#10;有一天，他遇到了一位神秘的老人..."></textarea>
+                    <div class="text-info">
+                        <span id="char-count">0 / 10000 字符</span>
+                        <span>建议输入 500-5000 字以获得最佳效果</span>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-secondary" onclick="loadSample()">加载示例文本</button>
+                    <button class="btn btn-primary" onclick="analyzeCharacters()">下一步：分析角色 →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2: Character Analysis -->
+        <div class="step-content" id="step2">
+            <div class="analysis-results">
+                <h2 style="margin-bottom: 1.5rem; color: #0d2137;">角色分析结果</h2>
+
+                <div class="analysis-loading" id="loading">
+                    <div class="loading-spinner"></div>
+                    <p>AI正在分析故事角色...</p>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #999;">这可能需要几秒钟</p>
+                </div>
+
+                <div class="character-grid" id="character-grid" style="display: none;">
+                    <!-- Characters will be dynamically inserted here -->
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-secondary" onclick="goToStep(1)">← 上一步</button>
+                <button class="btn btn-primary" id="generate-btn" onclick="goToStep(3)" disabled>下一步：生成音频 →</button>
+            </div>
+        </div>
+
+        <!-- Step 3: Generate Audio -->
+        <div class="step-content" id="step3">
+            <div class="generate-section">
+                <div class="generate-icon">🎬</div>
+                <h2 class="generate-title">准备生成故事音频</h2>
+                <p class="generate-desc">AI将根据您选择的语音配置，为每个角色生成专属配音，并合成完整的故事音频</p>
+
+                <div class="settings-section">
+                    <h3>生成设置</h3>
+                    <div class="setting-item">
+                        <label>音频格式</label>
+                        <select id="audio-format">
+                            <option value="mp3">MP3 (推荐)</option>
+                            <option value="wav">WAV</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <label>采样率</label>
+                        <select id="sample-rate">
+                            <option value="24000">24000 Hz (标准)</option>
+                            <option value="48000">48000 Hz (高品质)</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <label>语速</label>
+                        <select id="speech-rate">
+                            <option value="-10">较慢 (-10%)</option>
+                            <option value="0" selected>正常 (0%)</option>
+                            <option value="10">较快 (+10%)</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <label>背景音乐</label>
+                        <select id="background-music">
+                            <option value="none">无</option>
+                            <option value="soft">轻柔音乐</option>
+                            <option value="dramatic">戏剧音乐</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="button-group" style="justify-content: center; margin-top: 2rem;">
+                    <button class="btn btn-secondary" onclick="goToStep(2)">← 修改角色设置</button>
+                    <button class="btn btn-primary" onclick="generateAudio()" style="font-size: 1.2rem; padding: 1rem 3rem;">🎬 开始生成</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // State management
+        let currentStep = 1;
+        let storyData = {
+            title: '',
+            text: '',
+            characters: [],
+            voiceSettings: {}
+        };
+
+        // Character definitions
+        const availableVoices = {
+            female: [
+                { id: 'zh_female_xiaohe_uranus_bigtts', name: '小荷 (温柔女声)', description: '温柔甜美，适合年轻女性角色' },
+                { id: 'zh_female_vv_uranus_bigtts', name: 'Vivi (中英双语)', description: '知性优雅，适合成熟女性' },
+                { id: 'zh_female_xueayi_saturn_bigtts', name: '雪阿姨 (儿童读物)', description: '亲切温暖，适合长辈角色' },
+                { id: 'saturn_zh_female_keainvsheng_tob', name: '可爱少女', description: '活泼可爱，适合少女角色' }
+            ],
+            male: [
+                { id: 'zh_male_m191_uranus_bigtts', name: '云舟 (男声)', description: '沉稳温和，适合成年男性' },
+                { id: 'zh_male_taocheng_uranus_bigtts', name: '小天 (少年)', description: '阳光开朗，适合少年角色' },
+                { id: 'zh_male_dayi_saturn_bigtts', name: '大毅 (沉稳)', description: '厚重有力，适合长者或权威角色' }
+            ],
+            narrator: [
+                { id: 'zh_female_xiaohe_uranus_bigtts', name: '小荷 (女性旁白)', description: '标准女性旁白声音' },
+                { id: 'zh_male_m191_uranus_bigtts', name: '云舟 (男性旁白)', description: '标准男性旁白声音' }
+            ]
+        };
+
+        // Update character count
+        document.getElementById('story-text').addEventListener('input', function() {
+            const count = this.value.length;
+            document.getElementById('char-count').textContent = `${count} / 10000 字符`;
+            storyData.text = this.value;
+        });
+
+        document.getElementById('story-title').addEventListener('input', function() {
+            storyData.title = this.value;
+        });
+
+        // Load sample text
+        function loadSample() {
+            const sampleText = `小明是一个快乐的男孩，他住在一个美丽的小村庄里。每天早上，他都会去山坡上放羊。山坡上有一棵古老的大树，树下是他最喜欢的地方。
+
+一天早上，小明像往常一样来到山坡。这时，他看到一位白发苍苍的老人正坐在树下休息。
+
+"小朋友，你好啊。"老人微笑着说。
+
+"您好，老人家。"小明礼貌地回答。
+
+老人看着小明放羊的样子，赞许地点点头："你很勤奋啊。你知道吗？这棵大树有一百多年历史了。"
+
+"哇，真的吗？"小明惊讶地问。
+
+"当然。"老人说，"这棵树见证了无数人的故事。就像你放羊，它也每天都在看着你。"
+
+小明感到很神奇。从那天起，他每天都会和老人聊天，听老人讲这棵大树的故事。`;
+
+            document.getElementById('story-text').value = sampleText;
+            document.getElementById('char-count').textContent = `${sampleText.length} / 10000 字符`;
+            storyData.text = sampleText;
+        }
+
+        // Analyze characters
+        function analyzeCharacters() {
+            const text = document.getElementById('story-text').value.trim();
+            if (!text) {
+                alert('请输入故事内容！');
+                return;
+            }
+
+            // Mock character analysis (in real implementation, this would call an AI API)
+            storyData.characters = [
+                {
+                    name: '小明',
+                    gender: 'male',
+                    age: 'child',
+                    personality: '快乐、好奇、有礼貌',
+                    dialogueCount: 3,
+                    description: '故事的主角，一个勤奋的放羊男孩'
+                },
+                {
+                    name: '老人',
+                    gender: 'male',
+                    age: 'elderly',
+                    personality: '智慧、温和、和蔼',
+                    dialogueCount: 4,
+                    description: '一位白发苍苍的智者，知晓大树的秘密'
+                }
+            ];
+
+            // Add narrator
+            storyData.characters.push({
+                name: '旁白',
+                gender: 'narrator',
+                age: 'neutral',
+                personality: '平静、客观',
+                dialogueCount: 0,
+                description: '故事叙述者'
+            });
+
+            renderCharacters();
+            goToStep(2);
+        }
+
+        // Render character cards
+        function renderCharacters() {
+            const grid = document.getElementById('character-grid');
+            grid.innerHTML = '';
+
+            storyData.characters.forEach((character, index) => {
+                const voices = character.gender === 'narrator' ? availableVoices.narrator :
+                               character.gender === 'female' ? availableVoices.female :
+                               availableVoices.male;
+
+                const card = document.createElement('div');
+                card.className = 'character-card';
+                card.innerHTML = `
+                    <div class="character-name">
+                        ${character.gender === 'narrator' ? '📖' : (character.gender === 'female' ? '👩' : '👨')}
+                        ${character.name}
+                        ${character.gender === 'narrator' ? '<span style="font-size: 0.8rem; color: #667eea;">(旁白)</span>' : ''}
+                    </div>
+                    <div class="character-info">
+                        <p><strong>性别：</strong>${character.gender === 'narrator' ? '旁白' : (character.gender === 'female' ? '女' : '男')}</p>
+                        <p><strong>年龄：</strong>${character.age === 'child' ? '儿童' : (character.age === 'elderly' ? '老人' : '成年')}</p>
+                        <p><strong>性格：</strong>${character.personality}</p>
+                        <p><strong>描述：</strong>${character.description}</p>
+                    </div>
+                    <div class="voice-selection">
+                        <label class="voice-label">选择语音：</label>
+                        <div class="voice-options">
+                            ${voices.map((voice, vIndex) => `
+                                <div class="voice-option ${vIndex === 0 ? 'selected' : ''}" data-character="${index}" data-voice="${voice.id}">
+                                    <input type="radio" name="voice-${index}" value="${voice.id}" ${vIndex === 0 ? 'checked' : ''}>
+                                    <span class="voice-name">${voice.name}</span>
+                                    <button class="voice-preview-btn" onclick="previewVoice('${voice.id}', event)">试听</button>
+                                </div>
+                                ${voice.description ? `<p style="font-size: 0.85rem; color: #999; margin-left: 2rem;">${voice.description}</p>` : ''}
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+
+                // Set default voice
+                storyData.voiceSettings[character.name] = voices[0].id;
+            });
+
+            // Add click handlers
+            document.querySelectorAll('.voice-option').forEach(option => {
+                option.addEventListener('click', function(e) {
+                    const characterIndex = this.dataset.character;
+                    const voiceId = this.dataset.voice;
+                    const characterName = storyData.characters[characterIndex].name;
+
+                    // Update visual selection
+                    document.querySelectorAll(`.voice-option[data-character="${characterIndex}"]`)
+                        .forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+
+                    // Update radio button
+                    this.querySelector('input').checked = true;
+
+                    // Save voice setting
+                    storyData.voiceSettings[characterName] = voiceId;
+
+                    // Enable generate button
+                    document.getElementById('generate-btn').disabled = false;
+                });
+            });
+        }
+
+        // Preview voice
+        function previewVoice(voiceId, event) {
+            event.stopPropagation();
+            alert(`语音试听功能\n\n正在试听语音：${voiceId}\n\n（实际部署时将播放示例音频）`);
+        }
+
+        // Navigate between steps
+        function goToStep(step) {
+            // Hide all step content
+            document.querySelectorAll('.step-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Show target step
+            document.getElementById(`step${step}`).classList.add('active');
+
+            // Update progress indicators
+            for (let i = 1; i <= 3; i++) {
+                const indicator = document.getElementById(`step${i}-indicator`);
+                if (i < step) {
+                    indicator.classList.add('completed');
+                    indicator.classList.remove('active');
+                } else if (i === step) {
+                    indicator.classList.add('active');
+                    indicator.classList.remove('completed');
+                } else {
+                    indicator.classList.remove('active', 'completed');
+                }
+            }
+
+            currentStep = step;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Show loading animation for step 2
+            if (step === 2) {
+                document.getElementById('loading').style.display = 'block';
+                document.getElementById('character-grid').style.display = 'none';
+
+                setTimeout(() => {
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('character-grid').style.display = 'grid';
+                    document.getElementById('generate-btn').disabled = false;
+                }, 1500);
+            }
+        }
+
+        // Generate audio
+        function generateAudio() {
+            const audioFormat = document.getElementById('audio-format').value;
+            const sampleRate = document.getElementById('sample-rate').value;
+            const speechRate = document.getElementById('speech-rate').value;
+            const bgMusic = document.getElementById('background-music').value;
+
+            // In real implementation, this would call an API to generate the audio
+            const generateParams = {
+                title: storyData.title || '未命名故事',
+                text: storyData.text,
+                characters: storyData.characters,
+                voices: storyData.voiceSettings,
+                settings: {
+                    format: audioFormat,
+                    sampleRate: sampleRate,
+                    speechRate: speechRate,
+                    backgroundMusic: bgMusic
+                }
+            };
+
+            console.log('Generating audio with params:', generateParams);
+
+            // Redirect to preview page (in real implementation, would pass data via URL or storage)
+            alert(`音频生成已开始！\n\n故事：${generateParams.title}\n角色数：${generateParams.characters.length}\n音频格式：${generateParams.settings.format}\n\n（实际部署时将跳转到预览页面）`);
+
+            // For demo, redirect to my-stories
+            window.location.href = 'my-stories.html';
+        }
+    </script>
+</body>
+</html>

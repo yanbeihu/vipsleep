@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的故事 - 故事之声</title>
+    <meta name="description" content="查看和管理你的语音故事作品">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #f8fafc;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            box-shadow: 0 2px 30px rgba(0,0,0,0.08);
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #667eea;
+            text-decoration: none;
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #334e68;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .nav-links a.active {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 8rem 2rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0d2137;
+        }
+
+        .page-subtitle {
+            color: #667e99;
+            margin-top: 0.5rem;
+        }
+
+        /* Story Grid */
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .story-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .story-cover {
+            height: 180px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+        }
+
+        .story-cover::before {
+            content: '📖';
+        }
+
+        .story-status {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #10b981;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .story-info {
+            padding: 1.5rem;
+            flex: 1;
+        }
+
+        .story-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #0d2137;
+            margin-bottom: 0.8rem;
+        }
+
+        .story-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #667e99;
+        }
+
+        .story-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .story-description {
+            color: #667e99;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .story-characters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .character-tag {
+            background: #f8fafc;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: #667e99;
+        }
+
+        .story-duration {
+            color: #667eea;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .story-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-play {
+            flex: 1;
+            padding: 0.8rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-play:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-download {
+            padding: 0.8rem 1.5rem;
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-download:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-delete {
+            padding: 0.8rem;
+            background: #fee2e2;
+            color: #dc2626;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-delete:hover {
+            background: #fecaca;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .empty-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+
+        .empty-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0d2137;
+            margin-bottom: 0.5rem;
+        }
+
+        .empty-desc {
+            color: #667e99;
+            margin-bottom: 2rem;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: white;
+            padding: 1.5rem 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-around;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #667eea;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-label {
+            color: #667e99;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+
+            .stats-bar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .story-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🎙️</span>
+                故事之声
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="create.html">创建故事</a></li>
+                <li><a href="my-stories.html" class="active">我的故事</a></li>
+                <li><a href="about.html">关于</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-header">
+            <div>
+                <h1 class="page-title">我的故事</h1>
+                <p class="page-subtitle">管理你的语音故事作品</p>
+            </div>
+            <a href="create.html" class="btn btn-primary">+ 创建新故事</a>
+        </div>
+
+        <!-- Stats Bar -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-number">3</div>
+                <div class="stat-label">已创建故事</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">45</div>
+                <div class="stat-label">音频时长(分钟)</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">12</div>
+                <div class="stat-label">扮演角色</div>
+            </div>
+        </div>
+
+        <!-- Story Grid -->
+        <div class="story-grid">
+            <!-- Story 1 -->
+            <div class="story-card">
+                <div class="story-cover">
+                    <span class="story-status">已完成</span>
+                </div>
+                <div class="story-info">
+                    <h3 class="story-title">山坡上的大树</h3>
+                    <div class="story-meta">
+                        <span>📅 2024-02-18</span>
+                        <span>⏱️ 3分25秒</span>
+                    </div>
+                    <p class="story-description">
+                        小明是一个快乐的男孩，他住在一个美丽的小村庄里。每天早上，他都会去山坡上放羊。山坡上有一棵古老的大树...
+                    </p>
+                    <div class="story-characters">
+                        <span class="character-tag">👦 小明</span>
+                        <span class="character-tag">👴 老人</span>
+                        <span class="character-tag">📖 旁白</span>
+                    </div>
+                    <div class="story-duration">时长：3分25秒</div>
+                    <div class="story-actions">
+                        <button class="btn-play" onclick="playStory(1)">
+                            ▶️ 播放
+                        </button>
+                        <button class="btn-download" onclick="downloadStory(1)">⬇️ 下载</button>
+                        <button class="btn-delete" onclick="deleteStory(1)">🗑️</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Story 2 -->
+            <div class="story-card">
+                <div class="story-cover" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <span class="story-status">已完成</span>
+                </div>
+                <div class="story-info">
+                    <h3 class="story-title">星空下的对话</h3>
+                    <div class="story-meta">
+                        <span>📅 2024-02-17</span>
+                        <span>⏱️ 5分12秒</span>
+                    </div>
+                    <p class="story-description">
+                        夜晚，两个朋友坐在草地上仰望星空。他们谈论着梦想、未来，以及宇宙的奥秘...
+                    </p>
+                    <div class="story-characters">
+                        <span class="character-tag">👧 小红</span>
+                        <span class="character-tag">👦 小刚</span>
+                        <span class="character-tag">📖 旁白</span>
+                    </div>
+                    <div class="story-duration">时长：5分12秒</div>
+                    <div class="story-actions">
+                        <button class="btn-play" onclick="playStory(2)">
+                            ▶️ 播放
+                        </button>
+                        <button class="btn-download" onclick="downloadStory(2)">⬇️ 下载</button>
+                        <button class="btn-delete" onclick="deleteStory(2)">🗑️</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Story 3 -->
+            <div class="story-card">
+                <div class="story-cover" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <span class="story-status">已完成</span>
+                </div>
+                <div class="story-info">
+                    <h3 class="story-title">雨后的彩虹</h3>
+                    <div class="story-meta">
+                        <span>📅 2024-02-16</span>
+                        <span>⏱️ 4分38秒</span>
+                    </div>
+                    <p class="story-description">
+                        雨过天晴，天空中出现了一道美丽的彩虹。小女孩追着彩虹跑，想要找到它的终点...
+                    </p>
+                    <div class="story-characters">
+                        <span class="character-tag">👧 女孩</span>
+                        <span class="character-tag">👩 妈妈</span>
+                        <span class="character-tag">📖 旁白</span>
+                    </div>
+                    <div class="story-duration">时长：4分38秒</div>
+                    <div class="story-actions">
+                        <button class="btn-play" onclick="playStory(3)">
+                            ▶️ 播放
+                        </button>
+                        <button class="btn-download" onclick="downloadStory(3)">⬇️ 下载</button>
+                        <button class="btn-delete" onclick="deleteStory(3)">🗑️</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Play story
+        function playStory(id) {
+            alert(`播放故事 #${id}\n\n（实际部署时将打开音频播放器）`);
+        }
+
+        // Download story
+        function downloadStory(id) {
+            alert(`下载故事 #${id}\n\n（实际部署时将下载MP3文件）`);
+        }
+
+        // Delete story
+        function deleteStory(id) {
+            if (confirm(`确定要删除这个故事吗？\n\n此操作不可恢复。`)) {
+                alert(`故事 #${id} 已删除`);
+                // Remove card from DOM (in real implementation, would delete from server)
+                event.target.closest('.story-card').remove();
+            }
+        }
+    </script>
+</body>
+</html>

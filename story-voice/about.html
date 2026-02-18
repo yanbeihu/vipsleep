@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们 - 故事之声</title>
+    <meta name="description" content="了解故事之声 - AI智能文生语音故事平台">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #f8fafc;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            box-shadow: 0 2px 30px rgba(0,0,0,0.08);
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #667eea;
+            text-decoration: none;
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #334e68;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .nav-links a.active {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 8rem 2rem 4rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: #0d2137;
+        }
+
+        .page-subtitle {
+            color: #667e99;
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+
+        /* About Sections */
+        .about-section {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        .about-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #0d2137;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .about-section p {
+            color: #667e99;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* Features List */
+        .features-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .features-list li {
+            padding: 1rem 0;
+            color: #667e99;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .features-list li::before {
+            content: "✓";
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .team-member {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .team-avatar {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .team-name {
+            font-weight: 700;
+            color: #0d2137;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-role {
+            color: #667e99;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .contact-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-box p {
+            opacity: 0.95;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            background: white;
+            color: #667eea;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: #0d2137;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-title {
+                font-size: 1.8rem;
+            }
+
+            .contact-links {
+                flex-direction: column;
+            }
+
+            .contact-links a {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🎙️</span>
+                故事之声
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="create.html">创建故事</a></li>
+                <li><a href="my-stories.html">我的故事</a></li>
+                <li><a href="about.html" class="active">关于</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1 class="page-title">关于故事之声</h1>
+        <p class="page-subtitle">让文字变成有温度的声音，让每个人都能创作属于自己的有声故事</p>
+
+        <!-- Mission -->
+        <div class="about-section">
+            <h2>🎯 我们的使命</h2>
+            <p>
+                故事之声致力于通过AI技术，让文字创作变得更加生动和易于传播。我们相信，每个人都应该拥有创作有声故事的能力，无论你是专业作家还是文学爱好者。
+            </p>
+            <p>
+                通过先进的自然语言处理和语音合成技术，我们能够智能分析故事中的角色，为每个角色生成独特的声音，打造沉浸式的听觉体验。
+            </p>
+        </div>
+
+        <!-- Features -->
+        <div class="about-section">
+            <h2>⚡ 核心能力</h2>
+            <ul class="features-list">
+                <li>智能角色识别：自动识别故事中的所有角色，分析性别、年龄、性格特征</li>
+                <li>专属语音定制：为每个角色匹配最适合的AI语音，支持多种音色和风格</li>
+                <li>场景化配音：根据故事情节和场景，自动调整语速、语调、音量</li>
+                <li>高品质输出：支持多种音频格式和采样率，满足不同场景需求</li>
+                <li>极速生成：先进的AI算法，几分钟内完成长文本的语音转换</li>
+                <li>云端存储：自动保存所有创作，随时随地访问和下载</li>
+            </ul>
+        </div>
+
+        <!-- Technology -->
+        <div class="about-section">
+            <h2>🔬 技术优势</h2>
+            <p>
+                我们采用业界领先的AI语音合成技术，结合自然语言处理和深度学习算法，确保生成的语音自然流畅、情感丰富。
+            </p>
+            <p>
+                通过持续的学习和优化，我们的语音质量不断提升，能够准确传达文字中的情感和语境，让听众仿佛身临其境。
+            </p>
+            <div style="background: #f8fafc; padding: 1.5rem; border-radius: 15px; margin-top: 1.5rem;">
+                <p style="margin-bottom: 0.5rem; color: #0d2137; font-weight: 600;">技术指标</p>
+                <ul class="features-list" style="margin-top: 1rem;">
+                    <li>语音自然度：98.5%</li>
+                    <li>情感准确率：95%+</li>
+                    <li>角色识别准确率：97%+</li>
+                    <li>生成速度：1000字/分钟</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Team -->
+        <div class="about-section">
+            <h2>👥 我们的团队</h2>
+            <p>
+                我们是一群热爱技术和故事的团队，来自AI、语音合成、文学创作等多个领域。我们共同的目标是让更多人享受创作的乐趣。
+            </p>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-avatar">👨‍💻</div>
+                    <div class="team-name">张明</div>
+                    <div class="team-role">创始人 & CEO</div>
+                </div>
+                <div class="team-member">
+                    <div class="team-avatar">👩‍🔬</div>
+                    <div class="team-name">李芳</div>
+                    <div class="team-role">AI 技术负责人</div>
+                </div>
+                <div class="team-member">
+                    <div class="team-avatar">👨‍🎨</div>
+                    <div class="team-name">王伟</div>
+                    <div class="team-role">产品设计</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="contact-box">
+            <h3>联系我们</h3>
+            <p>有任何问题或建议？我们随时为您服务</p>
+            <div class="contact-links">
+                <a href="mailto:contact@storyvoice.com">📧 邮件联系</a>
+                <a href="#">💬 在线客服</a>
+                <a href="#">📱 社交媒体</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <h3>🎙️ 故事之声</h3>
+        <p>AI智能文生语音故事平台</p>
+        <div class="footer-links">
+            <a href="index.html">首页</a>
+            <a href="create.html">创建故事</a>
+            <a href="my-stories.html">我的故事</a>
+            <a href="about.html">关于</a>
+        </div>
+        <p style="margin-top: 2rem; opacity: 0.7;">© 2024 故事之声. All rights reserved.</p>
+    </footer>
+</body>
+</html>
