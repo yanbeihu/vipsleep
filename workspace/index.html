@@ -1,18 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIPSLEEP | 好枕头，让清晨更美好 | Great Pillow, Better Mornings</title>
-    <meta name="description" content="VIPSLEEP - 好枕头，让清晨更美好。凝胶降温 | 个性支撑 | 5年质保。基于北美市场10,000+条客户评论深度分析，专为追求品质睡眠的你设计。">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="VIPSLEEP | 好枕头，让清晨更美好">
-    <meta property="og:description" content="凝胶降温 | 个性支撑 | 5年质保">
-    <meta property="og:image" content="https://coze-coding-project.tos.coze.site/coze_storage_7606079845159829523/image/generate_image_b52bdcdb-2c00-4537-b6f9-4f975d173f48.jpeg?sign=1802503909-aaf52370eb-0-3450e94f2979517c373094cb4c58ac2c8f40e48756bd1d38ace4273b2842df2e?sign=1802503839-83f0e5649b-0-9fd1c8c044772eb8850a927cd938c2b295f8a410ed4850c73e9aabb63c3914a7">
-    <meta property="og:url" content="https://yanbeihu.github.io/vipsleep">
-    <meta property="og:type" content="website">
-    
+    <title>VIPSLEEP | Data-Driven Pillows for Better Sleep</title>
+    <meta name="description" content="VIPSLEEP - World's first pillow brand developed from 10,000+ real user reviews. Addressing heat, sagging, and firmness issues.">
+
     <style>
         * {
             margin: 0;
@@ -20,131 +13,50 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #1a365d;
-            --primary-dark: #0f2847;
-            --secondary: #2c5282;
-            --accent: #fbbf24;
-            --accent-hover: #f59e0b;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #dc2626;
-            --bg-light: #f8f9fa;
-            --bg-white: #ffffff;
-            --text-dark: #1f2937;
-            --text-light: #6b7280;
-            --text-muted: #9ca3af;
-            --text-white: #ffffff;
-            --border-light: #e5e7eb;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
-            --shadow-md: 0 4px 15px rgba(0,0,0,0.1);
-            --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
-            --shadow-xl: 0 20px 60px rgba(0,0,0,0.2);
-            --gradient-hero: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-            --gradient-cta: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-            --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: var(--text-dark);
-            background: var(--bg-light);
-            overflow-x: hidden;
+            color: #1a1a1a;
+            background: #ffffff;
         }
 
-        body.lang-en {
-            font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
-
-        body.lang-zh {
-            font-family: 'PingFang SC', 'Microsoft YaHei', 'Inter', sans-serif;
-        }
-
-        /* Language Switcher */
-        .lang-switch {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 10000;
-            display: flex;
-            gap: 12px;
-            background: var(--bg-white);
-            padding: 10px;
-            border-radius: 50px;
-            box-shadow: var(--shadow-lg);
-            backdrop-filter: blur(10px);
-        }
-
-        .lang-btn {
-            padding: 10px 20px;
-            border: 2px solid var(--border-light);
-            background: transparent;
-            color: var(--text-dark);
-            border-radius: 40px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .lang-btn.active, .lang-btn:hover {
-            background: var(--primary);
-            color: var(--text-white);
-            border-color: var(--primary);
-            transform: scale(1.05);
-        }
-
-        /* Content visibility */
-        body.lang-zh [data-lang="en"],
-        body.lang-en [data-lang="zh"] {
-            display: none !important;
-        }
-
-        body.lang-zh [data-lang="zh"],
-        body.lang-en [data-lang="en"] {
-            display: block !important;
-        }
-
-        /* Navigation */
+        /* Shopify-style Navigation */
         nav {
             position: fixed;
             top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255,255,255,0.98);
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(20px);
             z-index: 1000;
-            padding: 1rem 2rem;
+            box-shadow: 0 2px 30px rgba(0,0,0,0.08);
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: var(--shadow-sm);
-            transition: all 0.3s ease;
-        }
-
-        nav.scrolled {
-            background: var(--bg-white);
-            box-shadow: var(--shadow-md);
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
-        }
-
-        .logo-text {
             font-size: 1.8rem;
             font-weight: 800;
-            color: var(--primary);
-            letter-spacing: 2px;
-            line-height: 1;
+            color: #0d2137;
+            text-decoration: none;
+            letter-spacing: -1px;
         }
 
-        .logo-accent {
-            color: var(--accent);
+        .logo span {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .nav-links {
@@ -155,1624 +67,534 @@
         }
 
         .nav-links a {
+            color: #334e68;
             text-decoration: none;
-            color: var(--text-dark);
             font-weight: 500;
-            transition: all 0.3s ease;
             font-size: 0.95rem;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
+            transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: var(--accent);
+            color: #00d4ff;
         }
 
-        .nav-cta {
-            background: var(--gradient-cta);
-            color: var(--primary-dark);
+        .btn {
+            display: inline-block;
             padding: 0.8rem 2rem;
             border-radius: 50px;
+            font-weight: 600;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 0.95rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(251,191,36,0.3);
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
         }
 
-        .nav-cta:hover {
+        .btn-primary {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(251,191,36,0.4);
-        }
-
-        .nav-icons {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
-        .nav-icon {
-            color: var(--text-dark);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 1.2rem;
-        }
-
-        .nav-icon:hover {
-            color: var(--accent);
-            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.4);
         }
 
         /* Hero Section */
         .hero {
             min-height: 100vh;
-            background: var(--gradient-hero);
             display: flex;
             align-items: center;
             justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
             padding: 8rem 2rem 4rem;
             position: relative;
             overflow: hidden;
         }
 
         .hero-content {
-            max-width: 700px;
-            position: relative;
-            z-index: 2;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--accent);
-            color: var(--primary-dark);
-            padding: 0.6rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            box-shadow: 0 8px 25px rgba(251,191,36,0.3);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-        }
-
-        .hero-badge .number {
-            font-size: 2rem;
-            font-weight: 900;
+            max-width: 900px;
+            z-index: 1;
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 4rem, 5vw);
-            font-weight: 900;
-            line-height: 1.1;
-            color: var(--text-white);
+            font-size: 3.5rem;
+            font-weight: 800;
             margin-bottom: 1.5rem;
-            letter-spacing: -1px;
-        }
-
-        .hero h1 span {
-            color: var(--accent);
-        }
-
-        .hero p {
-            font-size: clamp(1.1rem, 1.3rem, 1.5vw);
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 2.5rem;
-            line-height: 1.8;
-            max-width: 600px;
-        }
-
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .stat-item {
-            text-align: center;
-            background: rgba(255,255,255,0.1);
-            padding: 1.5rem;
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--accent);
-            line-height: 1;
-            margin-bottom: 0.3rem;
-        }
-
-        .stat-label {
-            color: rgba(255,255,255,0.8);
-            font-size: 0.85rem;
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-top: 2.5rem;
-        }
-
-        .btn-primary, .btn-secondary {
-            padding: 1.2rem 3rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background: var(--gradient-cta);
-            color: var(--primary-dark);
-            box-shadow: 0 8px 25px rgba(251,191,36,0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(251,191,36,0.4);
-        }
-
-        .btn-secondary {
-            background: rgba(255,255,255,0.15);
-            color: var(--text-white);
-            border: 2px solid rgba(255,255,255,0.3);
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255,255,255,0.25);
-            border-color: var(--text-white);
-        }
-
-        .hero-image {
-            position: absolute;
-            right: 5%;
-            top: 50%;
-            transform: translateY(-50%);
-            max-width: 500px;
-            width: 45%;
-            z-index: 1;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(-50%) translateY(0); }
-            50% { transform: translateY(-50%) translateY(-20px); }
-        }
-
-        /* Pain Points Section */
-        .pain-points {
-            padding: 8rem 2rem;
-            background: var(--bg-white);
-            position: relative;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 5rem;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .section-tag {
-            display: inline-block;
-            background: rgba(26, 54, 93, 0.1);
-            color: var(--primary);
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1.5rem;
-        }
-
-        .section-header h2 {
-            font-size: clamp(2rem, 3rem, 3.5vw);
-            font-weight: 900;
-            color: var(--primary);
-            margin-bottom: 1rem;
             line-height: 1.2;
         }
 
-        .section-header p {
-            font-size: 1.15rem;
-            color: var(--text-light);
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
-
-        .pain-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .pain-card {
-            background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
-            padding: 3rem;
-            border-radius: 20px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 2px solid transparent;
-        }
-
-        .pain-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: var(--shadow-xl);
-            border-color: rgba(220, 38, 38, 0.2);
-        }
-
-        .pain-number {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 5rem;
-            font-weight: 900;
-            color: rgba(220, 38, 38, 0.08);
-            line-height: 1;
-        }
-
-        .pain-icon {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .pain-card h3 {
-            font-size: 1.8rem;
-            color: #991b1b;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .pain-card p {
-            color: #7c2d12;
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-
-        .pain-quote {
-            background: rgba(153, 27, 27, 0.1);
-            padding: 1rem 1.5rem;
-            border-left: 3px solid #991b1b;
-            border-radius: 8px;
-            font-style: italic;
-            font-size: 0.95rem;
-            color: #7c2d12;
-        }
-
-        .pain-percentage {
-            display: inline-block;
-            background: #991b1b;
-            color: var(--text-white);
-            padding: 0.4rem 1rem;
-            border-radius: 50px;
-            font-weight: 700;
-            margin-top: 0.5rem;
-        }
-
-        /* Solution Section */
-        .solution {
-            padding: 8rem 2rem;
-            background: var(--gradient-hero);
-            color: var(--text-white);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .solution-content {
-            position: relative;
-            z-index: 2;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .solution-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 3rem;
-            margin: 5rem 0;
-        }
-
-        .solution-item {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(20px);
-            padding: 3rem;
-            border-radius: 20px;
-            border: 2px solid rgba(255,255,255,0.2);
-            transition: all 0.4s ease;
-        }
-
-        .solution-item:hover {
-            background: rgba(255,255,255,0.15);
-            border-color: var(--accent);
-            transform: translateY(-5px);
-        }
-
-        .solution-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient-cta);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: var(--shadow-md);
-        }
-
-        .solution-item h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            font-weight: 800;
-        }
-
-        .solution-item p {
-            opacity: 0.95;
-            line-height: 1.8;
-        }
-
-        .solution-arrow {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: var(--accent);
-        }
-
-        /* Comparison Table Section */
-        .comparison {
-            padding: 8rem 2rem;
-            background: var(--bg-light);
-        }
-
-        .comparison-table {
-            max-width: 1400px;
-            margin: 4rem auto;
-            overflow-x: auto;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow-xl);
-        }
-
-        .comparison-table table {
-            width: 100%;
-            border-collapse: collapse;
-            background: var(--bg-white);
-        }
-
-        .comparison-table th {
-            background: var(--primary);
-            color: var(--text-white);
-            padding: 1.5rem;
-            text-align: left;
-            font-weight: 700;
-            font-size: 0.95rem;
-        }
-
-        .comparison-table th.highlight {
-            background: var(--gradient-cta);
-            color: var(--primary-dark);
-            position: relative;
-        }
-
-        .comparison-table th.highlight::after {
-            content: '🔥';
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            font-size: 1rem;
-        }
-
-        .comparison-table td {
-            padding: 1.2rem 1.5rem;
-            border-bottom: 1px solid var(--border-light);
-            transition: background 0.3s ease;
-        }
-
-        .comparison-table tr:hover td {
-            background: #f9fafb;
-        }
-
-        .comparison-table .check {
-            color: var(--success);
-            font-size: 1.5rem;
-        }
-
-        .comparison-table .cross {
-            color: var(--danger);
-            font-size: 1.5rem;
-        }
-
-        /* Features Section */
-        .features {
-            padding: 8rem 2rem;
-            background: var(--bg-white);
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 4rem auto;
-        }
-
-        .feature-card {
-            background: var(--bg-light);
-            padding: 2.5rem;
-            border-radius: 20px;
-            transition: all 0.4s ease;
-            border: 2px solid transparent;
-            text-align: center;
-        }
-
-        .feature-card:hover {
-            background: var(--bg-white);
-            border-color: var(--accent);
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .feature-card .icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.4rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .feature-card p {
-            color: var(--text-light);
-            line-height: 1.7;
-        }
-
-        /* Testimonials Section */
-        .testimonials {
-            padding: 8rem 2rem;
-            background: var(--bg-light);
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 4rem auto;
-        }
-
-        .testimonial-card {
-            background: var(--bg-white);
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: var(--shadow-md);
-            transition: all 0.4s ease;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .testimonial-stars {
-            color: var(--accent);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .testimonial-text {
-            font-size: 1.05rem;
-            color: var(--text-dark);
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-            font-style: italic;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .avatar {
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-cta);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .hero p {
             font-size: 1.3rem;
-            color: var(--primary-dark);
-            font-weight: 700;
+            margin-bottom: 2rem;
+            opacity: 0.95;
         }
 
-        .author-info h4 {
+        /* Audio Player Styles */
+        .audio-player {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin: 2rem auto;
+            max-width: 500px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .audio-player-title {
             font-size: 1rem;
-            color: var(--primary);
-            margin-bottom: 0.2rem;
-            font-weight: 700;
-        }
-
-        .author-info p {
-            font-size: 0.85rem;
-            color: var(--text-light);
-        }
-
-        .verified-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            background: var(--success);
-            color: var(--text-white);
-            padding: 0.3rem 0.8rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
             font-weight: 600;
-            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        /* Guarantee Section */
-        .guarantee {
-            padding: 8rem 2rem;
-            background: var(--bg-white);
+        .audio-player-title::before {
+            content: "🎙️";
         }
 
-        .guarantee-cards {
+        audio {
+            width: 100%;
+            height: 45px;
+            border-radius: 25px;
+        }
+
+        /* Data Story Section */
+        .data-story {
+            padding: 6rem 2rem;
+            background: #f8fafc;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #0d2137;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #667e99;
+            margin-bottom: 4rem;
+        }
+
+        .data-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             max-width: 1200px;
-            margin: 4rem auto;
+            margin: 0 auto;
         }
 
-        .guarantee-card {
-            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
-            padding: 3rem;
-            border-radius: 20px;
-            text-align: center;
-            transition: all 0.4s ease;
+        .data-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
 
-        .guarantee-card:nth-child(2) {
-            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+        .data-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.12);
         }
 
-        .guarantee-card:nth-child(3) {
-            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-        }
-
-        .guarantee-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .guarantee-icon {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .guarantee-number {
-            font-size: 4rem;
-            font-weight: 900;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            line-height: 1;
-        }
-
-        .guarantee-card h3 {
-            font-size: 1.5rem;
-            color: var(--primary);
+        .data-icon {
+            font-size: 3rem;
             margin-bottom: 1rem;
-            font-weight: 700;
         }
 
-        .guarantee-card p {
-            color: var(--text-dark);
-            line-height: 1.7;
+        .data-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #0d2137;
+        }
+
+        .data-card .stat {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 1rem 0;
+        }
+
+        .data-card p {
+            color: #667e99;
+            font-size: 0.95rem;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 2px solid #e2e8f0;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            height: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-tag {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .product-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: #0d2137;
+        }
+
+        .product-price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #0d2137;
+            margin: 1rem 0;
+        }
+
+        .product-price .original {
+            font-size: 1rem;
+            color: #999;
+            text-decoration: line-through;
+            font-weight: 400;
+            margin-left: 0.5rem;
+        }
+
+        .product-features {
+            margin: 1rem 0;
+            list-style: none;
+        }
+
+        .product-features li {
+            padding: 0.4rem 0;
+            color: #667e99;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .product-features li::before {
+            content: "✓";
+            color: #00d4ff;
+            font-weight: bold;
+        }
+
+        /* Product Audio Player */
+        .product-audio {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 12px;
+        }
+
+        .product-audio audio {
+            width: 100%;
         }
 
         /* CTA Section */
         .cta-section {
-            padding: 8rem 2rem;
-            background: var(--gradient-cta);
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #0d2137 0%, #1a365d 100%);
+            color: white;
             text-align: center;
-            color: var(--primary-dark);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(26, 54, 93, 0.1) 0%, transparent 70%);
-            animation: rotate 30s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .cta-content {
-            position: relative;
-            z-index: 2;
         }
 
         .cta-section h2 {
-            font-size: clamp(2.2rem, 3rem, 3.5vw);
-            margin-bottom: 1.5rem;
-            font-weight: 900;
-            line-height: 1.2;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
         }
 
         .cta-section p {
             font-size: 1.2rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.95;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.8;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .countdown {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--danger);
-            color: var(--text-white);
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            animation: pulse 1.5s infinite;
+            margin-bottom: 2rem;
+            opacity: 0.9;
         }
 
         /* Footer */
         footer {
-            background: var(--primary-dark);
-            color: var(--text-white);
-            padding: 4rem 2rem;
+            background: #0d2137;
+            color: white;
+            padding: 3rem 2rem;
             text-align: center;
-        }
-
-        footer p {
-            margin: 0.5rem 0;
-            opacity: 0.9;
-        }
-
-        footer a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
         }
 
         .footer-links {
             display: flex;
-            gap: 2rem;
             justify-content: center;
-            flex-wrap: wrap;
-            margin: 2rem 0;
+            gap: 2rem;
+            margin-top: 1rem;
         }
 
         .footer-links a {
-            color: rgba(255,255,255,0.7);
-            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
 
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .pain-grid,
-            .solution-grid {
-                grid-template-columns: 1fr;
-            }
+        .footer-links a:hover {
+            color: white;
+        }
 
-            .feature-grid,
-            .testimonials-grid,
-            .guarantee-cards {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5rem;
             }
 
-            .hero-image {
-                display: none;
-            }
-
-            .hero-content {
-                max-width: 100%;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero {
-                padding: 10rem 1.5rem 4rem;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-            }
-
-            .pain-grid,
-            .solution-grid,
-            .feature-grid,
-            .testimonials-grid,
-            .guarantee-cards {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-stats {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .section-header h2 {
+            .section-title {
                 font-size: 2rem;
             }
 
-            .comparison-table {
-                overflow-x: scroll;
+            .nav-links {
+                display: none;
             }
-
-            .cta-buttons {
-                flex-direction: column;
-            }
-
-            .btn-primary, .btn-secondary {
-                width: 100%;
-                max-width: 350px;
-            }
-
-            .lang-switch {
-                top: 10px;
-                right: 10px;
-            }
-
-            .lang-btn {
-                padding: 8px 14px;
-                font-size: 0.8rem;
-            }
-        }
-
-        /* Scroll Animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
         }
     </style>
 </head>
-<body class="lang-zh">
-    <!-- Language Switcher -->
-    <div class="lang-switch">
-        <button class="lang-btn active" onclick="setLanguage('zh')">中文</button>
-        <button class="lang-btn" onclick="setLanguage('en')">EN</button>
-    </div>
-
+<body>
     <!-- Navigation -->
-    <nav id="navbar">
-        <a href="#" class="logo">
-            <span class="logo-text">VIPSLEEP<span class="logo-accent">✨</span></span>
-        </a>
-        <ul class="nav-links">
-            <li><a href="#pain-points" data-lang="zh">痛点分析</a></li>
-            <li><a href="#solutions" data-lang="en">Pain Points</a></li>
-            <li><a href="#solutions" data-lang="zh">解决方案</a></li>
-            <li><a href="#features" data-lang="en">Solutions</a></li>
-            <li><a href="#features" data-lang="zh">产品特点</a></li>
-            <li><a href="#testimonials" data-lang="en">Features</a></li>
-            <li><a href="#testimonials" data-lang="zh">客户评价</a></li>
-            <li><a href="#guarantee" data-lang="en">Reviews</a></li>
-        </ul>
-        <div class="nav-icons">
-            <a href="#cta" class="nav-icon">🛒</a>
-            <a href="mailto:support@vipsleep.com" class="nav-icon">📧</a>
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">VIP<span>SLEEP</span></a>
+            <ul class="nav-links">
+                <li><a href="#data-story">Our Research</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#products" class="btn btn-primary">Shop Now</a>
         </div>
-        <a href="#cta" class="nav-cta" data-lang="zh">立即购买</a>
-        <a href="#cta" class="nav-cta" data-lang="en">Shop Now</a>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-badge">
-                <span class="number">10,000+</span>
-                <span data-lang="zh">条评论驱动</span>
-                <span data-lang="en">Reviews Driven</span>
+            <h1>World's First Data-Driven Pillow Brand</h1>
+            <p>Developed from 10,000+ real user reviews. We identified and solved the 3 biggest sleep problems.</p>
+
+            <!-- Audio Player -->
+            <div class="audio-player">
+                <div class="audio-player-title">Brand Introduction</div>
+                <audio controls>
+                    <source src="https://coze-coding-project.tos.coze.site/coze_storage_7606079845159829523/audio/tts_f00e8ad7-3b15-406b-bd7a-426395436f8f.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
             </div>
 
-            <h1 data-lang="zh">好枕头，让清晨<span class="logo-accent">更美好</span></h1>
-            <h1 data-lang="en">Great Pillow, <span class="logo-accent">Better Mornings</span></h1>
-
-            <p data-lang="zh">
-                终于，一个懂你的枕头。<br>
-                <span class="logo-accent">凝胶降温 | 个性支撑 | 5年质保</span>，<br>
-                让每一天都以神清气爽开始。
-            </p>
-            <p data-lang="en">
-                Finally, a pillow that understands you.<br>
-                <span class="logo-accent">Gel Cooling | Personalized Support | 5-Year Warranty</span>,<br>
-                start every day feeling refreshed.
-            </p>
-
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <div class="stat-number">40%</div>
-                    <div class="stat-label" data-lang="zh">抱怨过热</div>
-                    <div class="stat-label" data-lang="en">Complain Heat</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">35%</div>
-                    <div class="stat-label" data-lang="zh">抱怨塌陷</div>
-                    <div class="stat-label" data-lang="en">Complain Collapse</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">5⭐</div>
-                    <div class="stat-label" data-lang="zh">综合评分</div>
-                    <div class="stat-label" data-lang="en">Overall Rating</div>
-                </div>
-            </div>
-
-            <div class="hero-cta">
-                <a href="#solutions" class="btn-primary">
-                    <span data-lang="zh">探索解决方案</span>
-                    <span data-lang="en">Explore Solutions</span>
-                    <span>→</span>
-                </a>
-                <a href="#features" class="btn-secondary">
-                    <span data-lang="zh">了解更多</span>
-                    <span data-lang="en">Learn More</span>
-                </a>
-            </div>
+            <a href="#products" class="btn btn-primary">Explore Our Products</a>
         </div>
-        <img src="https://coze-coding-project.tos.coze.site/coze_storage_7606079845159829523/image/generate_image_b52bdcdb-2c00-4537-b6f9-4f975d173f48.jpeg?sign=1802503909-aaf52370eb-0-3450e94f2979517c373094cb4c58ac2c8f40e48756bd1d38ace4273b2842df2e?sign=1802503839-83f0e5649b-0-9fd1c8c044772eb8850a927cd938c2b295f8a410ed4850c73e9aabb63c3914a7" alt="VIPSLEEP Pillow" class="hero-image">
     </section>
 
-    <!-- Pain Points Section -->
-    <section class="pain-points" id="pain-points">
-        <div class="section-header">
-            <div class="section-tag">Market Research</div>
-            <h2 data-lang="zh">我们分析了什么？</h2>
-            <h2 data-lang="en">What Did We Analyze?</h2>
-            <p data-lang="zh">北美市场<strong>10,000+</strong>条真实客户评论，发现您真正的睡眠痛点</p>
-            <p data-lang="en">Over <strong>10,000+</strong> real customer reviews in North American market to discover your true sleep pain points</p>
-        </div>
+    <!-- Data Story Section -->
+    <section class="data-story" id="data-story">
+        <h2 class="section-title">Data-Driven Research</h2>
+        <p class="section-subtitle">We analyzed 10,000+ real user reviews to identify the 3 biggest sleep problems</p>
 
-        <div class="pain-grid">
-            <div class="pain-card">
-                <div class="pain-number">01</div>
-                <div style="margin-bottom: 1rem;">
-                    <img src="https://coze-coding-project.tos.coze.site/coze_storage_7606079845159829523/image/generate_image_9d8817d5-2504-4444-986e-853aef8cce9d.jpeg?sign=1802504538-d2066cb2da-0-cbe78652001b0a1f5ad39aca651ade7814e20d358f1d0182c81a7871adda623a" alt="Sleeping hot problem" style="width: 100%; height: auto; border-radius: 12px; margin-bottom: 1rem; display: block;">
-                </div>
-                <div class="pain-icon" style="display: none;">🥵</div>
-                <h3 data-lang="zh">太热闷汗</h3>
-                <h3 data-lang="en">Too Hot & Sweaty</h3>
-                <p data-lang="zh">
-                    <strong>40%</strong> 的用户抱怨记忆棉枕头夏天闷热。<br>
-                    睡到半夜热醒，翻来覆去，严重影响睡眠质量。
-                </p>
-                <p data-lang="en">
-                    <strong>40%</strong> of users complain about memory foam pillows being too hot in summer.<br>
-                    Waking up hot in middle of the night, tossing and turning, seriously affecting sleep quality.
-                </p>
-                <div class="pain-quote" data-lang="zh">"夏天睡醒一身汗"</div>
-                <div class="pain-quote" data-lang="en">"Woke up sweating all over in summer"</div>
-                <div class="pain-percentage" data-lang="zh">痛点强度: ⭐⭐⭐⭐⭐</div>
-                <div class="pain-percentage" data-lang="en">Pain Level: ⭐⭐⭐⭐⭐</div>
+        <div class="data-grid">
+            <div class="data-card">
+                <div class="data-icon">🔥</div>
+                <h3>Too Hot</h3>
+                <div class="stat">40%</div>
+                <p>of users complain about overheating during sleep</p>
             </div>
-
-            <div class="pain-card">
-                <div class="pain-number">02</div>
-                <div style="margin-bottom: 1rem;">
-                    <img src="https://coze-coding-project.tos.coze.site/coze_storage_7606079845159829523/image/generate_image_be18c6a6-e980-4bba-b7f7-6987c544e87a.jpeg?sign=1802504566-f08b76eaf0-0-5c2f152ba91909953644bba53b54bcbf0d8f9b302064b68b664d982ade671297" alt="Pillow sagging problem" style="width: 100%; height: auto; border-radius: 12px; margin-bottom: 1rem; display: block;">
-                </div>
-                <div class="pain-icon" style="display: none;">😫</div>
-                <h3 data-lang="zh">容易塌陷</h3>
-                <h3 data-lang="en">Loses Shape Easily</h3>
-                <p data-lang="zh">
-                    <strong>35%</strong> 的用户抱怨 1-2 年后支撑力明显下降。<br>
-                    枕头变薄，颈部悬空，颈椎问题加重。
-                </p>
-                <p data-lang="en">
-                    <strong>35%</strong> of users complain about significant support loss after 1-2 years.<br>
-                    Pillow gets thinner, neck sags, cervical issues worsen.
-                </p>
-                <div class="pain-quote" data-lang="zh">"用了1年就变薄了"</div>
-                <div class="pain-quote" data-lang="en">"Got thinner after 1 year of use"</div>
-                <div class="pain-percentage" data-lang="zh">痛点强度: ⭐⭐⭐⭐⭐</div>
-                <div class="pain-percentage" data-lang="en">Pain Level: ⭐⭐⭐⭐⭐</div>
+            <div class="data-card">
+                <div class="data-icon">📉</div>
+                <h3>Sagging</h3>
+                <div class="stat">35%</div>
+                <p>of users experience pillow collapse after use</p>
             </div>
-
-            <div class="pain-card">
-                <div class="pain-number">03</div>
-                <div class="pain-icon">😣</div>
-                <h3 data-lang="zh">颈部疼痛</h3>
-                <h3 data-lang="en">Neck Pain</h3>
-                <p data-lang="zh">
-                    <strong>30%</strong> 的用户因枕头高度不合适导致颈椎问题。<br>
-                    脖子酸痛僵硬，早晨起来浑身不舒服。
-                </p>
-                <p data-lang="en">
-                    <strong>30%</strong> of users experience neck pain due to improper pillow height.<br>
-                    Sore and stiff neck, uncomfortable all over when waking up in the morning.
-                </p>
-                <div class="pain-quote" data-lang="zh">"脖子酸痛僵硬"</div>
-                <div class="pain-quote" data-lang="en">"Sore and stiff neck"</div>
-                <div class="pain-percentage" data-lang="zh">痛点强度: ⭐⭐⭐⭐</div>
-                <div class="pain-percentage" data-lang="en">Pain Level: ⭐⭐⭐</div>
-            </div>
-
-            <div class="pain-card">
-                <div class="pain-number">04</div>
-                <div class="pain-icon">😖</div>
-                <h3 data-lang="zh">化学异味</h3>
-                <h3 data-lang="en">Chemical Odor</h3>
-                <p data-lang="zh">
-                    <strong>25%</strong> 的用户抱怨新枕头有刺鼻异味。<br>
-                    需要通风 1-2 周，严重影响使用体验。
-                </p>
-                <p data-lang="en">
-                    <strong>25%</strong> of users complain about strong chemical odors from new pillows.<br>
-                    Needs 1-2 weeks to air out, seriously affecting user experience.
-                </p>
-                <div class="pain-quote" data-lang="zh">"新枕味道很重"</div>
-                <div class="pain-quote" data-lang="en">"Strong smell from new pillow"</div>
-                <div class="pain-percentage" data-lang="zh">痛点强度: ⭐⭐</div>
-                <div class="pain-percentage" data-lang="en">Pain Level: ⭐⭐</div>
+            <div class="data-card">
+                <div class="data-icon">⚙️</div>
+                <h3>Firmness</h3>
+                <div class="stat">25%</div>
+                <p>of users struggle with finding the right firmness</p>
             </div>
         </div>
     </section>
 
-    <!-- Solution Section -->
-    <section class="solution" id="solutions">
-        <div class="solution-content">
-            <div class="section-header" style="color: white;">
-                <div class="section-tag" style="background: rgba(255,255,255,0.2);">Our Solution</div>
-                <h2 data-lang="zh">VIPSLEEP 如何解决？</h2>
-                <h2 data-lang="en">How VIPSLEEP Solves These Problems?</h2>
-                <p data-lang="zh">基于市场调研的四大核心创新</p>
-                <p data-lang="en">Four Core Innovations Based on Market Research</p>
-            </div>
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <h2 class="section-title">Our Products</h2>
+        <p class="section-subtitle">Choose the perfect pillow based on your needs</p>
 
-            <div class="solution-grid">
-                <div class="solution-item">
-                    <div class="solution-icon">❄️</div>
-                    <h3 data-lang="zh">凝胶降温技术</h3>
-                    <h3 data-lang="en">Gel Cooling Technology</h3>
-                    <div class="solution-arrow">↓</div>
-                    <p data-lang="zh">
-                        内置凝胶降温颗粒，有效吸收多余热量，整夜保持舒适凉爽。<br>
-                        配合通风孔设计，空气流通顺畅，<strong>彻底解决闷汗问题</strong>。<br>
-                        经过测试，降温效果比普通记忆棉提升 <strong>40%</strong>。
-                    </p>
-                    <p data-lang="en">
-                        Built-in gel cooling particles effectively absorb excess heat, keeping you comfortably cool all night long.<br>
-                        Combined with ventilation holes for better air circulation, <strong>completely solves sweat problem</strong>.<br>
-                        Tested results: cooling effect improved by <strong>40%</strong> compared to regular memory foam.
-                    </p>
+        <div class="products-grid">
+            <!-- Product 1: Premium -->
+            <div class="product-card">
+                <div class="product-image" style="background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);">
+                    ⭐
                 </div>
+                <div class="product-info">
+                    <span class="product-tag">Best Seller</span>
+                    <h3>Premium</h3>
+                    <div class="product-price">$89 <span class="original">$149</span></div>
 
-                <div class="solution-item">
-                    <div class="solution-icon">💪</div>
-                    <h3 data-lang="zh">双密度分区设计</h3>
-                    <h3 data-lang="en">Dual-Density Design</h3>
-                    <div class="solution-arrow">↓</div>
-                    <p data-lang="zh">
-                        上层柔软记忆棉包裹头部，提供云朵般舒适。<br>
-                        下层高支撑记忆棉承托颈部，保持脊椎自然弯曲。<br>
-                        高密度材料确保<strong>5年以上持久支撑</strong>，不会塌陷变形。
-                    </p>
-                    <p data-lang="en">
-                        Top layer of soft memory foam cradles your head with cloud-like comfort.<br>
-                        Bottom layer of high-support memory foam supports your neck, maintaining natural spine curvature.<br>
-                        High-density materials ensure <strong>5+ years of lasting support</strong>, no collapse or deformation.
-                    </p>
-                </div>
-
-                <div class="solution-item">
-                    <div class="solution-icon">⚖️</div>
-                    <h3 data-lang="zh">可调节填充</h3>
-                    <h3 data-lang="en">Adjustable Fill</h3>
-                    <div class="solution-arrow">↓</div>
-                    <p data-lang="zh">
-                        可根据个人喜好增减填充，找到最适合您的高度。<br>
-                        仰睡、侧睡、俯睡，<strong>一个枕头满足所有姿势</strong>。<br>
-                        不同的身高体重都能找到完美适配，真正个性化舒适体验。
-                    </p>
-                    <p data-lang="en">
-                        Add or remove fill according to personal preference to find your perfect height.<br>
-                        Back sleep, side sleep, stomach sleep, <strong>one pillow satisfies all positions</strong>.<br>
-                        Different heights and weights can find perfect fit, truly personalized comfort experience.
-                    </p>
-                </div>
-
-                <div class="solution-item">
-                    <div class="solution-icon">🌿</div>
-                    <h3 data-lang="zh">透气竹纤维面料</h3>
-                    <h3 data-lang="en">Breathable Bamboo Fabric</h3>
-                    <div class="solution-arrow">↓</div>
-                    <p data-lang="zh">
-                        40% 竹纤维 + 60% 聚酯面料，天然透气、抗菌抑菌。<br>
-                        经实验室检测，对金黄色葡萄球菌和大肠杆菌的抑菌率达 <strong>99%</strong>。<br>
-                        可拆洗设计，保持枕头<strong>洁净清新</strong>，无异味。
-                    </p>
-                    <p data-lang="en">
-                        40% bamboo fiber + 60% polyester fabric, naturally breathable and antibacterial.<br>
-                        Lab tested: antibacterial rate of <strong>99%</strong> against Staphylococcus aureus and E. coli.<br>
-                        Removable cover design keeps pillow <strong>fresh and clean</strong>, odor-free.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Comparison Section -->
-    <section class="comparison">
-        <div class="section-header">
-            <div class="section-tag">Comparison</div>
-            <h2 data-lang="zh">为什么选择 VIPSLEEP？</h2>
-            <h2 data-lang="en">Why Choose VIPSLEEP?</h2>
-            <p data-lang="zh">与市场主流产品对比，优势一目了然</p>
-            <p data-lang="en">Comparison with mainstream products, advantages are clear at a glance</p>
-        </div>
-
-        <div class="comparison-table">
-            <table>
-                <thead>
-                    <tr>
-                        <th data-lang="zh">特性</th>
-                        <th data-lang="en">Feature</th>
-                        <th data-lang="zh">普通记忆棉</th>
-                        <th data-lang="en">Regular Memory Foam</th>
-                        <th data-lang="zh">天然乳胶</th>
-                        <th data-lang="en">Natural Latex</th>
-                        <th data-lang="zh">羽绒枕头</th>
-                        <th data-lang="en">Down Pillow</th>
-                        <th class="highlight" data-lang="zh">VIPSLEEP</th>
-                        <th class="highlight" data-lang="en">VIPSLEEP</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td data-lang="zh">凝胶降温</td>
-                        <td data-lang="en">Gel Cooling</td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="check">✓</span></td>
-                    </tr>
-                    <tr>
-                        <td data-lang="zh">双密度分区</td>
-                        <td data-lang="en">Dual-Density</td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="check">✓</span></td>
-                    </tr>
-                    <tr>
-                        <td data-lang="zh">可调节填充</td>
-                        <td data-lang="en">Adjustable Fill</td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="check">✓</span></td>
-                    </tr>
-                    <tr>
-                        <td data-lang="zh">三种高度</td>
-                        <td data-lang="en">3 Heights</td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="check">✓</span></td>
-                    </tr>
-                    <tr>
-                        <td data-lang="zh">通风孔设计</td>
-                        <td data-lang="en">Ventilation Holes</td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="check">✓</span></td>
-                        <td><span class="check">✓</span></td>
-                        <td><span class="check">✓</span></td>
-                    </tr>
-                    <tr>
-                        <td data-lang="zh">竹纤维面料</td>
-                        <td data-lang="en">Bamboo Fabric</td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="check">✓</span></td>
-                    </tr>
-                    <tr>
-                        <td data-lang="zh">CertiPUR-US®</td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="check">✓</span></td>
-                    </tr>
-                    <tr>
-                        <td data-lang="zh">OEKO-TEX®</td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="check">✓</span></td>
-                    </tr>
-                    <tr>
-                        <td data-lang="zh">5年质保</td>
-                        <td data-lang="en">5-Year Warranty</td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="check">✓</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="check">✓</span></td>
-                    </tr>
-                    <tr>
-                        <td data-lang="zh">100晚试睡</td>
-                        <td data-lang="en">100-Night Trial</td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="check">✓</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="check">✓</span></td>
-                    </tr>
-                    <tr>
-                        <td data-lang="zh">价格</td>
-                        <td data-lang="en">Price</td>
-                        <td>$60-$100</td>
-                        <td>$100-$250+</td>
-                        <td>$50-$120</td>
-                        <td style="color: var(--success); font-weight: 700;">$89-$109</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="section-header">
-            <div class="section-tag">Features</div>
-            <h2 data-lang="zh">产品特点</h2>
-            <h2 data-lang="en">Product Features</h2>
-            <p data-lang="zh">六大核心特性，重新定义睡眠体验</p>
-            <p data-lang="en">Six Core Features, Redefining Sleep Experience</p>
-        </div>
-
-        <div class="feature-grid">
-            <div class="feature-card">
-                <div class="icon">🌡️</div>
-                <h3 data-lang="zh">恒温调节</h3>
-                <h3 data-lang="en">Temperature Regulation</h3>
-                <p data-lang="zh">凝胶降温颗粒 + 通风孔设计，整夜保持舒适凉爽温度</p>
-                <p data-lang="en">Gel cooling particles + ventilation holes, maintain comfortable cool temperature all night</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">🧠</div>
-                <h3 data-lang="zh">人体工学</h3>
-                <h3 data-lang="en">Ergonomic Design</h3>
-                <p data-lang="zh">双密度分区设计，完美贴合头颈自然曲线</p>
-                <p data-lang="en">Dual-density zone design, perfectly conforms to natural head and neck curves</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">🛡️</div>
-                <h3 data-lang="zh">安全认证</h3>
-                <h3 data-lang="en">Safety Certified</h3>
-                <p data-lang="zh">CertiPUR-US® 和 OEKO-TEX® 双重认证，无有害物质</p>
-                <p data-lang="en">Dual CertiPUR-US® and OEKO-TEX® certification, no harmful substances</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">📏</div>
-                <h3 data-lang="zh">可调节高度</h3>
-                <h3 data-lang="en">Adjustable Height</h3>
-                <p data-lang="zh">三种高度可选（5/7/9cm），满足不同体型和睡姿</p>
-                <p data-lang="en">Three heights available (5/7/9cm), meets different body types and sleep positions</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">💤</div>
-                <h3 data-lang="zh">100晚试睡</h3>
-                <h3 data-lang="en">100-Night Trial</h3>
-                <p data-lang="zh">不满意可免费退货，零风险体验优质睡眠</p>
-                <p data-lang="en">Free return if not satisfied, risk-free trial of quality sleep</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">🔒</div>
-                <h3 data-lang="zh">5年质保</h3>
-                <h3 data-lang="en">5-Year Warranty</h3>
-                <p data-lang="zh">超长质保期，安心使用多年，品质保证</p>
-                <p data-lang="en">Extended warranty period, use with peace of mind for years, quality guaranteed</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Product Showcase Section -->
-    <section class="product-showcase" style="padding: 8rem 2rem; background: var(--bg-light);">
-        <div class="section-header">
-            <div class="section-tag">Product Gallery</div>
-            <h2 data-lang="zh">产品展示</h2>
-            <h2 data-lang="en">Product Gallery</h2>
-            <p data-lang="zh">从多个角度感受 VIPSLEEP 的品质与设计</p>
-            <p data-lang="en">Feel the quality and design of VIPSLEEP from multiple angles</p>
-        </div>
-
-        <div style="max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem;">
-            <div style="border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-xl);">
-                <img src="https://coze-coding-project.tos.coze.site/coze_storage_7606079845159829523/image/generate_image_d8374ea4-5e9f-4e54-a6a3-b61be9ceac43.jpeg?sign=1802504613-7b1413545f-0-22d8caaf4cfe334d0edd78631cc0713dec36ab2b986766c78f83e5a60e28ecda" alt="VIPSLEEP Internal Structure" style="width: 100%; height: auto; display: block;">
-                <div style="padding: 2rem; background: var(--bg-white); text-align: center;">
-                    <h3 style="font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem; font-weight: 700;" data-lang="zh">凝胶降温技术</h3>
-                    <h3 style="font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem; font-weight: 700;" data-lang="en">Gel Cooling Technology</h3>
-                    <p style="color: var(--text-light);" data-lang="zh">内部结构展示</p>
-                    <p style="color: var(--text-light);" data-lang="en">Internal Structure</p>
-                </div>
-            </div>
-
-            <div style="border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-xl);">
-                <img src="https://coze-coding-project.tos.coze.site/coze_storage_7606079845159829523/image/generate_image_d18d9cd8-f115-4495-af01-a4e3fcca9056.jpeg?sign=1802504588-63754ede69-0-688c3a756b9342d6542c3547cf4752d7716daef736ade767af3f3e1850260237" alt="Modern Luxury Bedroom" style="width: 100%; height: auto; display: block;">
-                <div style="padding: 2rem; background: var(--bg-white); text-align: center;">
-                    <h3 style="font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem; font-weight: 700;" data-lang="zh">现代奢华卧室</h3>
-                    <h3 style="font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem; font-weight: 700;" data-lang="en">Modern Luxury Bedroom</h3>
-                    <p style="color: var(--text-light);" data-lang="zh">高端睡眠环境</p>
-                    <p style="color: var(--text-light);" data-lang="en">Premium Sleep Environment</p>
-                </div>
-            </div>
-
-            <div style="border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-xl);">
-                <img src="https://coze-coding-project.tos.coze.site/coze_storage_7606079845159829523/image/generate_image_65301960-23ba-4ffc-95c2-aac66fa753ca.jpeg?sign=1802503880-ddeaeaff84-0-0e7ec32ac07fa7f5cb1f9a92ca0ea088ed67f7988df16e762aef02fb8bcab62d" alt="Product Photography" style="width: 100%; height: auto; display: block;">
-                <div style="padding: 2rem; background: var(--bg-white); text-align: center;">
-                    <h3 style="font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem; font-weight: 700;" data-lang="zh">专业产品摄影</h3>
-                    <h3 style="font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem; font-weight: 700;" data-lang="en">Professional Product Photography</h3>
-                    <p style="color: var(--text-light);" data-lang="zh">简约设计，彰显品质</p>
-                    <p style="color: var(--text-light);" data-lang="en">Minimalist Design, Shows Quality</p>
-                </div>
-            </div>
-
-            <div style="border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-xl);">
-                <img src="https://coze-coding-project.tos.coze.site/coze_storage_7606079845159829523/image/generate_image_19735294-7677-429d-aeff-10709d5fcf91.jpeg?sign=1802504694-bab96abf3f-0-8011efa37c17b3752166f1137cd7d6dbe2a448b5f1ec6d0f823e0b20247e5e8c" alt="Premium Gift Packaging" style="width: 100%; height: auto; display: block;">
-                <div style="padding: 2rem; background: var(--bg-white); text-align: center;">
-                    <h3 style="font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem; font-weight: 700;" data-lang="zh">精美礼盒包装</h3>
-                    <h3 style="font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem; font-weight: 700;" data-lang="en">Premium Gift Packaging</h3>
-                    <p style="color: var(--text-light);" data-lang="zh">奢华体验，完美礼物</p>
-                    <p style="color: var(--text-light);" data-lang="en">Luxury Experience, Perfect Gift</p>
-                </div>
-            </div></div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
-        <div class="section-header">
-            <div class="section-tag">Customer Reviews</div>
-            <h2 data-lang="zh">客户评价</h2>
-            <h2 data-lang="en">Customer Reviews</h2>
-            <p data-lang="zh">来自真实用户的声音</p>
-            <p data-lang="en">Voices from Real Users</p>
-        </div>
-
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <div class="testimonial-stars">⭐⭐⭐⭐⭐⭐</div>
-                <div style="margin-bottom: 1rem;">
-                    <img src="https://coze-coding-project.tos.coze.site/coze_storage_7606079845159829523/image/generate_image_46265976-035b-44be-b02e-93c92f7ae5b6.jpeg?sign=1802504630-9760e870a1-0-ca71556f057b9c2245a1ad459f9c446963ea75a7a3f43e89abcb065befdd4a2f" alt="Customer" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
-                </div>
-                <p class="testimonial-text" data-lang="zh">
-                    "我试过好多枕头都太热，但 VIPSLEEP 真的很凉快！凝胶降温效果明显，夏天也能睡整晚了。颈椎也不疼了，早上起来精神满满！"
-                </p>
-                <p class="testimonial-text" data-lang="en">
-                    "I tried so many pillows that were too hot, but VIPSLEEP is really cool! Gel cooling effect is obvious, can sleep through the night even in summer. My neck doesn't hurt anymore, full of energy in the morning!"
-                </p>
-                <div class="testimonial-author">
-                    <div class="avatar">S</div>
-                    <div class="author-info">
-                        <h4>Sarah M.</h4>
-                        <p data-lang="zh">纽约 | 2025年购买</p>
-                        <p data-lang="en">New York | Purchased 2025</p>
+                    <!-- Product Audio -->
+                    <div class="product-audio">
+                        <audio controls>
+                            <source src="https://coze-coding-project.tos.coze.site/coze_storage_7606079845159829523/audio/tts_e7359c41-0887-4c13-9256-894cc0ff64a0.mp3" type="audio/mpeg">
+                        </audio>
                     </div>
-                </div>
-                <div class="verified-badge">
-                    <span>✓</span>
-                    <span data-lang="zh">已验证购买</span>
-                    <span data-lang="en">Verified Purchase</span>
+
+                    <ul class="product-features">
+                        <li>Gel cooling technology (-40%)</li>
+                        <li>Dual-density zoning (45D+65D)</li>
+                        <li>Adjustable height (5/7/9cm)</li>
+                        <li>CertiPUR-US® + OEKO-TEX®</li>
+                        <li>99% antibacterial rate</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">Add to Cart</a>
                 </div>
             </div>
 
-            <div class="testimonial-card">
-                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                <p class="testimonial-text" data-lang="zh">
-                    "用了半年了，支撑力依然很好。可调节功能太棒了，我丈夫和儿子都换了这个枕头。性价比超高，强烈推荐！"
-                </p>
-                <p class="testimonial-text" data-lang="en">
-                    "Used it for six months, support is still great. The adjustable feature is amazing, both my husband and son switched to this pillow. Great value, highly recommend!"
-                </p>
-                <div class="testimonial-author">
-                    <div class="avatar">J</div>
-                    <div class="author-info">
-                        <h4>Jennifer L.</h4>
-                        <p data-lang="zh">加州 | 2025年购买</p>
-                        <p data-lang="en">California | Purchased 2025</p>
+            <!-- Product 2: Cool Max -->
+            <div class="product-card">
+                <div class="product-image" style="background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);">
+                    ❄️
+                </div>
+                <div class="product-info">
+                    <span class="product-tag">Ultimate Cooling</span>
+                    <h3>Cool Max</h3>
+                    <div class="product-price">$99 <span class="original">$169</span></div>
+
+                    <!-- Product Audio -->
+                    <div class="product-audio">
+                        <audio controls>
+                            <source src="https://coze-coding-project.tos.coze.site/coze_storage_7606079845159829523/audio/tts_90f34e4b-c1fa-4fe3-bc85-f64f785c35bf.mp3" type="audio/mpeg">
+                        </audio>
                     </div>
-                </div>
-                <div class="verified-badge">
-                    <span>✓</span>
-                    <span data-lang="zh">已验证购买</span>
-                    <span data-lang="en">Verified Purchase</span>
+
+                    <ul class="product-features">
+                        <li>Double gel layer (-60%)</li>
+                        <li>Mesh breathable fabric (+80%)</li>
+                        <li>Smart temperature control</li>
+                        <li>Ventilation holes</li>
+                        <li>Quick-dry technology</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">Add to Cart</a>
                 </div>
             </div>
 
-            <div class="testimonial-card">
-                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                <p class="testimonial-text" data-lang="zh">
-                    "颈部疼痛明显好转了。可调节填充让我找到完美的枕头高度，真的像定制一样！质量很好，没有异味，5年质保很安心。"
-                </p>
-                <p class="testimonial-text" data-lang="en">
-                    "My neck pain has significantly improved. The adjustable fill helped me find the perfect pillow height, it's like custom-made! Great quality, no odor, 5-year warranty gives peace of mind."
-                </p>
-                <div class="testimonial-author">
-                    <div class="avatar">M</div>
-                    <div class="author-info">
-                        <h4>Michael R.</h4>
-                        <p data-lang="zh">德克萨斯 | 2025年购买</p>
-                        <p data-lang="en">Texas | Purchased 2025</p>
+            <!-- Product 3: Pro -->
+            <div class="product-card">
+                <div class="product-image" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                    🏆
+                </div>
+                <div class="product-info">
+                    <span class="product-tag">Professional</span>
+                    <h3>Pro</h3>
+                    <div class="product-price">$109 <span class="original">$179</span></div>
+
+                    <!-- Product Audio -->
+                    <div class="product-audio">
+                        <audio controls>
+                            <source src="https://coze-coding-project.tos.coze.site/coze_storage_7606079845159829523/audio/tts_69d71dbd-886e-44f3-bdc6-c0a7382c899f.mp3" type="audio/mpeg">
+                        </audio>
                     </div>
-                </div>
-                <div class="verified-badge">
-                    <span>✓</span>
-                    <span data-lang="zh">已验证购买</span>
-                    <span data-lang="en">Verified Purchase</span>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Guarantee Section -->
-    <section class="guarantee" id="guarantee">
-        <div class="section-header">
-            <div class="section-tag">Our Promise</div>
-            <h2 data-lang="zh">我们承诺</h2>
-            <h2 data-lang="en">Our Promise</h2>
-            <p data-lang="zh">放心购买，品质保证</p>
-            <p data-lang="en">Buy with Confidence, Quality Guaranteed</p>
-        </div>
+                    <ul class="product-features">
+                        <li>Three-layer support (40D+50D+70D)</li>
+                        <li>Cervical spine protection</li>
+                        <li>70D ultra-dense foam</li>
+                        <li>7-year warranty</li>
+                        <li>99.9% medical-grade antibacterial</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">Add to Cart</a>
+                </div>
+            </div>
 
-        <div class="guarantee-cards">
-            <div class="guarantee-card">
-                <div class="guarantee-icon">💤</div>
-                <div class="guarantee-number">100</div>
-                <h3 data-lang="zh">晚试睡</h3>
-                <h3 data-lang="en">Night Trial</h3>
-                <p data-lang="zh">
-                    不满意可免费退货<br>
-                    零风险体验优质睡眠
-                </p>
-                <p data-lang="en">
-                    Free return if not satisfied<br>
-                    Risk-free trial of quality sleep
-                </p>
-            </div>
-            <div class="guarantee-card">
-                <div class="guarantee-icon">🔒</div>
-                <div class="guarantee-number">5</div>
-                <h3 data-lang="zh">年质保</h3>
-                <h3 data-lang="en">Year Warranty</h3>
-                <p data-lang="zh">
-                    超长质保期<br>
-                    品质问题免费更换
-                </p>
-                <p data-lang="en">
-                    Extended warranty period<br>
-                    Free replacement for quality issues
-                </p>
-            </div>
-            <div class="guarantee-card">
-                <div class="guarantee-icon">🛡️</div>
-                <div class="guarantee-number">✅</div>
-                <h3 data-lang="zh">安全认证</h3>
-                <h3 data-lang="en">Safety Certified</h3>
-                <p data-lang="zh">
-                    CertiPUR-US®<br>
-                    OEKO-TEX® 双重认证
-                </p>
-                <p data-lang="en">
-                    CertiPUR-US®<br>
-                    OEKO-TEX® Dual Certification
-                </p>
+            <!-- Product 4: Essential -->
+            <div class="product-card">
+                <div class="product-image" style="background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);">
+                    💎
+                </div>
+                <div class="product-info">
+                    <span class="product-tag">Best Value</span>
+                    <h3>Essential</h3>
+                    <div class="product-price">$69 <span class="original">$119</span></div>
+
+                    <!-- Product Audio -->
+                    <div class="product-audio">
+                        <audio controls>
+                            <source src="https://coze-coding-project.tos.coze.site/coze_storage_7606079845159829523/audio/tts_f82771b4-7de3-4729-b674-1af92b97b66f.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+
+                    <ul class="product-features">
+                        <li>Comfortable memory foam</li>
+                        <li>Basic support design</li>
+                        <li>Ergonomic curve</li>
+                        <li>Removable and washable</li>
+                        <li>Certified safe materials</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">Add to Cart</a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section" id="cta">
-        <div class="cta-content">
-            <div class="countdown">
-                <span data-lang="zh">🔥 限时优惠</span>
-                <span data-lang="en">🔥 Limited Time Offer</span>
-                <span>2:59:59</span>
-            </div>
-            
-            <h2 data-lang="zh">准备好开始优质睡眠了吗？</h2>
-            <h2 data-lang="en">Ready to Start Quality Sleep?</h2>
-            
-            <p data-lang="zh">
-                数万条真实评论驱动，三大核心创新，只为让您睡个好觉<br>
-                今天就开始您的优质睡眠之旅，享受 <strong>40% off 优惠</strong>
-            </p>
-            <p data-lang="en">
-                Driven by tens of thousands of real reviews, three core innovations, just to help you sleep well<br>
-                Start your quality sleep journey today, enjoy <strong>40% off discount</strong>
-            </p>
-            
-            <div class="cta-buttons">
-                <a href="#" class="btn-primary" style="background: var(--bg-white); color: var(--primary);">
-                    <span data-lang="zh">立即购买 - $89</span>
-                    <span data-lang="en">Shop Now - $89</span>
-                    <span>🛒</span>
-                </a>
-                <a href="#features" class="btn-secondary" style="border-color: rgba(255,255,255,0.4); color: var(--text-white);">
-                    <span data-lang="zh">了解更多特点</span>
-                    <span data-lang="en">Learn More Features</span>
-                </a>
-            </div>
-        </div>
+    <section class="cta-section">
+        <h2>Start Sleeping Better Tonight</h2>
+        <p>100-Night Trial • Free Shipping • 5-Year Warranty</p>
+        <a href="#products" class="btn btn-primary" style="background: white; color: #0d2137;">Shop Now</a>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="logo-text">VIPSLEEP<span class="logo-accent">✨</span></div>
-        <p>&copy; 2026 VIPSLEEP. All rights reserved.</p>
-        <p data-lang="zh">优质睡眠，更好生活 | Premium Sleep, Better Life</p>
-        <p data-lang="en">Premium Sleep, Better Life</p>
-        <p data-lang="zh">专为北美市场设计 | 基于10,000+条客户评论深度分析</p>
-        <p data-lang="en">Designed for North America | Based on in-depth analysis of 10,000+ customer reviews</p>
-        
+    <footer id="about">
+        <h3>VIPSLEEP</h3>
+        <p>World's First Data-Driven Pillow Brand</p>
         <div class="footer-links">
-            <a href="#pain-points" data-lang="zh">痛点分析</a>
-            <a href="#pain-points" data-lang="en">Pain Points</a>
-            <a href="#solutions" data-lang="zh">解决方案</a>
-            <a href="#solutions" data-lang="en">Solutions</a>
-            <a href="#features" data-lang="zh">产品特点</a>
-            <a href="#features" data-lang="en">Features</a>
-            <a href="#testimonials" data-lang="zh">客户评价</a>
-            <a href="#testimonials" data-lang="en">Reviews</a>
-            <a href="#guarantee" data-lang="zh">保障政策</a>
-            <a href="#guarantee" data-lang="en">Guarantee Policy</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Shipping Info</a>
+            <a href="#" id="contact">Contact Us</a>
         </div>
-        
-        <p style="margin-top: 2rem; opacity: 0.7; font-size: 0.85rem;">
-            📧 support@vipsleep.com | 🌐 www.vipsleep.com
-            <br>
-            📍 North America Market | 🇺🇸 | 🇨🇦
-        </p>
+        <p style="margin-top: 2rem; opacity: 0.7;">© 2024 VIPSLEEP. All rights reserved.</p>
     </footer>
-
-    <script>
-        function setLanguage(lang) {
-            document.body.className = 'lang-' + lang;
-            const buttons = document.querySelectorAll('.lang-btn');
-            buttons.forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.textContent === (lang === 'zh' ? '中文' : 'EN')) {
-                    btn.classList.add('active');
-                }
-            });
-            
-            // Save preference
-            localStorage.setItem('vipsleep-lang', lang);
-        }
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Reveal animations on scroll
-        function reveal() {
-            const reveals = document.querySelectorAll('.pain-points, .solution, .features, .testimonials, .guarantee, .comparison');
-            reveals.forEach(reveal => {
-                const windowHeight = window.innerHeight;
-                const elementTop = reveal.getBoundingClientRect().top;
-                const elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveal.classList.add('active');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', reveal);
-        reveal();
-
-        // Load saved language preference
-        const savedLang = localStorage.getItem('vipsleep-lang') || 'zh';
-        setLanguage(savedLang);
-
-        // Countdown timer
-        function startCountdown() {
-            const hours = 2;
-            const minutes = 59;
-            const seconds = 59;
-            
-            setInterval(() => {
-                // Update countdown display
-                const countdownEl = document.querySelector('.countdown span:last-child');
-                if (countdownEl) {
-                    countdownEl.textContent = `${hours}:${minutes}:${seconds}`;
-                }
-            }, 1000);
-        }
-        
-        startCountdown();
-    </script>
 </body>
 </html>
