@@ -63,6 +63,74 @@
             background: #f0f0f0;
         }
 
+        /* Live Chat Button */
+        .live-chat-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #00d4ff 0%, #0066cc 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0, 102, 204, 0.4);
+            z-index: 9998;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .live-chat-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(0, 102, 204, 0.5);
+        }
+
+        .live-chat-btn::before {
+            content: "💬";
+            font-size: 28px;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 102, 204, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(0, 102, 204, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 102, 204, 0);
+            }
+        }
+
+        /* Chat Tooltip */
+        .chat-tooltip {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: #0d2137;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            z-index: 9998;
+            font-size: 0.9rem;
+            opacity: 1;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         /* Translation classes */
         .lang-zh { display: none; }
         body[data-lang="zh"] .lang-en { display: none; }
@@ -1006,6 +1074,14 @@
         <p style="margin-top: 2rem; opacity: 0.7;">© 2024 VIPSLEEP. All rights reserved.</p>
     </footer>
 
+    <!-- Live Chat Button -->
+    <div class="live-chat-btn" onclick="openChat()">
+        <div class="chat-tooltip" id="chatTooltip">
+            <span class="lang-en">Need help? Chat with us!</span>
+            <span class="lang-zh">需要帮助？点击咨询！</span>
+        </div>
+    </div>
+
     <script>
         // Language Switcher
         function setLanguage(lang) {
@@ -1040,7 +1116,28 @@
         document.addEventListener('DOMContentLoaded', function() {
             const savedLang = localStorage.getItem('preferredLanguage') || 'en';
             setLanguage(savedLang);
+
+            // Hide tooltip after 5 seconds
+            setTimeout(() => {
+                const tooltip = document.getElementById('chatTooltip');
+                if (tooltip) {
+                    tooltip.style.display = 'none';
+                }
+            }, 5000);
         });
+
+        // Open Chat Function
+        function openChat() {
+            const lang = document.body.getAttribute('data-lang') || 'en';
+            if (lang === 'zh') {
+                // Open WeChat (Chinese)
+                alert('客服功能\n\n微信客服：VIPSLEEP_Service\n\n或致电：+1 (888) VIP-SLEEP\n\n或发送邮件：support@vipsleep.com');
+            } else {
+                // Open chat or redirect to contact page (English)
+                alert('Customer Service\n\n📧 Email: support@vipsleep.com\n\n📞 Phone: +1 (888) VIP-SLEEP\n\n💬 Live Chat: Available 9AM-6PM PST');
+                window.open('contact.html', '_blank');
+            }
+        }
     </script>
 </body>
 </html>
